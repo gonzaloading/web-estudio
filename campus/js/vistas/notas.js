@@ -6,7 +6,8 @@ import { icon, esc, asigIcon, nombreAsig, fechaCorta, opcionesAsig, fmtNota, not
 const TIPOS = ['Examen', 'Práctica', 'Trabajo', 'Actividad', 'Exposición'];
 
 export default function notas(el, r) {
-  const ex = state.examenes.find(e => e.id === r.q.get('examen'));
+  const ex = state.examenes.find(e => e.id === r.q.get('examen')) || state.trabajos.find(t => t.id === r.q.get('examen'));
+  const esTrabajo = !!ex && state.trabajos.includes(ex);
   const lista = [...state.notas].sort((a, b) => b.fecha.localeCompare(a.fecha));
   const medias = cat.asignaturas.map(a => ({ a, ...P.mediaNotas(a.id) })).filter(m => m.n);
   const general = medias.length ? medias.reduce((s, m) => s + m.media, 0) / medias.length : null;
@@ -26,12 +27,12 @@ export default function notas(el, r) {
         <td>${n.peso ? n.peso + '%' : '—'}</td><td><span class="nota-v ${notaCls(n.nota)}">${fmtNota(n.nota)}</span></td>
         <td><button class="icon-btn" data-del="${n.id}" title="Borrar">${icon('trash')}</button></td></tr>`).join('')}</tbody></table></div>`
       : '<p class="vacio pad">Todavía no hay notas.</p>'}</section>
-    <section class="card pad"><h3 class="titulo-sec">${ex ? 'Nota del examen' : 'Añadir nota'}</h3>
+    <section class="card pad"><h3 class="titulo-sec">${ex ? (esTrabajo ? 'Nota del trabajo' : 'Nota del examen') : 'Añadir nota'}</h3>
       <form class="form" id="f-nota">
         <input type="hidden" name="examen" value="${ex ? ex.id : ''}">
         <label>Asignatura<select name="asig" required>${opcionesAsig(ex?.asig)}</select></label>
         <label>Concepto<input name="concepto" required value="${esc(ex?.titulo || '')}" placeholder="Ej.: Examen T1"></label>
-        <label>Tipo<select name="tipo">${TIPOS.map(t => `<option>${t}</option>`).join('')}</select></label>
+        <label>Tipo<select name="tipo">${TIPOS.map(t => `<option ${esTrabajo && t === 'Trabajo' ? 'selected' : ''}>${t}</option>`).join('')}</select></label>
         <label>Fecha<input type="date" name="fecha" required value="${ex?.fecha || hoy()}"></label>
         <label>Nota (0–10)<input type="number" name="nota" min="0" max="10" step="0.01" required></label>
         <label>Peso % (opcional)<input type="number" name="peso" min="0" max="100" step="1" placeholder="Ej.: 40"></label>

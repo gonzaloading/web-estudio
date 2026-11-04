@@ -120,6 +120,17 @@ export const proximosExamenes = (n = 99, asig) => state.examenes
   .filter(e => e.fecha >= hoy() && (!asig || e.asig === asig))
   .sort((a, b) => (a.fecha + (a.hora || '')).localeCompare(b.fecha + (b.hora || ''))).slice(0, n);
 
+/** Trabajos sin entregar (también los que ya han vencido), ordenados por fecha de entrega. */
+export const trabajosPendientes = (n = 99, asig) => state.trabajos
+  .filter(t => !t.entregado && (!asig || t.asig === asig))
+  .sort((a, b) => (a.fecha + (a.hora || '')).localeCompare(b.fecha + (b.hora || ''))).slice(0, n);
+
+/** Exámenes próximos y trabajos pendientes juntos, por fecha. Cada elemento lleva clase: 'examen' | 'trabajo'. */
+export const agenda = (n = 99, asig) => [
+  ...proximosExamenes(99, asig).map(e => ({ ...e, clase: 'examen' })),
+  ...trabajosPendientes(99, asig).map(t => ({ ...t, clase: 'trabajo' })),
+].sort((a, b) => (a.fecha + (a.hora || '')).localeCompare(b.fecha + (b.hora || ''))).slice(0, n);
+
 export function mediaNotas(asig) {
   const ns = state.notas.filter(n => n.asig === asig);
   if (!ns.length) return { media: null, n: 0 };

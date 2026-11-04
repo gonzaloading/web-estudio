@@ -16,7 +16,7 @@ const RUTAS = { '': inicio, asignaturas, asignatura, repaso, temas, fallos, hist
 const NAV = [
   ['', 'home', 'Inicio'], ['asignaturas', 'layers', 'Asignaturas'], ['repaso', 'calendar', 'Plan de repaso'],
   ['temas', 'list', 'Temas'], ['fallos', 'xcircle', 'Mis fallos'], ['historial', 'bars', 'Historial'],
-  null, ['examenes', 'calcheck', 'Exámenes'], ['notas', 'grad', 'Notas'],
+  null, ['examenes', 'calcheck', 'Exámenes y trabajos'], ['notas', 'grad', 'Notas'],
 ];
 
 const app = document.getElementById('app');

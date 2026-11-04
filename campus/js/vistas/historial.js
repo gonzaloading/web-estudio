@@ -16,6 +16,8 @@ function entrada(e) {
     }
     case 'nota': ic = 'grad'; txt = `Nota de <b>${esc(e.texto)}</b>: ${fmtNota(e.nota)}`; break;
     case 'examen': ic = 'calcheck'; txt = `Examen apuntado: <b>${esc(e.texto)}</b>`; break;
+    case 'trabajo': ic = 'list'; txt = `Trabajo apuntado: <b>${esc(e.texto)}</b>`; break;
+    case 'entrega': ic = 'check'; txt = `Trabajo entregado: <b>${esc(e.texto)}</b>`; break;
     case 'fallo': ic = 'xcircle'; txt = `Fallo apuntado: ${esc(e.texto)}`; break;
     default: txt = esc(e.texto || e.tipo);
   }

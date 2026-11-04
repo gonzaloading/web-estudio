@@ -8,7 +8,7 @@ export default function ajustes(el) {
     <p>Tu progreso se guarda en este navegador. Descarga una copia de vez en cuando para no perderlo, o para pasarlo a otro dispositivo.</p></header>
   <div class="g2">
     <section class="card pad"><h3 class="titulo-sec">Exportar / importar</h3>
-      <p class="tenue">${kb} KB · ${Object.keys(state.tarjetas).length} tarjetas con progreso · ${state.fallos.length} fallos · ${state.notas.length} notas · ${state.examenes.length} exámenes</p>
+      <p class="tenue">${kb} KB · ${Object.keys(state.tarjetas).length} tarjetas con progreso · ${state.fallos.length} fallos · ${state.notas.length} notas · ${state.examenes.length} exámenes · ${state.trabajos.length} trabajos</p>
       <div class="acc"><button class="btn lima" data-exp>${icon('download')} Descargar copia</button>
         <label class="btn borde">${icon('upload')} Importar copia<input type="file" accept="application/json,.json" hidden data-imp></label></div>
     </section>

@@ -138,4 +138,6 @@ Las cajas (`> [!…]`) solo admiten párrafos; las tablas y listas van fuera.
 
 `python3 -m http.server 8000` en esta carpeta y abrir http://localhost:8000. No hace falta cambiar `sw.js` al añadir temas.
 
-**Publicar**: la web está en GitHub Pages y se actualiza sola con cada `git push` a `main` (ver README). Haz commit y push **solo si el usuario lo pide**. Los PDF de `../recursos/` nunca se suben.
+**Publicar**: la web está en https://gonzaloading.github.io/web-estudio/ y se actualiza sola con cada `git push` a `main` (ver README). Los PDF de `../recursos/` nunca se suben.
+
+> **Siempre que termines un cambio en la web** (teoría, diseño o funciones), **recuérdale al usuario que está sin publicar** y ofrécete a publicarlo: es una petición expresa suya. Haz commit y push **solo cuando él diga que sí**.

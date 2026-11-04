@@ -12,7 +12,7 @@ export default function asignatura(el, r) {
   const pct = P.pctAsig(a), cards = todasTarjetas(a.id);
   const dom = cards.filter(c => P.dominada(c.id)).length;
   const leidos = a.temas.filter(t => state.leidos[t.key]).length;
-  const ex = P.proximosExamenes(1, a.id)[0], m = P.mediaNotas(a.id);
+  const ex = P.proximosExamenes(1, a.id)[0], m = P.mediaNotas(a.id), tr = P.trabajosPendientes(1, a.id)[0];
   const due = P.pendientesHoy(a.id).length;
 
   el.innerHTML = `
@@ -26,6 +26,7 @@ export default function asignatura(el, r) {
         <span><b>${dom}/${cards.length}</b> tarjetas dominadas</span>
         ${m.n ? `<span>Nota media <b>${fmtNota(m.media)}</b></span>` : ''}
         ${ex ? `<span>${esc(ex.titulo)} <b>${diasTxt(ex.fecha)}</b></span>` : ''}
+        ${tr ? `<span>Entrega «${esc(tr.titulo)}» <b>${diasTxt(tr.fecha)}</b></span>` : ''}
       </div>
       <div class="asig-pr">${barra(pct)}<span>${pct}%</span></div>
     </div>

@@ -8,6 +8,7 @@ const base = () => ({
   fallos: [],      // { id, cardId?, asig, tema?, pregunta, respuesta, fecha, veces, estado }
   historial: [],   // { id, ts, fecha, tipo, asig, delta, ... }
   examenes: [],    // { id, asig, titulo, fecha, hora, temas }
+  trabajos: [],    // { id, asig, titulo, desc, fecha (de entrega), hora, entregado (fecha o null) }
   notas: [],       // { id, asig, concepto, tipo, fecha, nota, peso, examen? }
   dias: {},        // fecha -> nº de actividades (para la racha)
   ultimoTema: null,

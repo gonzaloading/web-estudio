@@ -313,6 +313,23 @@ details summary b { display: inline-flex; align-items: center; gap: 6px }
 .cal .d.fuera { opacity: .4 }
 .cal .d.hoy { border: 2px solid var(--lima2); background: #fbfdf1 }
 .cal .d .num { font-weight: 700; color: var(--suave) }
+.chip-tipo { display: inline-block; font-size: 10.5px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; padding: 1px 7px; border-radius: 6px; margin-bottom: 3px }
+.chip-tipo.examen { background: var(--azul-t); color: var(--azul) }
+.chip-tipo.trabajo { background: #f3ecfc; color: #7c3aed }
+.tt .desc { margin: 5px 0 0; font-size: 13.5px; line-height: 1.45; color: var(--txt); white-space: pre-line }
+.icon-btn.entregar { color: var(--verde) }
+.ev.trab { background: #fff; border: 1.5px dashed var(--c, #333) }
+.ev.hecho { opacity: .5; text-decoration: line-through }
+.cal-ley { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 14px; font-size: 12.5px; color: var(--suave) }
+.cal-ley span { display: inline-flex; align-items: center; gap: 6px }
+.cal-ley .sw { width: 22px; height: 10px; border-radius: 4px; background: #e3ecdf; border: 1.5px solid transparent }
+.cal-ley .sw.tr { background: #fff; border: 1.5px dashed var(--suave) }
+.cal-ley .sw.hecho { opacity: .5 }
+.seg { display: flex; gap: 4px; background: #f0f0ea; border-radius: 11px; padding: 4px }
+.form .seg label { flex: 1; flex-direction: row; justify-content: center; align-items: center; padding: 8px; border-radius: 8px; font-size: 14px; color: var(--suave); cursor: pointer }
+.form .seg label:has(input:checked) { background: #fff; color: var(--osc); box-shadow: 0 1px 3px rgba(0, 0, 0, .08) }
+.seg input { position: absolute; opacity: 0; pointer-events: none }
+.form[data-tipo="examen"] .solo-tr, .form[data-tipo="trabajo"] .solo-ex { display: none }
 .ev { display: block; margin-top: 4px; font-size: 11.5px; font-weight: 650; padding: 2px 6px; border-radius: 6px; background: var(--t, #eee); color: var(--c, #333); white-space: nowrap; overflow: hidden; text-overflow: ellipsis }
 .form { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; align-items: end }
 .form label { display: flex; flex-direction: column; gap: 5px; font-size: 13px; color: var(--suave); font-weight: 650 }

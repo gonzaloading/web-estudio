@@ -81,8 +81,8 @@ export function tarjetaAsig(a, detalle = false) {
   const pct = P.pctAsig(a);
   let meta = '';
   if (detalle) {
-    const m = P.mediaNotas(a.id), ex = P.proximosExamenes(1, a.id)[0];
-    meta = `<div class="meta">${a.temas.length} temas · ${todasTarjetas(a.id).length} tarjetas${m.n ? ` · media ${fmtNota(m.media)}` : ''}${ex ? ` · examen ${diasTxt(ex.fecha)}` : ''}</div>`;
+    const m = P.mediaNotas(a.id), ex = P.proximosExamenes(1, a.id)[0], tr = P.trabajosPendientes(1, a.id)[0];
+    meta = `<div class="meta">${a.temas.length} temas · ${todasTarjetas(a.id).length} tarjetas${m.n ? ` · media ${fmtNota(m.media)}` : ''}${ex ? ` · examen ${diasTxt(ex.fecha)}` : ''}${tr ? ` · entrega ${diasTxt(tr.fecha)}` : ''}</div>`;
   }
   return `<a class="card asig" href="#/asignatura/${a.id}">
     <div class="asig-top">${asigIcon(a)}<b>${esc(a.nombre)}</b></div>

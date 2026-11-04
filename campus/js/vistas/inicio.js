@@ -11,13 +11,13 @@ export default function inicio(el) {
   const fp = state.fallos.filter(f => f.estado === 'pendiente').length;
   const fr = state.fallos.length - fp;
   const sig = P.siguienteTema();
-  const exs = P.proximosExamenes(3);
+  const exs = P.proximosExamenes(1), trs = P.trabajosPendientes(1), ag = P.agenda(4);
   const notas = [...state.notas].sort((a, b) => b.fecha.localeCompare(a.fecha)).slice(0, 3);
   const dias = P.resumenDias(3);
 
   el.innerHTML = `
   <header class="cab"><h1>Bienvenido de nuevo, Gonzaloading</h1>
-    <p>${fechaLarga()}${exs[0] ? ` · Próximo examen: <b>${esc(nombreAsig(exs[0].asig))}</b> ${diasTxt(exs[0].fecha)}` : ''}</p></header>
+    <p>${fechaLarga()}${exs[0] ? ` · Próximo examen: <b>${esc(nombreAsig(exs[0].asig))}</b> ${diasTxt(exs[0].fecha)}` : ''}${trs[0] ? ` · Próxima entrega: <b>${esc(trs[0].titulo)}</b> ${trs[0].fecha < hoy() ? 'venció ' : ''}${diasTxt(trs[0].fecha)}` : ''}</p></header>
 
   <section class="kpis">
     ${kpi('book', 'Teoría estudiada', g.teoria + '%', barra(g.teoria))}
@@ -37,10 +37,10 @@ export default function inicio(el) {
 
       <div class="duo">
         <section class="card pad mini-lista">
-          <div class="panel-h">${icon('calcheck')}<div><h3>Próximos exámenes</h3></div></div>
-          ${exs.length ? exs.map(e => `<div class="it">${asigIcon(cat.porId[e.asig], 'peq')}<div class="tt"><b>${esc(e.titulo)}</b><small>${esc(nombreAsig(e.asig))} · ${fechaCorta(e.fecha)}</small></div>
-            <span class="cuenta ${diasEntre(hoy(), e.fecha) <= 7 ? 'urg' : ''}">${diasTxt(e.fecha)}</span></div>`).join('')
-            : '<p class="vacio">No hay exámenes apuntados.</p>'}
+          <div class="panel-h">${icon('calcheck')}<div><h3>Exámenes y entregas</h3></div></div>
+          ${ag.length ? ag.map(e => `<div class="it">${asigIcon(cat.porId[e.asig], 'peq')}<div class="tt"><span class="chip-tipo ${e.clase}">${e.clase === 'trabajo' ? 'Trabajo' : 'Examen'}</span><b>${esc(e.titulo)}</b><small>${esc(nombreAsig(e.asig))} · ${fechaCorta(e.fecha)}</small></div>
+            <span class="cuenta ${diasEntre(hoy(), e.fecha) <= 7 ? 'urg' : ''}">${e.fecha < hoy() ? 'Venció ' : ''}${diasTxt(e.fecha)}</span></div>`).join('')
+            : '<p class="vacio">No hay exámenes ni trabajos apuntados.</p>'}
           <a class="link" href="#/examenes">Ver calendario ${icon('chev')}</a>
         </section>
         <section class="card pad mini-lista">
