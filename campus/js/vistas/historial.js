@@ -8,7 +8,9 @@ const SEMANAS = 18;
 function entrada(e) {
   let ic = 'book', txt;
   switch (e.tipo) {
-    case 'lectura': txt = `Has estudiado <b>${esc(e.titulo)}</b>`; break;
+    case 'lectura': txt = `Has visto entero <b>${esc(e.titulo)}</b>`; break;
+    case 'test': ic = 'quiz'; txt = `Test: <b>${e.ok}/${e.n}</b> aciertos (${Math.round(e.ok / e.n * 100)}%)`; break;
+    case 'ejercicio': ic = 'code'; txt = `Ejercicio ${e.estado === 'correcto' ? 'superado' : 'hecho'}: <b>${esc(e.texto)}</b>`; break;
     case 'repaso': {
       ic = 'refresh';
       const n = e.bien + e.dude + e.falle;

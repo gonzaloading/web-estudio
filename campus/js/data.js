@@ -9,7 +9,7 @@ export const PLANTILLAS = {
   idiomas: { gramatica: 'Grammar', vocabulario: 'Vocabulary', reading: 'Reading & Listening', writing: 'Writing & Speaking' },
 };
 
-export const cat = { asignaturas: [], porId: {}, temas: {} };
+export const cat = { asignaturas: [], porId: {}, temas: {}, preguntas: {}, ejercicios: {} };
 
 const pedir = async u => { const r = await fetch(u, { cache: 'no-cache' }); if (!r.ok) throw new Error(`${r.status} ${u}`); return r; };
 
@@ -25,16 +25,25 @@ export async function cargarCatalogo() {
       catch { src = `> [!error] No se encontró el archivo \`contenido/${a.id}/${t.archivo || t.id + '.md'}\`.`; }
       const p = parseTema(src, t.key, `contenido/${a.id}/`);
       for (const k in p.meta) if (t[k] === undefined) t[k] = p.meta[k];
-      Object.assign(t, { html: p.html, cards: p.cards, toc: p.toc });
-      t.cards.forEach(c => { c.asig = a.id; c.temaTitulo = t.titulo; });
+      Object.assign(t, { html: p.html, cards: p.cards, toc: p.toc, segs: p.segs, preguntas: p.preguntas, ejercicios: p.ejercicios });
+      for (const x of [...t.cards, ...t.preguntas, ...t.ejercicios]) { x.asig = a.id; x.temaTitulo = t.titulo; }
     }));
   }));
   cat.asignaturas = asigs;
-  for (const a of asigs) { cat.porId[a.id] = a; for (const t of a.temas) cat.temas[t.key] = t; }
+  for (const a of asigs) {
+    cat.porId[a.id] = a;
+    for (const t of a.temas) {
+      cat.temas[t.key] = t;
+      t.preguntas.forEach(q => { cat.preguntas[q.id] = q; });
+      t.ejercicios.forEach(ej => { cat.ejercicios[ej.id] = ej; });
+    }
+  }
 }
 
 export const todosTemas = asig => cat.asignaturas.filter(a => !asig || a.id === asig).flatMap(a => a.temas);
 export const todasTarjetas = asig => todosTemas(asig).flatMap(t => t.cards);
+export const todasPreguntas = (asig, tema) => todosTemas(asig).filter(t => !tema || t.key === tema).flatMap(t => t.preguntas);
+export const todosEjercicios = asig => todosTemas(asig).flatMap(t => t.ejercicios);
 
 export function gruposDe(a) {
   const def = { ...(PLANTILLAS[a.plantilla] || PLANTILLAS.teoria), ...(a.grupos || {}) };

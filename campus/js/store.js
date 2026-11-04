@@ -10,6 +10,11 @@ const base = () => ({
   examenes: [],    // { id, asig, titulo, fecha, hora, temas }
   trabajos: [],    // { id, asig, titulo, desc, fecha (de entrega), hora, entregado (fecha o null) }
   notas: [],       // { id, asig, concepto, tipo, fecha, nota, peso, examen? }
+  segmentos: {},   // "asig/tema#segmento" -> { fecha, ok, total } (segmento de teoría visto)
+  preguntas: {},   // idPregunta de test -> { n, ok, ultima: 'ok' | 'ko', fecha }
+  testDias: {},    // fecha -> { n, ok } (todas las preguntas de test respondidas ese día)
+  tests: [],       // tests completos: { id, ts, fecha, asig, tema, modo, ok, total }
+  ejercicios: {},  // idEjercicio -> { estado: 'hecho' | 'correcto', fecha }
   dias: {},        // fecha -> nº de actividades (para la racha)
   ultimoTema: null,
 });

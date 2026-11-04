@@ -20,8 +20,8 @@ export default function inicio(el) {
     <p>${fechaLarga()}${exs[0] ? ` · Próximo examen: <b>${esc(nombreAsig(exs[0].asig))}</b> ${diasTxt(exs[0].fecha)}` : ''}${trs[0] ? ` · Próxima entrega: <b>${esc(trs[0].titulo)}</b> ${trs[0].fecha < hoy() ? 'venció ' : ''}${diasTxt(trs[0].fecha)}` : ''}</p></header>
 
   <section class="kpis">
-    ${kpi('book', 'Teoría estudiada', g.teoria + '%', barra(g.teoria))}
-    ${kpi('target', 'Dominio', g.dominio + '%', barra(g.dominio))}
+    ${kpi('book', 'Teoría vista', g.teoria + '%', barra(g.teoria))}
+    ${kpi('quiz', 'Aciertos en test', g.test !== null ? g.test + '%' : '—', g.test !== null ? barra(g.test) : `<a class="link" href="#/test">Hacer un test ${icon('chev')}</a>`)}
     ${kpi('flame', 'Racha', `${r} <small>${r === 1 ? 'día' : 'días'}</small>`, `<span class="tenue">Mejor racha: ${mejorRacha()}</span>`, 'fuego')}
     ${kpi('calendar', 'Repasos hoy', due.length, due.length ? `<a class="link" href="#/repaso?modo=recordar">Empezar ${icon('chev')}</a>` : '<span class="tenue">Todo al día</span>')}
   </section>

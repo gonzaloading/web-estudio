@@ -23,6 +23,34 @@ N = aₚ₋₁·bᵖ⁻¹ + … + a₁·b¹ + a₀·b⁰ + a₋₁·b⁻¹ + …
 
 Así se pasa **cualquier base a decimal**.
 
+```test
+¿Qué es la base de un sistema de numeración?
++ El número de símbolos (dígitos) que usa
+- El dígito de mayor valor
+- El número de posiciones que tiene un número
+- La potencia de 2 más cercana
+
+¿Para qué se usa el sistema octal en informática, según tus apuntes?
++ Para los permisos de ficheros en Linux
+- Para las direcciones MAC
+- Para las direcciones IPv4
+- Para calcular subredes
+
+¿Qué valor tiene la letra D en hexadecimal?
++ 13
+- 12
+- 14
+- 4
+= A=10, B=11, C=12, D=13, E=14, F=15.
+
+En (248,5)₁₀, ¿cuánto vale el 4?
++ 40, porque está en la posición 1 (4·10¹)
+- 4, porque está en la posición 0
+- 400, porque está en la posición 2
+- 0,4, porque está a la derecha de la coma
+= La posición 0 es la que está justo a la izquierda de la coma.
+```
+
 ## Conversiones entre sistemas {alta}
 
 > [!extra] El PDF explica las conversiones con un vídeo enlazado. El método paso a paso de cada una que tienes en este apartado está añadido para que no dependas del vídeo.
@@ -57,6 +85,36 @@ Leyendo los restos de abajo arriba: (45)₁₀ = **(101101)₂**
 
 > [!error] Copiar el resto 12 tal cual. En hexadecimal cada resto es **un solo dígito**: 10 → A, 11 → B, 12 → C… (300)₁₀ es (12C)₁₆, no (1212)₁₆.
 
+```test
+Pasa (1011)₂ a decimal.
++ 11
+- 13
+- 1011
+- 9
+= 1·8 + 0·4 + 1·2 + 1·1 = 11.
+
+Pasa (2A)₁₆ a decimal.
++ 42
+- 210
+- 32
+- 26
+= 2·16 + 10 = 42.
+
+Al pasar (45)₁₀ a binario por divisiones sucesivas, ¿cómo se leen los restos?
++ Del último al primero (de abajo arriba)
+- Del primero al último (de arriba abajo)
+- Solo los restos que valen 1
+- Da igual el orden
+= Por eso 45 es 101101 y no al revés.
+
+Pasa (300)₁₀ a hexadecimal.
++ 12C
+- 1212
+- C21
+- 12A
+= Restos: 12 (C), 2 y 1 → leídos de abajo arriba: 12C.
+```
+
 ### Binario ↔ octal y binario ↔ hexadecimal {alta}
 
 - **Octal**: cada dígito octal equivale a **3 bits** (2³ = 8).
@@ -88,6 +146,36 @@ Con **n bits** hay **2ⁿ combinaciones**: 1 bit → 2, 2 bits → 4, 3 bits →
 
 > [!ejemplo] Para las 26 letras del abecedario: 2⁴ = 16 se queda corto y 2⁵ = 32 ≥ 26 → **5 bits**.
 
+```test
+Pasa (110101)₂ a octal.
++ 65
+- 53
+- 35
+- 110
+= De derecha a izquierda, de 3 en 3: 110 | 101 → 6 y 5.
+
+Pasa (110101)₂ a hexadecimal.
++ 35
+- 65
+- D5
+- 53
+= De 4 en 4 desde la derecha: 0011 | 0101 → 3 y 5.
+
+¿Cuántos bits ocupa cada dígito hexadecimal?
++ 4
+- 3
+- 8
+- 16
+= 2⁴ = 16 símbolos.
+
+¿Cuántos bits necesitas como mínimo para representar 26 letras?
++ 5
+- 4
+- 6
+- 26
+= 2⁴ = 16 se queda corto; 2⁵ = 32 ya llega.
+```
+
 ## Unidades de capacidad {alta}
 
 | Unidad | Equivale a |
@@ -109,6 +197,41 @@ Con **n bits** hay **2ⁿ combinaciones**: 1 bit → 2, 2 bits → 4, 3 bits →
 > [!error] Confundir Mb (megabit) con MB (megabyte): 1 MB = 8 Mb.
 
 > [!nota] Para el examen, 1 KB = 1024 B, como en los apuntes. Fuera de clase verás que, según el Sistema Internacional, **kilo = 1000**: 1 kB = 1000 B, y a los 1024 B se les llama **kibibyte (KiB)**. Por eso un disco que se vende como 1 TB (10¹² bytes) aparece en Windows como unos **931 GB**: Windows divide entre 1024.
+
+```test
+¿Cuántos bits tiene un byte?
++ 8
+- 4
+- 10
+- 1024
+
+¿Cuál es la unidad mínima de información?
++ El bit
+- El byte
+- El kilobyte
+- El carácter
+= El byte es la unidad mínima de memoria.
+
+¿Cuántos MB tiene 1 GB, según tus apuntes?
++ 1024
+- 1000
+- 100
+- 8
+= La memoria crece en potencias de 2: 1024 = 2¹⁰.
+
+¿Qué es más grande: 1 MB o 1 Mb?
++ 1 MB, porque son megabytes (1 MB = 8 Mb)
+- 1 Mb, porque son megabits
+- Son lo mismo
+- Depende del sistema operativo
+= B mayúscula = byte; b minúscula = bit.
+
+¿Por qué un byte tiene 8 bits, según tus apuntes?
++ Porque la tabla ASCII extendida tiene 256 caracteres y 2⁸ = 256
+- Porque los primeros ordenadores tenían 8 cables
+- Porque 8 es la mitad de 16
+- Porque lo decidió Von Neumann
+```
 
 ?? ¿Qué es la base de un sistema de numeración? || El número de símbolos (dígitos) que tiene.
 ?? ¿Para qué se usa cada sistema de numeración en informática? || Binario: interno del ordenador y subredes. Octal: permisos en Linux. Decimal: IPv4. Hexadecimal: direcciones MAC e IPv6.

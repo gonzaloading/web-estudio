@@ -12,6 +12,7 @@ html, body { margin: 0 }
 body { font: 15px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background: var(--crema); color: var(--txt); -webkit-font-smoothing: antialiased }
 a { color: inherit; text-decoration: none }
 button, input, select, textarea { font: inherit; color: inherit }
+[hidden] { display: none !important }
 code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace }
 .ic { width: 20px; height: 20px; flex: none }
 .tenue { color: var(--tenue) }
@@ -408,3 +409,86 @@ label.btn input { display: none }
   .fc-grande .q { font-size: 20px }
   .fallo { flex-wrap: wrap }
 }
+
+/* ---------- Teoría vista, tests por apartado y apartado Test ---------- */
+.tema-prog { padding: 14px 18px; margin: 0 0 18px }
+.tp-fila { display: flex; align-items: center; gap: 12px }
+.tp-fila .barra { flex: 1 }
+.tp-fila b { font-size: 18px; color: var(--osc); min-width: 46px; text-align: right }
+.tp-lbl { font-weight: 700; font-size: 14px; color: var(--osc); white-space: nowrap }
+.tp-det { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 16px; margin-top: 8px; font-size: 13.5px; color: var(--suave) }
+.tp-det .btn { margin-left: auto }
+.mini-pct { font-size: 11.5px; font-weight: 750; color: var(--verde); background: var(--lima-t); border-radius: 6px; padding: 1px 6px }
+.toc a .ic { width: 14px; height: 14px; color: var(--verde); margin-left: 4px; vertical-align: -2px }
+.tema-r .visto { color: var(--verde) }
+.tt-barra { margin-top: 6px; max-width: 260px }
+
+.segmento { padding-bottom: 6px }
+.quiz { margin: 22px 0 30px; padding: 18px 20px; border-radius: 14px; background: #f7f9f1; border: 1px solid #e3ead0; line-height: 1.5 }
+.quiz-h { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; margin-bottom: 12px; color: var(--osc) }
+.quiz-h .tenue { font-size: 13px }
+.quiz.visto, .quiz.sin-test { padding: 12px 16px; background: #f3f8e9 }
+.quiz.sin-test { background: none; border-style: dashed; text-align: center }
+.quiz-res { display: flex; align-items: center; gap: 10px; color: var(--osc); font-size: 15px }
+.quiz-res > .ic { color: var(--verde) }
+.quiz-res .btn { margin-left: auto }
+.quiz-fin { margin-top: 14px; padding-top: 12px; border-top: 1px solid #e3ead0; font-size: 15px }
+.quiz-fin .btn { margin-left: 8px }
+
+.pq + .pq { margin-top: 18px; padding-top: 16px; border-top: 1px solid #e8ecdf }
+.pq-t { margin: 0 0 10px; font-weight: 650; font-size: 16px; color: var(--txt) }
+.pq-n { display: inline-grid; place-items: center; min-width: 24px; height: 24px; border-radius: 7px; background: var(--osc); color: #fff; font-size: 12.5px; margin-right: 8px; vertical-align: 1px }
+.pq-ops { display: grid; gap: 8px }
+.op { display: flex; align-items: center; gap: 12px; width: 100%; text-align: left; padding: 10px 12px; border: 1.5px solid var(--borde); border-radius: 11px; background: #fff; cursor: pointer; font-size: 15px; line-height: 1.4; transition: border-color .15s, background .15s }
+.op:hover:not(:disabled) { border-color: var(--lima2); background: #fbfdf3 }
+.op:disabled { cursor: default }
+.op-l { flex: none; display: grid; place-items: center; width: 26px; height: 26px; border-radius: 8px; background: #f0f0ea; font-weight: 750; font-size: 13px; color: var(--suave) }
+.op.bien { border-color: #2e8b57; background: #edf6e6 }
+.op.bien .op-l { background: #2e8b57; color: #fff }
+.op.mal { border-color: var(--rojo); background: var(--rojo-t) }
+.op.mal .op-l { background: var(--rojo); color: #fff }
+.pq.hecha .op:not(.bien):not(.mal) { opacity: .6 }
+.pq-exp { margin-top: 10px; padding: 10px 12px; border-radius: 10px; font-size: 14.5px; background: #fff; border-left: 4px solid var(--azul) }
+.pq.acierto .pq-exp { border-left-color: #2e8b57 }
+.pq.error .pq-exp { border-left-color: var(--rojo) }
+
+.ejer { margin: 22px 0; padding: 18px 20px; border-radius: 14px; border: 1.5px solid #d9cef3; background: #faf7ff; line-height: 1.55 }
+.ejer-h { font-size: 12px; font-weight: 800; letter-spacing: .05em; text-transform: uppercase; color: #6d3fc0 }
+.ejer h4 { margin: 6px 0 8px; font-size: 18px; color: var(--osc) }
+.ej-casos ul { margin: 6px 0 0 }
+.ej-pistas { margin-top: 10px }
+.ej-pistas summary { cursor: pointer; font-weight: 650; color: #6d3fc0 }
+.ej-acc { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 14px }
+.ej-est { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--suave); font-weight: 650 }
+.ej-est select { border: 1px solid var(--borde); border-radius: 8px; padding: 6px 8px; background: #fff; font-size: 14px }
+.ej-it .ej-acc { margin-top: 8px }
+.copia { max-width: 640px; width: 100%; display: grid; gap: 12px; cursor: auto }
+.copia textarea { width: 100%; min-height: 280px; font: 13px/1.5 ui-monospace, Menlo, monospace; border: 1px solid var(--borde); border-radius: 10px; padding: 10px }
+
+.run { max-width: 760px }
+.run-h { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 15px }
+.run-q { margin-top: 16px }
+.run-q .pq-t { font-size: 19px; margin-top: 6px }
+.run-acc { margin-top: 14px; display: flex; justify-content: flex-end }
+.atajo { margin: 10px 0 0 }
+.run-fin { text-align: center; max-width: 760px }
+.run-fin h2 { margin: 8px 0 4px; color: var(--osc) }
+.run-fin .acc { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 18px }
+.fin-nota { font-size: 56px; font-weight: 850; line-height: 1 }
+.rev { padding: 12px 0; border-top: 1px solid var(--borde2) }
+.rev:first-of-type { border-top: 0 }
+.rev .resp { margin: 4px 0; color: #2e7d4f; font-weight: 650 }
+.rev p { margin: 4px 0 }
+
+.graf { position: relative; margin-top: 8px }
+.graf svg { display: block; width: 100%; height: auto; overflow: visible }
+.g-bar { fill: var(--verde); transition: fill .15s }
+.g-bar.on { fill: var(--osc) }
+.g-eje { font-size: 11px; fill: var(--tenue) }
+.g-val { font-size: 12px; font-weight: 750; fill: var(--txt) }
+.graf rect[data-tip] { cursor: pointer; outline: none }
+.graf-tip { position: absolute; transform: translate(-50%, -100%); background: var(--osc); color: #fff; font-size: 12.5px; padding: 6px 10px; border-radius: 8px; white-space: nowrap; pointer-events: none; z-index: 2 }
+.graf-tabla { margin-top: 10px; font-size: 13.5px }
+.graf-tabla summary { cursor: pointer; color: var(--suave) }
+.graf-tabla table { margin-top: 8px }
+.sec-h .acc { display: flex; gap: 10px; flex-wrap: wrap }

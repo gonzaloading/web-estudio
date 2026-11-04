@@ -20,6 +20,35 @@ Dentro del ordenador todo son combinaciones de **0 y 1**. No es que haya ceros y
 
 **Informática** = **infor**mación + auto**mática**: el tratamiento automático de la información.
 
+```test
+¿Cuáles son los tres componentes de un sistema informático?
++ Hardware, software y usuarios
+- Hardware, software y red
+- Procesador, memoria y disco duro
+- Entrada, procesamiento y salida
+= Sin usuarios, el hardware y el software no sirven de nada.
+
+Haces doble clic en un acceso directo y el programa aparece en pantalla. ¿Qué orden de pasos ha seguido el sistema?
++ Entrada → procesamiento → salida
+- Procesamiento → entrada → salida
+- Entrada → salida → procesamiento
+- Salida → entrada → procesamiento
+= El doble clic es la entrada, el SO crea el proceso (procesamiento) y lo ves en pantalla (salida).
+
+Dentro del ordenador, un «1» significa…
++ que hay corriente eléctrica
+- que no hay corriente eléctrica
+- que el dato es positivo
+- que el componente está encendido pero sin uso
+= 1 = hay corriente (encendido); 0 = no la hay (apagado).
+
+¿De dónde viene la palabra «informática»?
++ De información + automática
+- De informe + matemática
+- De información + mecánica
+- De informe + automático
+```
+
 ## Evolución de las arquitecturas {alta}
 
 ### Máquina de Turing {alta}
@@ -32,6 +61,48 @@ Dentro del ordenador todo son combinaciones de **0 y 1**. No es que haya ceros y
   - un conjunto de **reglas** que, según el **estado** de la máquina, indican qué leer o escribir y hacia dónde moverse.
 
 > [!truco] La **cinta ≈ memoria** y el **cabezal ≈ procesador**. En la máquina de Turing **no existen los periféricos**.
+
+### Ejemplo de máquina de Turing {baja}
+
+Con alfabeto Σ = {0, 1} y estados q0 (inicial) y q1 (final):
+
+- δ(q0, 0) = (q0, 1, R): si lee un 0, escribe un 1 y se mueve a la derecha.
+- δ(q0, 1) = (q0, 0, R): si lee un 1, escribe un 0 y se mueve a la derecha.
+- δ(q0, B) = (q1, B, R): si lee un blanco, lo deja, se mueve y pasa a q1, donde **para**.
+
+Es decir: **invierte todos los bits** de la cinta.
+
+![Animación de la máquina de Turing invirtiendo los bits de la cinta](img/tema-01-maquina-turing.svg "El **cabezal** (el «procesador») recorre la **cinta** (la «memoria») y aplica las reglas en cada celda.")
+
+```test
+¿Qué es la máquina de Turing?
++ Un modelo teórico
+- La primera arquitectura de ordenadores
+- El primer ordenador electromecánico
+- La máquina de cifrado alemana de la Segunda Guerra Mundial
+= No es una arquitectura. La máquina de cifrado era Enigma, que Turing ayudó a descifrar.
+
+¿Por qué no se puede construir la máquina de Turing original?
++ Porque usa una cinta infinita
+- Porque no tiene cabezal de lectura
+- Porque necesita periféricos que no existían
+- Porque su alfabeto tiene infinitos símbolos
+= Solo existen versiones simplificadas, con cinta finita.
+
+En la máquina de Turing, ¿con qué se corresponde la cinta?
++ Con la memoria
+- Con el procesador
+- Con los periféricos
+- Con el sistema operativo
+= La cinta ≈ memoria y el cabezal ≈ procesador. No hay periféricos.
+
+La máquina del ejemplo (la que invierte bits) lee la cinta 1 0 1. ¿Qué queda escrito?
++ 0 1 0
+- 1 0 1
+- 1 1 1
+- 0 0 0
+= Cambia cada 0 por 1 y cada 1 por 0, y para al llegar al blanco.
+```
 
 ### Arquitectura Harvard {alta}
 
@@ -70,17 +141,46 @@ Es la arquitectura de **todos los ordenadores actuales**. Sus características:
 
 > [!error] Decir que la máquina de Turing es una arquitectura. Es un **modelo teórico**; Harvard y Von Neumann sí son arquitecturas.
 
-### Ejemplo de máquina de Turing {baja}
+```test
+¿Qué caracteriza a la arquitectura Harvard?
++ La memoria de datos y la de instrucciones están separadas
+- Una sola memoria guarda datos e instrucciones
+- Fue la primera con almacenamiento permanente
+- No tiene unidad de control
+= Por eso, según los apuntes, hay que acceder a módulos distintos y no es del todo eficiente.
 
-Con alfabeto Σ = {0, 1} y estados q0 (inicial) y q1 (final):
+¿Qué arquitectura usan los ordenadores actuales?
++ Von Neumann
+- Harvard
+- La máquina de Turing
+- Mark I
 
-- δ(q0, 0) = (q0, 1, R): si lee un 0, escribe un 1 y se mueve a la derecha.
-- δ(q0, 1) = (q0, 0, R): si lee un 1, escribe un 0 y se mueve a la derecha.
-- δ(q0, B) = (q1, B, R): si lee un blanco, lo deja, se mueve y pasa a q1, donde **para**.
+¿Qué aparece con la arquitectura Von Neumann que no tenía Harvard?
++ El almacenamiento secundario (programa almacenado)
+- La unidad de control
+- La entrada y salida
+- La unidad aritmético-lógica
+= El almacenamiento secundario permite guardar la información de forma permanente.
 
-Es decir: **invierte todos los bits** de la cinta.
+¿Qué hace la UAL (ALU)?
++ Operaciones aritméticas y lógicas
+- Busca las instrucciones en la memoria
+- Guarda los datos de forma permanente
+- Controla los periféricos
+= Suma, resta, multiplica, divide y compara (<, >, ≤, ≥…).
 
-![Animación de la máquina de Turing invirtiendo los bits de la cinta](img/tema-01-maquina-turing.svg "El **cabezal** (el «procesador») recorre la **cinta** (la «memoria») y aplica las reglas en cada celda.")
+En Von Neumann, ¿de qué está formado el procesador?
++ Unidad de control y UAL
+- UAL y memoria principal
+- Unidad de control y almacenamiento secundario
+- Memoria de datos y memoria de instrucciones
+
+Según tus apuntes, ¿qué fue el Harvard Mark I?
++ El primer ordenador electromecánico, creado por IBM
+- El primer ordenador con disco duro
+- Una máquina teórica de Alan Turing
+- El primer ordenador con arquitectura Von Neumann
+```
 
 ## Mapa del módulo: hardware y software {media}
 
@@ -93,6 +193,27 @@ Es decir: **invierte todos los bits** de la cinta.
     - de almacenamiento: tarjeta SD, memoria USB…
     - de interconexión: switch, router…
 - **Software**: sistemas operativos, programas de programación, ofimática, comunicación, antimalware…
+
+```test
+Un router es un periférico de…
++ interconexión
+- entrada
+- salida
+- almacenamiento
+
+¿Cuál de estos es un componente interno del ordenador?
++ La memoria RAM
+- El teclado
+- La impresora multifunción
+- Un switch
+
+Una pantalla táctil es un periférico de…
++ entrada/salida
+- entrada
+- salida
+- interconexión
+= Recibe tus toques (entrada) y muestra la imagen (salida).
+```
 
 ?? ¿Cuáles son los tres componentes de un sistema informático? || Hardware (parte física), software (parte lógica, los programas) y usuarios.
 ?? Define ordenador. || Un sistema digital binario que procesa instrucciones o datos recibidos por dispositivos de entrada y muestra el resultado en dispositivos de salida.

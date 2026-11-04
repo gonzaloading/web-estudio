@@ -20,6 +20,32 @@ Las diapositivas 4 a 12 son solo fotos. Muestran lugares donde ya se notan los e
 - **Ciudades costeras** que se inundan o se hunden, como **Yakarta** (Indonesia) o **Venecia**, y temporales que golpean el litoral.
 - **Zonas secas** que avanzan hacia la desertificación y ciudades de países con pocos recursos, los más vulnerables.
 
+```test
+¿Qué es la emergencia ambiental?
++ Un peligro grave y cierto para prácticamente todas las especies
+- Un desastre natural concreto
+- La subida de precios de la energía
+- Un problema que solo afecta a los animales
+
+¿Afecta igual a todos la emergencia climática?
++ No: afecta más a los países con menos recursos o condiciones frágiles
+- Sí, a todos por igual
+- Solo afecta a los países ricos
+- Solo afecta a las zonas frías
+
+La quema de combustibles fósiles es un impacto a escala…
++ global
+- local
+- regional
+- individual
+
+¿Qué amenaza a islas como Tuvalu?
++ La subida del nivel del mar
+- La deforestación
+- El agotamiento del suelo
+- La sobrepesca
+```
+
 ## Las 7 principales amenazas {alta}
 
 | Amenaza | Explicación |
@@ -33,6 +59,32 @@ Las diapositivas 4 a 12 son solo fotos. Muestran lugares donde ya se notan los e
 | **Generación de plásticos** | Muy contaminantes, tardan **miles de años en degradarse** y los animales los ingieren, así que entran en **toda la cadena alimentaria** |
 
 > [!truco] Las 7 amenazas: **C**lima, **D**eforestación, **S**uelo, **B**iodiversidad, **O**céano, **C**ontaminación, **P**lásticos.
+
+```test
+¿Qué provoca el agotamiento del suelo?
++ La agricultura intensiva
+- La pesca
+- Los plásticos
+- Las ciudades
+
+¿Por qué es grave la deforestación?
++ Reduce la capacidad de absorber CO₂ y producir O₂, y pone en peligro la biodiversidad
+- Porque aumenta las lluvias
+- Porque enfría el planeta
+- Solo porque se pierde madera
+
+¿Por qué los plásticos son una amenaza?
++ Tardan miles de años en degradarse y entran en la cadena alimentaria
+- Porque se degradan muy deprisa
+- Porque producen CO₂ al usarlos
+- Solo porque ensucian las playas
+
+¿Cuál NO es una de las 7 principales amenazas?
++ El turismo
+- El cambio climático
+- La pérdida de biodiversidad
+- La contaminación
+```
 
 ### El cambio oceánico: la acidificación {media}
 
@@ -51,6 +103,26 @@ Según la infografía de las diapositivas:
 > [!error] Decir que el efecto invernadero es malo en sí mismo. Es **natural y necesario**; el problema es su **aumento** por la actividad humana.
 
 ![Efecto invernadero natural frente a aumentado](img/tema-01-efecto-invernadero.svg "Los gases funcionan como una **manta**: una manta fina te mantiene a buena temperatura; una demasiado gruesa te hace sudar.")
+
+```test
+¿Qué parte del CO₂ que emitimos acaba en el mar, según la infografía?
++ Alrededor del 30 %
+- Alrededor del 3 %
+- Más del 90 %
+- Nada: el mar no absorbe CO₂
+
+¿A quién perjudica más la acidificación del océano?
++ A moluscos, corales y crustáceos, que no pueden formar bien sus conchas
+- Solo a las algas
+- A las aves marinas
+- A nadie: el agua ácida es buena para el mar
+
+¿El efecto invernadero es malo en sí mismo?
++ No: es natural y mantiene una temperatura apta para la vida; el problema es su aumento
+- Sí, siempre ha sido perjudicial
+- Sí, lo crearon las fábricas
+- No existe: es un mito
+```
 
 ## La naturaleza agotada {alta}
 
@@ -81,6 +153,33 @@ Según la infografía de las diapositivas:
 - **No toda la superficie es biológicamente productiva**.
 - Sin **consumo responsable** hay **riesgo de agotamiento**.
 
+```test
+¿Qué es la biodiversidad?
++ La variedad de especies que viven en un ecosistema
+- El número de árboles de un bosque
+- La cantidad de agua de un lugar
+- La capacidad de producir recursos
+
+Un manglar es un ecosistema…
++ mixto
+- acuático
+- terrestre
+- artificial
+
+¿Cuál es una causa DIRECTA de pérdida de biodiversidad?
++ Favorecer especies útiles para nosotros y eliminar las demás
+- La deforestación
+- El cambio climático
+- La contaminación
+= Las otras tres son causas indirectas.
+
+¿Qué indica la biocapacidad?
++ Cuántos recursos nos ofrece la Tierra cada año y cuántos residuos procesa
+- Cuántos recursos consumimos
+- Cuánto CO₂ emitimos
+- Cuántas especies hay
+```
+
 ## La huella ecológica {alta}
 
 Mide el **impacto de las actividades humanas** en la naturaleza. Se calcula como la **superficie terrestre necesaria** para **producir los recursos** de una actividad y **procesar sus residuos**.
@@ -106,6 +205,26 @@ Mide el **impacto de las actividades humanas** en la naturaleza. Se calcula como
 
 Para calcular tu huella **hídrica** y de **carbono** existen calculadoras como las de la Fundación Aquae.
 
+```test
+Huella ecológica y biocapacidad: ¿cuál es lo que USAMOS?
++ La huella ecológica
+- La biocapacidad
+- Las dos
+- Ninguna
+
+¿Qué tiene de especial la huella de carbono?
++ Es la única que no mide una demanda de recursos, sino una producción (de CO₂)
+- Es la más pequeña
+- Solo la tienen las fábricas
+- Mide el agua que usamos
+
+La sobrepesca de especies de alto valor comercial forma parte de la huella…
++ de pesca
+- de pastoreo
+- de cultivo
+- forestal
+```
+
 ### ¿Podemos reducir nuestra huella ecológica? {alta}
 
 Sí. Las diapositivas proponen siete medidas:
@@ -119,6 +238,20 @@ Sí. Las diapositivas proponen siete medidas:
 7. **Conservar y potenciar los sumideros forestales**: los bosques absorben CO₂.
 
 > [!truco] Las tres primeras van de **energía**, la 4 y la 6 de **consumo**, y la 5 y la 7, de **cuidar las fuentes** (energía limpia y bosques).
+
+```test
+¿Cuál de estas medidas reduce la huella ecológica?
++ Conservar y potenciar los sumideros forestales
+- Usar más el coche privado
+- Comprar más productos de usar y tirar
+- Dejar los aparatos en espera
+
+¿Por qué los bosques son «sumideros»?
++ Porque absorben CO₂
+- Porque absorben agua de lluvia
+- Porque producen residuos
+- Porque consumen energía
+```
 
 ## La emergencia social {alta}
 
@@ -149,6 +282,26 @@ La emergencia ambiental **también afecta a las personas**: el daño al medioamb
 - **¿Quién sale más perjudicado?** Las personas y países con **menos recursos**, porque tienen menos capacidad para **adaptarse** al cambio y **recuperarse** de los desastres. Eso es la **vulnerabilidad**.
 - **¿Puede provocar más guerras?** **Sí**: recursos como el **petróleo, el agua o el gas** pueden causar conflictos armados.
 
+```test
+¿Qué parte de la población mundial no cubre sus necesidades básicas?
++ La mitad
+- El 10 %
+- El 30 %
+- Casi nadie
+
+¿Quiénes salen más perjudicados por la emergencia ambiental?
++ Las personas y países con menos recursos, por su vulnerabilidad
+- Los países más ricos
+- Las ciudades grandes
+- Todos por igual
+
+¿Puede la emergencia ambiental provocar guerras?
++ Sí: recursos como el petróleo, el agua o el gas pueden causar conflictos
+- No, nunca
+- Solo en el futuro lejano
+- Solo entre países ricos
+```
+
 ## La desigualdad social {alta}
 
 Es la **disparidad** que se produce cuando una persona o grupo recibe un **trato diferente** al del resto por su **cultura, economía, orientación sexual, género**…
@@ -175,6 +328,32 @@ Es la **disparidad** que se produce cuando una persona o grupo recibe un **trato
 ### Feminización de la pobreza {media}
 
 Las **mujeres** sufren de forma **más aguda** las barreras sociales, económicas y culturales, así que están más expuestas al **empobrecimiento**. La **brecha de género** se convierte en una **brecha económica**.
+
+```test
+¿Qué parte de la riqueza mundial posee el 10 % más rico?
++ El 76 %
+- El 10 %
+- El 50 %
+- El 30 %
+
+¿Cuál de estos NO es un factor de desigualdad según tus apuntes?
++ La altura
+- La economía
+- La educación
+- El género
+
+¿Qué es la feminización de la pobreza?
++ Que las mujeres sufren más las barreras y están más expuestas al empobrecimiento
+- Que hay más mujeres que hombres en el mundo
+- Que las mujeres tienen más riqueza
+- Un programa de ayuda a las mujeres
+
+¿Cuál es el primer paso para afrontar la emergencia ambiental y social?
++ Reducir la desigualdad
+- Aumentar la producción
+- Construir más ciudades
+- Reducir la educación
+```
 
 ?? ¿Qué es la emergencia ambiental? || Un escenario de peligro grave y cierto que pone en riesgo a prácticamente todas las especies animales y vegetales.
 ?? ¿Afecta a todos por igual la emergencia climática? || No: afecta más a las naciones con menos recursos económicos, menor nivel educativo o condiciones ambientales frágiles.

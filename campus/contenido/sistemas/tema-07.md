@@ -21,11 +21,52 @@ Los **periféricos** son los componentes **externos**: se conectan «en la perif
 > **Mando de consola con vibración** → mixto (envías pulsaciones y recibes vibración).
 > **Disco duro externo** → almacenamiento, aunque lea y escriba: su función es **guardar**.
 
+```test
+¿De qué tipo es una webcam?
++ Entrada
+- Salida
+- Entrada/salida
+- Comunicación
+
+¿De qué tipo son unos auriculares con micrófono?
++ Entrada/salida (mixto)
+- Salida
+- Entrada
+- Comunicación
+
+¿De qué tipo es un punto de acceso wifi?
++ Comunicación
+- Almacenamiento
+- Entrada
+- Salida
+
+Un disco duro externo lee y escribe datos. ¿De qué tipo es?
++ Almacenamiento
+- Entrada/salida
+- Comunicación
+- Salida
+= Su función es guardar información de forma permanente.
+```
+
 ## Teclado y ratón: PS/2 y USB {media}
 
 - Pueden ser **con cable o inalámbricos**. Hoy se conectan por **USB**.
 - Antes se usaba **PS/2**: si no estaba conectado **al arrancar** el equipo, **no funcionaba**.
 - **Plug & play** («enchufar y usar»): el dispositivo funciona en **cualquier momento** en que lo conectes. Es lo que permite el **USB**.
+
+```test
+¿Qué problema tenía el conector PS/2?
++ Si el dispositivo no estaba conectado al arrancar, no funcionaba
+- Solo servía para impresoras
+- Era inalámbrico y perdía la conexión
+- Era muy lento para el ratón
+
+¿Qué significa plug & play?
++ Que el dispositivo funciona en cuanto lo conectas, en cualquier momento
+- Que hay que reiniciar para usarlo
+- Que funciona sin cable
+- Que solo funciona con Windows
+```
 
 ## Tipos de impresora {alta}
 
@@ -38,6 +79,38 @@ Los **periféricos** son los componentes **externos**: se conectan «en la perif
 | **3D** | Crea **objetos («esculturas») en 3D** a partir de un diseño | Medicina (prótesis), ingeniería… |
 
 > [!truco] **Tóner = láser**. **Papel termosensible = térmica**. **Impacto = matricial**.
+
+```test
+¿Qué impresora usa tóner?
++ La láser
+- La de inyección de tinta
+- La térmica
+- La matricial
+
+¿Qué impresora imprime los tiques del supermercado?
++ La térmica
+- La láser
+- La matricial
+- La 3D
+
+¿Qué impresora funciona por impacto, como una máquina de escribir?
++ La matricial
+- La térmica
+- La de inyección de tinta
+- La láser
+
+¿Cuál es la impresora más popular por su relación calidad/precio?
++ La de inyección de tinta
+- La láser
+- La matricial
+- La 3D
+
+¿Para qué se usan las impresoras 3D en medicina?
++ Para crear prótesis
+- Para imprimir recetas
+- Para imprimir radiografías
+- Para etiquetar medicamentos
+```
 
 ?? ¿Cuáles son los 5 tipos de periféricos? || Entrada, salida, entrada/salida (mixtos), almacenamiento y comunicación.
 ?? Pon dos periféricos de entrada que introduzcan datos de distinta naturaleza. || Teclado (texto) y micrófono (audio); también webcam (vídeo) o escáner (digitaliza documentos).

@@ -30,7 +30,7 @@ Lee solo los recursos nuevos que te indique el usuario; no reproceses los que ya
    Saca el texto por página y cada página como PNG. **Mira las PNG marcadas `[SOLO IMAGEN]`** y las de páginas con esquemas o capturas: ahí suele haber contenido que el texto no recoge. Usa una carpeta temporal fuera de la web.
 2. **Ordenar y priorizar** (ver «Cómo priorizar»). Resume y reorganiza: no copies el PDF literal.
 3. **Analizar y mejorar** el tema antes de darlo por terminado (ver la sección siguiente). **Este paso es obligatorio.**
-4. **Escribir** el `.md`, su línea en `temas.json`, las imágenes y las tarjetas.
+4. **Escribir** el `.md` dividido en **segmentos con su test** (obligatorio, ver «Tests»), su línea en `temas.json`, las imágenes, las tarjetas y, en asignaturas prácticas, los ejercicios.
 5. **Comprobar** que se ve bien (ver «Comprobar»).
 6. **Informar** al usuario, breve y por tema: qué has mejorado o añadido, qué errores de los apuntes has marcado y qué no has podido leer.
 
@@ -115,6 +115,27 @@ to download = descargar
 
 ![Descripción](img/tema-02-esquema.svg "Pie de foto opcional")   ← imagen en su propia línea
 
+```test          ← cierra el segmento anterior y es su test (ver «Tests»)
+¿Pregunta?
+- opción incorrecta
++ opción correcta
+- opción incorrecta
+- opción incorrecta
+= Explicación breve de por qué (opcional, recomendada)
+
+¿Siguiente pregunta?   ← las preguntas se separan con una línea en blanco
++ …
+```
+
+```ejercicio     ← ejercicio práctico que el usuario hace en IntelliJ y corrige con Claude Code
+titulo: Suma de los números pares
+nivel: fácil
+Escribe un método `sumaPares(int n)` que devuelva la suma de los pares entre 1 y n.
+ejemplo: sumaPares(10) → 30
+ejemplo: sumaPares(1) → 0
+pista: Un número es par si n % 2 == 0.
+```
+
 ?? Pregunta de active recall || Respuesta corta y concreta
 ~~~
 
@@ -128,6 +149,31 @@ Las cajas (`> [!…]`) solo admiten párrafos; las tablas y listas van fuera.
 - Dentro del tema, ordena los apartados de más a menos importante cuando el temario lo permita y usa `> [!clave]` en lo esencial.
 - Resume y reorganiza: no copies el PDF literal. Frases cortas, ejemplos y tablas comparativas.
 
+## Tests (obligatorios en cada tema)
+
+Hacer test es el **método principal de estudio** del usuario. Todo tema nuevo lleva sus tests desde el primer momento.
+
+- **Divide el tema en segmentos breves**: unos 5 minutos de lectura, normalmente un `##` o un grupo corto de `###`. Al final de cada segmento va un bloque ```` ```test ````. Ese bloque **cierra el segmento**: cuando el usuario lo termina, el segmento cuenta como «visto» y sube el % de teoría vista del tema y del total.
+- **De 2 a 6 preguntas por segmento**, cubriendo todo lo `alta` del segmento. Suelen salir entre 10 y 30 por tema.
+- **Cómo escribir buenas preguntas**:
+  - Una sola opción correcta (`+`) y 3 incorrectas (`-`) creíbles: los errores típicos, no opciones absurdas.
+  - Opciones cortas y de longitud parecida. Nada de «todas las anteriores» ni «ninguna de las anteriores».
+  - Mejor preguntas aplicadas (un caso, una conversión, «¿de qué tipo es…?») que memorizar frases.
+  - Si preguntas en negativo, escribe el NO en mayúsculas.
+  - Responde según los apuntes del profesor (lo que cuenta en el examen). No preguntes por contenido `> [!extra]`.
+  - Añade `=` con la explicación cuando ayude a entender el porqué.
+- La web **baraja las opciones**: pon la correcta en cualquier posición.
+- **No cambies el texto de una pregunta existente** salvo que tenga un error: su progreso está ligado a ese texto. Para añadir preguntas, añádelas al bloque.
+- En el apartado **Test** de la web, el usuario hace tests de todo, de una asignatura o de un tema, y repite las que falló. No hay que hacer nada más para eso.
+
+## Ejercicios prácticos (programación, bases de datos, marcas, entornos…)
+
+- Con bloques ```` ```ejercicio ```` dentro del segmento al que corresponden, o en temas con `"tipo": "practica"`.
+- Enunciado claro y cerrado: qué recibe, qué devuelve o muestra y en qué lenguaje.
+- **Casos de prueba con el resultado exacto** (`ejemplo:`), incluidos casos límite (0, vacío, negativos…). Con ellos Claude Code decide si la solución es correcta.
+- `nivel`: fácil, medio o difícil. `pista:` opcional, sin dar la solución.
+- La web genera sola el texto para pegar en Claude Code («Copiar para Claude Code»). Si te piden corregir un ejercicio con ese texto: di si es correcto, da una pista en vez de la solución, sugiere mejoras y pon nota.
+
 ## Tarjetas (`?? pregunta || respuesta`)
 
 - Una por cada idea importante: normalmente entre 8 y 20 por tema, empezando por los apartados `alta`. Una idea por tarjeta.
@@ -140,4 +186,4 @@ Las cajas (`> [!…]`) solo admiten párrafos; las tablas y listas van fuera.
 
 **Publicar**: la web está en https://gonzaloading.github.io/web-estudio/ y se actualiza sola con cada `git push` a `main` (ver README). Los PDF de `../recursos/` nunca se suben.
 
-> **Siempre que termines un cambio en la web** (teoría, diseño o funciones), **recuérdale al usuario que está sin publicar** y ofrécete a publicarlo: es una petición expresa suya. Haz commit y push **solo cuando él diga que sí**.
+> **Siempre que termines un cambio en la web** (teoría, diseño o funciones), **recuérdale al usuario que está sin publicar** y ofrécete a publicarlo: es una petición expresa suya. Haz commit y push **solo cuando el usuario diga que sí**.

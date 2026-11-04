@@ -1,5 +1,5 @@
 // Cálculo de progreso, repaso espaciado, fallos e historial.
-import { cat, todasTarjetas, todosTemas } from './data.js';
+import { cat, todasTarjetas, todosTemas, todasPreguntas } from './data.js';
 import { state, guardar, hoy, sumarDias, diasEntre, marcarDia, uid } from './store.js';
 
 export const INTERVALOS = [0, 1, 3, 7, 15, 30, 60]; // días hasta el siguiente repaso según la "caja"
@@ -7,21 +7,99 @@ const PESO = { alta: 3, media: 2, baja: 1 };
 
 export const dominada = id => (state.tarjetas[id]?.caja || 0) >= 2; // acertada al menos 2 veces seguidas
 
-export function pctAsig(a) {
-  if (!a?.temas.length) return 0;
-  const leidos = a.temas.filter(t => state.leidos[t.key]).length / a.temas.length;
-  const cards = todasTarjetas(a.id);
-  if (!cards.length) return Math.round(leidos * 100);
-  const dom = cards.filter(c => dominada(c.id)).length / cards.length;
-  return Math.round((leidos + dom) * 50);
+// ---------- Teoría vista: cada tema se divide en segmentos; uno está visto al terminar su test ----------
+export const segKey = (t, s) => `${t.key}#${s.id}`;
+export const segVisto = (t, s) => !!state.leidos[t.key] || !!state.segmentos[segKey(t, s)];
+function vistos(temas) {
+  let v = 0, n = 0;
+  for (const t of temas) { n += t.segs.length; v += t.segs.filter(s => segVisto(t, s)).length; }
+  return { v, n };
 }
+/** % de teoría vista de un tema */
+export const pctTema = t => { const { v, n } = vistos([t]); return n ? Math.round(v / n * 100) : 0; };
+/** % de teoría vista de una asignatura (o de todo si no se indica) */
+export const pctTeoria = asig => { const { v, n } = vistos(todosTemas(asig)); return n ? Math.round(v / n * 100) : 0; };
+export const pctAsig = a => pctTeoria(a.id);
 
 export function global() {
-  const temas = todosTemas(), cards = todasTarjetas();
+  const cards = todasTarjetas();
   return {
-    teoria: temas.length ? Math.round(temas.filter(t => state.leidos[t.key]).length / temas.length * 100) : 0,
+    teoria: pctTeoria(),
     dominio: cards.length ? Math.round(cards.filter(c => dominada(c.id)).length / cards.length * 100) : 0,
+    test: aciertoTest(),
   };
+}
+
+// ---------- Test ----------
+/** % de aciertos de todas las respuestas (de una lista de preguntas, o de todas) */
+export function aciertoTest(qs) {
+  let n = 0, ok = 0;
+  const lista = qs ? qs.map(q => state.preguntas[q.id]).filter(Boolean) : Object.values(state.preguntas);
+  for (const s of lista) { n += s.n; ok += s.ok; }
+  return n ? Math.round(ok / n * 100) : null;
+}
+/** Resumen de un grupo de preguntas: cuántas hay, cuántas has respondido y cuántas acertaste la última vez */
+export function resumenPreguntas(qs) {
+  let resp = 0, bien = 0;
+  for (const q of qs) { const s = state.preguntas[q.id]; if (s) { resp++; if (s.ultima === 'ok') bien++; } }
+  return { total: qs.length, resp, bien, pct: aciertoTest(qs) };
+}
+export const falladas = (asig, tema) => todasPreguntas(asig, tema).filter(q => state.preguntas[q.id]?.ultima === 'ko');
+
+/** Preguntas para un test: primero las falladas y las nuevas, luego el resto; al final se barajan. */
+export function prepararTest({ asig, tema, modo, n }) {
+  let qs = todasPreguntas(asig, tema);
+  if (modo === 'fallos') qs = qs.filter(q => state.preguntas[q.id]?.ultima === 'ko');
+  if (modo === 'nuevas') qs = qs.filter(q => !state.preguntas[q.id]);
+  const peso = q => { const s = state.preguntas[q.id]; return (!s ? 1 : s.ultima === 'ko' ? 0 : 2 + s.ok / s.n) + Math.random() * 1.2; };
+  return qs.map(q => ({ q, p: peso(q) })).sort((a, b) => a.p - b.p).slice(0, n > 0 ? n : qs.length)
+    .map(x => x.q).sort(() => Math.random() - 0.5);
+}
+
+/** Registra una respuesta de test (en un segmento o en un test completo). */
+export function responder(q, ok) {
+  const h = hoy();
+  const s = state.preguntas[q.id] || { n: 0, ok: 0 };
+  s.n++; if (ok) s.ok++; s.ultima = ok ? 'ok' : 'ko'; s.fecha = h;
+  state.preguntas[q.id] = s;
+  const d = (state.testDias[h] ||= { n: 0, ok: 0 }); d.n++; if (ok) d.ok++;
+
+  const f = state.fallos.find(f => f.preguntaId === q.id);
+  if (!ok) {
+    if (f) { f.estado = 'pendiente'; f.veces++; f.fecha = h; delete f.recuperado; }
+    else state.fallos.unshift({ id: uid(), preguntaId: q.id, asig: q.asig, tema: q.tema, pregunta: q.q, respuesta: q.ops.find(o => o.ok)?.t || '', fecha: h, veces: 1, estado: 'pendiente' });
+  } else if (f?.estado === 'pendiente') { f.estado = 'recuperado'; f.recuperado = h; }
+
+  let e = state.historial.find(e => e.fecha === h && e.tipo === 'test' && e.asig === q.asig);
+  if (!e) { e = { id: uid(), fecha: h, tipo: 'test', asig: q.asig, ok: 0, n: 0, delta: 0 }; state.historial.unshift(e); }
+  e.n++; if (ok) e.ok++; e.ts = Date.now();
+  marcarDia(); guardar();
+}
+
+/** Marca un segmento como visto (al terminar su test, o a mano si no tiene test). */
+export function verSegmento(t, s, ok = 0, total = 0, si = true) {
+  const antes = pctTeoria(t.asig);
+  if (si) state.segmentos[segKey(t, s)] = { fecha: hoy(), ok, total };
+  else { delete state.segmentos[segKey(t, s)]; delete state.leidos[t.key]; }
+  if (si && !state.leidos[t.key] && t.segs.every(x => state.segmentos[segKey(t, x)])) {
+    state.leidos[t.key] = hoy();
+    state.historial.unshift({ id: uid(), ts: Date.now(), fecha: hoy(), tipo: 'lectura', asig: t.asig, tema: t.key, titulo: t.titulo, delta: 0 });
+  }
+  const e = state.historial.find(e => e.fecha === hoy() && e.tipo === 'test' && e.asig === t.asig);
+  if (e) e.delta = (e.delta || 0) + pctTeoria(t.asig) - antes;
+  marcarDia(); guardar();
+}
+
+export function guardarTest(datos) {
+  state.tests.unshift({ id: uid(), ts: Date.now(), fecha: hoy(), ...datos });
+  state.tests = state.tests.slice(0, 300);
+  guardar();
+}
+
+export function estadoEjercicio(ej, estado) {
+  if (estado) state.ejercicios[ej.id] = { estado, fecha: hoy() }; else delete state.ejercicios[ej.id];
+  if (estado) { anotar({ tipo: 'ejercicio', asig: ej.asig, texto: ej.titulo, estado }); marcarDia(); }
+  guardar();
 }
 
 /** Una tarjeta toca hoy si su fecha de repaso ya llegó, o si es nueva y su tema ya está estudiado. */
@@ -94,6 +172,7 @@ export function calificar(card, r) {
 export function marcarLeido(t, si) {
   const a = cat.porId[t.asig], antes = pctAsig(a);
   if (si) state.leidos[t.key] = hoy(); else delete state.leidos[t.key];
+  if (!si) t.segs.forEach(s => delete state.segmentos[segKey(t, s)]);
   state.historial = state.historial.filter(e => !(e.tipo === 'lectura' && e.tema === t.key && e.fecha === hoy()));
   if (si) {
     state.historial.unshift({ id: uid(), ts: Date.now(), fecha: hoy(), tipo: 'lectura', asig: t.asig, tema: t.key, titulo: t.titulo, delta: pctAsig(a) - antes });

@@ -13,6 +13,33 @@
 
 > [!clave] En un **cortocircuito** se usan **extintores de CO₂**: eliminan el **oxígeno** sin **dañar los componentes**. Un extintor normal sería **contraproducente**.
 
+```test
+¿Qué es la diafonía?
++ Interferencias por los campos electromagnéticos de cables cercanos
+- Un fallo de la fuente de alimentación
+- El ruido que hacen los ventiladores
+- Un tipo de cortocircuito
+
+¿Qué extintor se usa en un cortocircuito?
++ Uno de CO₂, porque elimina el oxígeno sin dañar los componentes
+- Uno de agua
+- Uno de espuma
+- Cualquiera vale
+= Un extintor normal sería contraproducente.
+
+¿Por qué no hay que sobrecargar una regleta?
++ Porque tiene una potencia máxima y se puede producir un incendio
+- Porque los aparatos van más lentos
+- Porque consume más luz
+- Porque se desconfigura el ordenador
+
+¿Por qué no se debe pegar el ordenador a la pared?
++ Porque necesita espacio para refrigerarse
+- Porque se pierde la señal wifi
+- Porque produce diafonía
+- Porque se ensucia más
+```
+
 ## Ergonomía y entorno de trabajo {alta}
 
 - **Luz natural** mejor que artificial.
@@ -26,6 +53,32 @@
 
 ![Postura correcta sentado ante el ordenador](img/tema-08-postura.svg "**90°** en codos y rodillas, espalda y pies apoyados. La altura de la pantalla no viene en tus apuntes: es la recomendación habitual para no forzar el cuello.")
 
+```test
+¿Cuál es la postura ideal al sentarse?
++ 90° en brazos y piernas
+- 45° en brazos y piernas
+- Piernas estiradas y brazos a 90°
+- Inclinado hacia la pantalla
+
+¿Qué problema previene un ratón cómodo?
++ El síndrome del túnel carpiano
+- La fatiga visual
+- El burnout
+- La diafonía
+
+¿Qué monitores hay que evitar?
++ Los CRT (tubo de rayos catódicos)
+- Los LED
+- Los de más de 24 pulgadas
+- Los táctiles
+
+¿Qué luz es preferible para trabajar?
++ La luz natural
+- La luz artificial blanca
+- La penumbra
+- Solo la luz de la pantalla
+```
+
 ## Riesgos para la salud {alta}
 
 | Riesgo | Qué es |
@@ -36,6 +89,26 @@
 | **Factor psicosocial: burnout** | Síndrome de «**estar quemado**»: saturación de trabajo o un trabajo que no gusta |
 
 > [!error] Confundir **fatiga mental** con **somnolencia**. La somnolencia es solo **necesidad de dormir**; la fatiga mental viene del estrés y la sobrecarga.
+
+```test
+¿Qué es el burnout?
++ El síndrome de «estar quemado» por saturación o por un trabajo que no gusta
+- Un fallo por sobrecalentamiento del ordenador
+- Un trastorno visual por usar pantallas
+- La necesidad de dormir
+
+¿Qué diferencia hay entre fatiga mental y somnolencia?
++ La fatiga mental viene del estrés y la sobrecarga; la somnolencia es necesidad de dormir
+- Son lo mismo
+- La somnolencia viene del estrés; la fatiga mental, de dormir poco
+- La fatiga mental solo afecta a la vista
+
+Los dolores de espalda por sentarse mal son…
++ trastornos musculoesqueléticos
+- trastornos visuales
+- fatiga mental
+- factores psicosociales
+```
 
 ?? ¿Por qué hay que tener los cables estirados y no enmarañados? || Para evitar la diafonía (interferencias electromagnéticas), que se formen nudos y pierdan sus condiciones, y para no tropezar.
 ?? ¿Qué es la diafonía? || Las interferencias causadas por los campos electromagnéticos de cables que están próximos.

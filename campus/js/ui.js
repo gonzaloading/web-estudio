@@ -9,6 +9,7 @@ const PATHS = {
   calendar: '<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>',
   calcheck: '<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="m9 16 2 2 4-4"/>',
   list: '<path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/>',
+  quiz: '<rect x="3" y="3" width="18" height="18" rx="3"/><path d="m7 9 2 2 4-4"/><path d="M7 16h.01M11 16h6"/>',
   xcircle: '<circle cx="12" cy="12" r="10"/><path d="m15 9-6 6M9 9l6 6"/>',
   bars: '<path d="M5 20v-5M12 20V9M19 20V4"/>',
   book: '<path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2z"/><path d="M22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z"/>',
@@ -82,7 +83,7 @@ export function tarjetaAsig(a, detalle = false) {
   let meta = '';
   if (detalle) {
     const m = P.mediaNotas(a.id), ex = P.proximosExamenes(1, a.id)[0], tr = P.trabajosPendientes(1, a.id)[0];
-    meta = `<div class="meta">${a.temas.length} temas · ${todasTarjetas(a.id).length} tarjetas${m.n ? ` · media ${fmtNota(m.media)}` : ''}${ex ? ` · examen ${diasTxt(ex.fecha)}` : ''}${tr ? ` · entrega ${diasTxt(tr.fecha)}` : ''}</div>`;
+    meta = `<div class="meta">${a.temas.length} temas · ${a.temas.reduce((n, t) => n + t.preguntas.length, 0)} preguntas de test${m.n ? ` · media ${fmtNota(m.media)}` : ''}${ex ? ` · examen ${diasTxt(ex.fecha)}` : ''}${tr ? ` · entrega ${diasTxt(tr.fecha)}` : ''}</div>`;
   }
   return `<a class="card asig" href="#/asignatura/${a.id}">
     <div class="asig-top">${asigIcon(a)}<b>${esc(a.nombre)}</b></div>
@@ -91,13 +92,12 @@ export function tarjetaAsig(a, detalle = false) {
 }
 
 export function filaTema(t, conAsig = false) {
-  const cs = t.cards, leido = !!state.leidos[t.key];
-  const dom = cs.length ? Math.round(cs.filter(c => P.dominada(c.id)).length / cs.length * 100) : null;
+  const pct = P.pctTema(t), leido = pct === 100, ac = P.aciertoTest(t.preguntas);
   const a = cat.porId[t.asig];
   return `<a class="tema-r" href="#/asignatura/${t.asig}/${t.id}">
     ${conAsig ? asigIcon(a, 'peq') : ''}
     <span class="num ${leido ? 'ok' : ''}">${leido ? icon('check') : t.n}</span>
-    <div class="tt"><b>${esc(t.titulo)}</b><small>${conAsig ? esc(a.nombre) + ' · ' : ''}${cs.length} tarjetas${dom !== null ? ` · ${dom}% dominado` : ''}${t.actualizado ? ` · act. ${fechaCorta(t.actualizado)}` : ''}</small></div>
+    <div class="tt"><b>${esc(t.titulo)}</b><small>${conAsig ? esc(a.nombre) + ' · ' : ''}<strong class="visto">${pct}% visto</strong> · ${t.preguntas.length} preguntas de test${ac !== null ? ` · ${ac}% aciertos` : ''}${t.actualizado ? ` · act. ${fechaCorta(t.actualizado)}` : ''}</small></div>
     ${prio(t.prioridad)}${icon('chev')}</a>`;
 }
 

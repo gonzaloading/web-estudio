@@ -29,11 +29,12 @@ export default function fallos(el, r) {
 
   el.innerHTML = `
   <header class="cab"><h1>Mis fallos</h1>
-    <p>Cada vez que marcas <b>Fallé</b> en una tarjeta se guarda aquí. Cuando la aciertes, pasa a recuperados.</p></header>
+    <p>Aquí se guarda cada pregunta de test que fallas y cada tarjeta que marcas <b>Fallé</b>. Cuando la aciertes, pasa a recuperados.</p></header>
   <div class="sec-h">
     <div class="tabs"><a href="#/fallos" class="${ver === 'pendiente' ? 'on' : ''}">Pendientes (${pend.length})</a>
       <a href="#/fallos?ver=recuperado" class="${ver === 'recuperado' ? 'on' : ''}">Recuperados (${rec.length})</a></div>
-    ${pend.length ? `<a class="btn lima" href="#/repaso?modo=fallos">${icon('refresh')} Repasar fallos</a>` : ''}
+    <div class="acc">${pend.some(f => f.preguntaId) ? `<a class="btn lima" href="#/test/hacer?modo=fallos&n=0">${icon('quiz')} Test de falladas</a>` : ''}
+    ${pend.length ? `<a class="btn ${pend.some(f => f.preguntaId) ? 'borde' : 'lima'}" href="#/repaso?modo=fallos">${icon('refresh')} Repasar como tarjetas</a>` : ''}</div>
   </div>
   <div class="card">${lista.length ? lista.map(item).join('')
     : `<p class="vacio pad">${ver === 'pendiente' ? 'No tienes fallos pendientes. 🎉' : 'Todavía no has recuperado ningún fallo.'}</p>`}</div>

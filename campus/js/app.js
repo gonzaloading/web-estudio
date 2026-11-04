@@ -11,10 +11,11 @@ import historial from './vistas/historial.js';
 import examenes from './vistas/examenes.js';
 import notas from './vistas/notas.js';
 import ajustes from './vistas/ajustes.js';
+import test from './vistas/test.js';
 
-const RUTAS = { '': inicio, asignaturas, asignatura, repaso, temas, fallos, historial, examenes, notas, ajustes };
+const RUTAS = { '': inicio, asignaturas, asignatura, test, repaso, temas, fallos, historial, examenes, notas, ajustes };
 const NAV = [
-  ['', 'home', 'Inicio'], ['asignaturas', 'layers', 'Asignaturas'], ['repaso', 'calendar', 'Plan de repaso'],
+  ['', 'home', 'Inicio'], ['asignaturas', 'layers', 'Asignaturas'], ['test', 'quiz', 'Test'], ['repaso', 'calendar', 'Plan de repaso'],
   ['temas', 'list', 'Temas'], ['fallos', 'xcircle', 'Mis fallos'], ['historial', 'bars', 'Historial'],
   null, ['examenes', 'calcheck', 'Exámenes y trabajos'], ['notas', 'grad', 'Notas'],
 ];
@@ -38,7 +39,7 @@ function leerRuta() {
 
 function render(arriba = true) {
   const r = leerRuta();
-  app.onclick = app.onsubmit = app.onchange = null;
+  app.onclick = app.onsubmit = app.onchange = app.onkeydown = app.onmouseover = app.onfocusin = null;
   try { (RUTAS[r.ruta] || inicio)(app, r); }
   catch (e) { console.error(e); app.innerHTML = `<div class="card pad"><b>Error al mostrar esta página</b><p class="tenue">${e.message}</p></div>`; }
   const activa = r.ruta === 'asignatura' ? 'asignaturas' : r.ruta;

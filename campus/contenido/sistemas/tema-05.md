@@ -15,6 +15,32 @@ La **placa base** (placa madre, *motherboard*, *mainboard*) es el **componente i
 
 También se clasifican por el **socket** del procesador o por el **chipset**.
 
+```test
+¿Qué es la PCB de la placa base?
++ La tarjeta base (Printed Circuit Board) sobre la que va soldado todo
+- El chip que guarda la BIOS
+- El conector del procesador
+- El bus que conecta la gráfica
+
+¿Qué formato de placa base es el más usado hoy?
++ ATX
+- WTX
+- AT
+- XT
+
+¿Para qué se usa el formato WTX?
++ Para servidores
+- Para portátiles
+- Para consolas
+- Para ordenadores antiguos
+
+Los conectores USB y HDMI de la parte trasera de la torre, ¿de qué componente son?
++ De la placa base
+- De la fuente de alimentación
+- De la caja
+- Del procesador
+```
+
 ## Componentes de la placa base {alta}
 
 ![Esquema de una placa base con sus partes numeradas](img/tema-05-placa-base.svg "Las partes que tienes que saber reconocer. Las ranuras de RAM del **mismo color** forman pareja para el Dual Channel (tema 6).")
@@ -37,6 +63,38 @@ En las **placas antiguas** se dividía en dos:
 - **De memoria**: donde se insertan los módulos de **RAM**.
 - **Del procesador (socket)**: donde va el procesador. **El procesador tiene que ser compatible con el socket** de la placa; por ejemplo, el socket 1151.
 
+```test
+En las placas antiguas, ¿qué controlaba el Northbridge?
++ Lo rápido: la RAM y la gráfica
+- Los periféricos y lo lento
+- Solo los discos duros
+- La fuente de alimentación
+
+¿Cómo se comunicaba el Southbridge con el procesador?
++ A través del Northbridge
+- Directamente
+- Mediante el bus PCIe x16
+- Por la BIOS
+
+¿Dónde está hoy el Northbridge?
++ Integrado en el procesador
+- Junto a las ranuras de RAM
+- Dentro de la fuente de alimentación
+- Ha desaparecido sin sustituto
+
+¿Cómo se llama la conexión actual entre procesador y chipset?
++ DMI (Direct Media Interface)
+- PCI
+- SATA
+- AGP
+
+Vas a comprar un procesador. ¿Qué tiene que ser compatible con él?
++ El socket (y el chipset) de la placa
+- La caja
+- El disco duro
+- La tarjeta gráfica
+```
+
 ### Buses de expansión {alta}
 
 Ranuras para **tarjetas** gráficas, de sonido, de red…
@@ -58,6 +116,39 @@ Conectores de vídeo de la tarjeta gráfica:
 
 > [!nota] El PDF dice que HDMI y VGA solo admiten señal digital, pero **VGA es analógica**. Si en el examen preguntan cuál admite **ambas** señales, la respuesta es **DVI**.
 
+```test
+¿Qué bus sustituyó a PCI y a AGP?
++ PCI-Express (PCIe)
+- ISA
+- SATA
+- USB
+
+¿Dónde se conecta hoy la tarjeta gráfica?
++ En una ranura PCIe x16
+- En una ranura PCI
+- En una ranura ISA
+- En un conector SATA
+
+¿Cuál es el bus de expansión más antiguo y ya obsoleto?
++ ISA
+- AGP
+- PCIe
+- PCI
+
+¿Qué conector de vídeo admite señal digital y analógica?
++ DVI
+- HDMI
+- VGA
+- DisplayPort
+= HDMI solo es digital y VGA solo analógica.
+
+¿Qué conector transmite audio y vídeo?
++ HDMI
+- VGA
+- DVI
+- SATA
+```
+
 ### Controladores y conectores internos {alta}
 
 - **IDE**: para discos duros y CD/DVD. **En desuso**.
@@ -69,6 +160,39 @@ Conectores de vídeo de la tarjeta gráfica:
 - La **BIOS** (*Basic Input Output System*) es un **programa** que, **al arrancar**, comprueba que todos los componentes necesarios están bien instalados. Se ejecuta **solo una vez**, durante el arranque.
 - Se guarda en una **memoria de solo lectura**: **ROM**, **EPROM** o **EEPROM**.
 - Se usa desde los años 80 y en los equipos actuales la ha **reemplazado la UEFI**: la misma idea, pero mejorada en funciones y diseño. Por costumbre se sigue llamando «BIOS» a todo.
+
+```test
+¿Qué conector sustituyó a IDE para los discos?
++ SATA
+- M.2
+- PCI
+- USB
+
+¿Qué es M.2?
++ Una ranura de la placa muy usada hoy para discos SSD
+- Un tipo de memoria RAM
+- Un conector de vídeo
+- La versión 2 de la BIOS
+
+¿Qué hace la BIOS?
++ Al arrancar, comprueba que los componentes necesarios están bien instalados
+- Ejecuta los programas mientras usas el ordenador
+- Guarda tus archivos de forma permanente
+- Controla la velocidad de los ventiladores en todo momento
+= Se ejecuta una sola vez, durante el arranque.
+
+¿Dónde se guarda la BIOS?
++ En una memoria de solo lectura (ROM, EPROM o EEPROM)
+- En la memoria RAM
+- En el disco duro
+- En la caché del procesador
+
+¿Qué ha reemplazado a la BIOS en los equipos actuales?
++ La UEFI
+- El chipset
+- El DMI
+- El sistema operativo
+```
 
 ## El procesador {alta}
 
@@ -98,6 +222,45 @@ Es el «**cerebro**»: **ejecuta las instrucciones de los programas**. Tiene tre
 > [!error] Elegir procesador mirando solo los GHz. Un procesador más rápido **no es necesariamente mejor**: hay que mirar también **núcleos** y **caché**.
 
 El procesador debe ser **compatible con el socket y el chipset** de la placa. Los dos fabricantes actuales son **Intel** y **AMD**.
+
+```test
+¿Cuáles son los tres elementos del procesador?
++ Unidad de control, ALU y registros
+- Unidad de control, RAM y caché L3
+- ALU, chipset y registros
+- Núcleos, socket y ALU
+
+¿Qué elemento del procesador busca las instrucciones en la RAM?
++ La unidad de control
+- La ALU
+- Los registros
+- La caché
+
+Si la frecuencia externa de un procesador es menor…
++ la placa base es más barata
+- el procesador es más rápido
+- consume más energía
+- tiene más núcleos
+
+Un programa de 16 instrucciones (1 s cada una) que se reparte entre núcleos. ¿Cuánto tarda con 8 núcleos?
++ 2 s
+- 4 s
+- 8 s
+- 16 s
+= Con 4 núcleos tardaría 4 s. Solo funciona así si el programa puede repartir el trabajo.
+
+¿Qué nivel de caché es el más rápido y el más pequeño?
++ L1
+- L2
+- L3
+- L4
+
+¿Por qué no basta con mirar los GHz para elegir procesador?
++ Porque el rendimiento también depende de los núcleos y de la caché
+- Porque los GHz no influyen en la velocidad
+- Porque todos los procesadores tienen los mismos GHz
+- Porque los GHz solo afectan a la gráfica
+```
 
 ?? ¿Por qué la placa base es el componente integrador? || Porque todos los componentes, internos y externos, se conectan a ella y a través de ella se comunican.
 ?? ¿Qué es la PCB? || La Printed Circuit Board: la tarjeta base sobre la que va soldado todo lo de la placa.

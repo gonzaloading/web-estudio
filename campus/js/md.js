@@ -59,7 +59,49 @@ function lista(L, i) {
   return [html, i];
 }
 
-/** Convierte el .md de un tema en { html, cards, toc, meta } */
+/** Bloque ```test: preguntas separadas por una línea en blanco.
+ *    ¿Pregunta?        - opción incorrecta     + opción correcta     = explicación (opcional) */
+function parseTest(lineas, key) {
+  const grupos = [[]];
+  for (const l of lineas) { if (!l.trim()) { if (grupos.at(-1).length) grupos.push([]); } else grupos.at(-1).push(l); }
+  return grupos.filter(g => g.length).map(g => {
+    const q = [], ops = [], exp = [];
+    for (const l of g) {
+      const m = l.match(/^\s*([-+=])\s+(.*)$/);
+      if (!m) { (ops.length ? exp : q).push(l.trim()); continue; }
+      if (m[1] === '=') exp.push(m[2].trim()); else ops.push({ t: m[2].trim(), ok: m[1] === '+' });
+    }
+    const texto = q.join(' ');
+    return { id: hash(key + '|t|' + texto), q: texto, ops, exp: exp.join(' '), tema: key };
+  }).filter(p => p.q && p.ops.length >= 2 && p.ops.some(o => o.ok));
+}
+
+/** Bloque ```ejercicio: líneas "titulo:", "nivel:", "ejemplo:", "pista:"; el resto es el enunciado. */
+function parseEjercicio(lineas, key) {
+  const ej = { titulo: 'Ejercicio', nivel: '', ejemplos: [], pistas: [], enunciado: [] };
+  for (const l of lineas) {
+    const m = l.match(/^\s*(titulo|título|nivel|ejemplo|pista):\s*(.*)$/i);
+    if (!m) { ej.enunciado.push(l); continue; }
+    const k = m[1].toLowerCase().replace('í', 'i');
+    if (k === 'ejemplo') ej.ejemplos.push(m[2]); else if (k === 'pista') ej.pistas.push(m[2]); else ej[k] = m[2].trim();
+  }
+  ej.enunciado = ej.enunciado.join('\n').trim();
+  ej.id = hash(key + '|ej|' + ej.titulo);
+  ej.tema = key;
+  return ej;
+}
+function htmlEjercicio(ej) {
+  const parrafos = ej.enunciado.split(/\n\s*\n/).map(p => `<p>${inline(p.replace(/\n/g, ' '))}</p>`).join('');
+  return `<div class="ejer" data-ej="${ej.id}">
+    <div class="ejer-h"><span>💻 Ejercicio${ej.nivel ? ' · ' + esc(ej.nivel) : ''}</span></div>
+    <h4>${inline(ej.titulo)}</h4>${parrafos}
+    ${ej.ejemplos.length ? `<div class="ej-casos"><b>Casos de prueba</b><ul>${ej.ejemplos.map(x => `<li><code>${esc(x)}</code></li>`).join('')}</ul></div>` : ''}
+    ${ej.pistas.length ? `<details class="ej-pistas"><summary>Ver pista${ej.pistas.length > 1 ? 's' : ''} (${ej.pistas.length})</summary><ul>${ej.pistas.map(x => `<li>${inline(x)}</li>`).join('')}</ul></details>` : ''}
+    <div class="ej-acc" data-ej="${ej.id}"></div></div>`;
+}
+
+/** Convierte el .md de un tema en { html, cards, toc, meta, segs, preguntas, ejercicios }.
+ *  Cada bloque ```test cierra un «segmento» de teoría; su test es el de ese segmento. */
 export function parseTema(src, key, base = '') {
   BASE = base;
   src = String(src || '').replace(/\r/g, '');
@@ -72,6 +114,17 @@ export function parseTema(src, key, base = '') {
     }
   }
   const L = src.split('\n'), out = [], cards = [], toc = [], ids = new Set();
+  const segs = [], preguntas = [], ejercicios = [], segIds = new Set();
+  let segIni = 0, segTit = null, segAncla = null;
+  const cerrarSeg = qs => {
+    let id = slug(segTit || '') || 'parte-' + (segs.length + 1);
+    while (segIds.has(id)) id += '-'; segIds.add(id);
+    qs.forEach(q => { q.seg = id; });
+    segs.push({ id, titulo: segTit || (segs.length ? `Parte ${segs.length + 1}` : 'Introducción'), ancla: segAncla, preguntas: qs });
+    out.splice(segIni, 0, `<section class="segmento" id="seg-${id}" data-seg="${id}">`);
+    out.push(`<div class="quiz" data-seg="${id}"></div></section>`);
+    segIni = out.length; segTit = segAncla = null;
+  };
   const addCard = (q, a) => {
     const id = hash(key + '|' + q);
     if (!cards.some(c => c.id === id)) cards.push({ id, q: q.trim(), a: a.trim(), tema: key });
@@ -87,6 +140,8 @@ export function parseTema(src, key, base = '') {
       i++;
       while (i < L.length && !/^```/.test(L[i])) buf.push(L[i++]);
       i++;
+      if (lang === 'test') { const qs = parseTest(buf, key); preguntas.push(...qs); cerrarSeg(qs); continue; }
+      if (lang === 'ejercicio') { const ej = parseEjercicio(buf, key); ejercicios.push(ej); out.push(htmlEjercicio(ej)); continue; }
       if (lang === 'vocab') {
         const items = buf.filter(x => x.includes('=')).map(x => { const [w, ...r] = x.split('='); return [w.trim(), r.join('=').trim()]; });
         out.push(`<div class="vocab">${items.map(([w, t]) => `<div><b>${inline(w)}</b><span>${inline(t)}</span></div>`).join('')}</div>`);
@@ -106,6 +161,7 @@ export function parseTema(src, key, base = '') {
       if (pm) { pr = pm[1].toLowerCase(); t = t.slice(0, pm.index); }
       let id = 's-' + (slug(t) || 'apartado'); while (ids.has(id)) id += '-'; ids.add(id);
       if (lvl <= 3) toc.push({ id, t, lvl, pr });
+      if (segTit === null) { segTit = t.replace(/[*_`=]/g, ''); segAncla = id; }
       out.push(`<h${lvl} id="${id}">${inline(t)}${pr ? ` <span class="prio ${pr}">${pr}</span>` : ''}</h${lvl}>`);
       i++; continue;
     }
@@ -142,5 +198,7 @@ export function parseTema(src, key, base = '') {
     while (i < L.length && L[i].trim() && !CORTA_PARRAFO.test(L[i])) buf.push(L[i++]);
     out.push(`<p>${inline(buf.join(' '))}</p>`);
   }
-  return { html: out.join('\n'), cards, toc, meta };
+  if (!segs.length) { segTit = 'Tema completo'; segAncla = null; }
+  if (out.length > segIni || !segs.length) cerrarSeg([]); // lo que queda sin test (o el tema entero) es un segmento más
+  return { html: out.join('\n'), cards, toc, meta, segs, preguntas, ejercicios };
 }

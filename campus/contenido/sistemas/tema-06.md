@@ -10,6 +10,26 @@ Los distintos tipos de memoria se relacionan entre sí formando una **pirámide*
 
 > [!truco] Cuanto **más arriba** en la pirámide, **más rápido y caro**; cuanto **más abajo**, **más capacidad**. Además, solo el almacenamiento secundario es **permanente**.
 
+```test
+Ordena de más rápida a más lenta.
++ Caché → memoria principal (RAM) → almacenamiento secundario
+- RAM → caché → almacenamiento secundario
+- Almacenamiento secundario → RAM → caché
+- Caché → almacenamiento secundario → RAM
+
+¿Qué nivel de la pirámide tiene más capacidad y es más barato?
++ El almacenamiento secundario
+- La caché
+- La memoria principal
+- Todos igual
+
+¿Cuál es el único nivel permanente de la pirámide?
++ El almacenamiento secundario
+- La caché
+- La memoria RAM
+- Ninguno
+```
+
 ## Memoria RAM {alta}
 
 **RAM** = *Random Access Memory*, memoria de **acceso aleatorio**. Aquí «aleatorio» significa **acceso directo**: se llega a cualquier posición sin recorrer las anteriores (eso sería acceso **secuencial**), así que el tiempo de acceso **siempre es el mismo**.
@@ -28,6 +48,32 @@ Los distintos tipos de memoria se relacionan entre sí formando una **pirámide*
 | **SIMM** | Ordenadores antiguos. Ya no se usa | 16 o 32 bits |
 | **DIMM** | **Sobremesa** | 64 bits |
 | **SO-DIMM** | **Portátiles**: un DIMM reducido | 64 bits |
+
+```test
+¿Qué significa «acceso aleatorio» en la RAM?
++ Acceso directo: se llega a cualquier posición en el mismo tiempo
+- Que los datos se guardan en posiciones al azar
+- Que hay que recorrer las posiciones anteriores
+- Que a veces falla al leer
+
+¿Qué se guarda en la RAM?
++ Los programas en ejecución (procesos)
+- Los archivos que guardas para siempre
+- La BIOS
+- Solo el sistema operativo
+
+¿Quién ejecuta un proceso?
++ El procesador, pero el proceso tiene que estar en la RAM
+- La RAM
+- El disco duro
+- El chipset
+
+¿Qué módulo de RAM llevan los portátiles?
++ SO-DIMM
+- DIMM
+- SIMM
+- GDDR
+```
 
 ### DDR y GDDR {alta}
 
@@ -53,6 +99,38 @@ Los distintos tipos de memoria se relacionan entre sí formando una **pirámide*
 > [!nota] En el examen, responde como en los apuntes. En realidad, el bus del módulo sigue siendo de **64 bits**: en un Dual Rank los dos rangos no se leen a la vez, sino **alternándose**, y eso da algo más de rendimiento.
 
 > [!error] **Mezclar módulos** de distinta velocidad (MHz), latencia o marca. No se recomienda.
+
+```test
+¿Qué significa DDR?
++ Double Data Rate
+- Dynamic Data RAM
+- Direct Disk Reading
+- Dual Data Register
+
+¿Qué es la GDDR?
++ La memoria especializada de las tarjetas gráficas
+- La RAM de los portátiles
+- Una memoria de solo lectura
+- La caché del procesador
+
+¿Qué es el Dual Channel?
++ Acceder a dos módulos de RAM a la vez para ganar velocidad
+- Tener RAM en las dos caras del módulo
+- Usar dos procesadores
+- Duplicar la capacidad de cada módulo
+
+¿Qué ranuras forman pareja en Dual Channel, normalmente?
++ Las del mismo color (por ejemplo, la 1 y la 3)
+- Las dos que están juntas (1 y 2)
+- Cualquier pareja
+- Solo la 1 y la 4
+
+¿Qué no se recomienda al poner varios módulos de RAM?
++ Mezclar módulos de distinta velocidad, latencia o marca
+- Usar módulos iguales
+- Ponerlos en Dual Channel
+- Llenar todas las ranuras
+```
 
 ## Almacenamiento secundario {alta}
 
@@ -87,6 +165,38 @@ Se conecta por **IDE** (antiguo) o **SATA**.
 
 > [!ejemplo] Compruébalo en Windows: clic derecho en un archivo → **Propiedades**, y compara «Tamaño» con «Tamaño en disco». En la práctica, NTFS reserva el espacio en **clústeres de 4 KB**, así que un archivo de 5 KB ocupa **8 KB** en disco.
 
+```test
+¿Qué tienen en común todos los tipos de almacenamiento secundario?
++ Son permanentes: no se borran al apagar
+- Son mecánicos
+- Usan láser
+- Son más rápidos que la RAM
+
+¿Qué es un cilindro en un disco duro?
++ La misma pista en todos los platos
+- Cada lado de un plato
+- El motor que hace girar los platos
+- Un grupo de sectores de la misma pista
+
+¿Qué diferencia hay entre un sector geométrico y un clúster?
++ El geométrico son sectores contiguos de pistas distintas; el clúster, de la misma pista
+- Son lo mismo
+- El clúster cruza varias pistas; el geométrico no
+- El geométrico es físico y el clúster no existe
+
+¿Cuántas cabezas de lectura/escritura tiene un disco duro?
++ Una por cara
+- Una por plato
+- Una para todo el disco
+- Una por pista
+
+Un archivo de 1 byte, ¿cuánto ocupa en el disco?
++ Como mínimo un sector entero
+- 1 byte exacto
+- Nada
+- Un plato entero
+```
+
 ### Estado sólido: SSD, SD y USB {alta}
 
 - El **SSD** (*Solid State Disk*) **no tiene partes mecánicas**: son **chips de memoria soldados a una PCB**.
@@ -108,6 +218,32 @@ Leen y escriben con una **lente y luz láser**. La diferencia está en el **colo
 | **Blu-ray** | **azul** | hasta **50 GB** |
 
 Como curiosidad, el **HD DVD** de Toshiba fue el rival del Blu-ray y desapareció. El **Blu-ray Ultra HD** reproduce 4K y llega a **100 GB** en triple capa.
+
+```test
+¿Por qué un SSD es mucho más rápido que un HDD?
++ Porque no tiene partes mecánicas: son chips de memoria
+- Porque gira más deprisa
+- Porque usa láser
+- Porque tiene más platos
+
+¿Por dónde se conecta un SSD?
++ Por SATA o por M.2
+- Solo por IDE
+- Por PCI
+- Por VGA
+
+¿Por qué un Blu-ray tiene más capacidad que un DVD?
++ Su láser azul tiene menor longitud de onda: pistas más finas
+- Su láser rojo tiene mayor longitud de onda
+- Porque gira más rápido
+- Porque tiene dos caras
+
+¿Cuánto cabe en un DVD?
++ 4,7 GB
+- 700 MB
+- 50 GB
+- 100 GB
+```
 
 ## Particiones {alta}
 
@@ -142,6 +278,50 @@ Una **partición** es una **división lógica** del disco, hecha **por software*
 - **Ext4**: **Linux**.
 
 **Formatear** es dar a una **partición** (no al disco entero) un sistema de archivos. **Borra todo lo que tenía**.
+
+```test
+¿Qué es una partición?
++ Una división lógica del disco, hecha por software
+- Una división física del disco
+- Un tipo de disco duro
+- Un sistema de archivos
+
+¿Qué combinaciones de particiones admite MBR?
++ 4 primarias, o 3 primarias + 1 extendida
+- Hasta 128 primarias
+- 2 primarias y 2 extendidas
+- 1 primaria y hasta 23 extendidas
+
+¿Cuántas particiones lógicas caben en una extendida?
++ Hasta 23
+- Hasta 4
+- Hasta 128
+- Solo 1
+
+¿Qué tabla de particiones va con UEFI y admite hasta 128 particiones?
++ GPT
+- MBR
+- FAT32
+- NTFS
+
+¿Dónde se instala un sistema operativo en un disco MBR?
++ En una partición primaria
+- En una partición lógica
+- En la partición extendida
+- En el MBR
+
+¿Qué limitación tiene FAT32?
++ No admite ficheros de más de 4 GB
+- No funciona en Windows
+- Solo admite 4 particiones
+- No se puede formatear
+
+¿Qué pasa al formatear una partición?
++ Se le da un sistema de archivos y se borra todo lo que tenía
+- Se divide en dos
+- Se desfragmenta sin perder nada
+- Se convierte en extendida
+```
 
 ?? Ordena la jerarquía de memoria de más rápida a más lenta. || Caché → memoria principal (RAM) → almacenamiento secundario.
 ?? ¿Qué significa «acceso aleatorio» en la RAM? || Acceso directo: se llega a cualquier posición sin recorrer las anteriores, siempre en el mismo tiempo.

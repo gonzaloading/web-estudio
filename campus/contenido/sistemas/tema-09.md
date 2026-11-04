@@ -11,6 +11,27 @@ El **software** es la **parte lógica**: todos los programas. **Complementa al h
 
 El software es **intangible**: el cliente no ve el trabajo que hay detrás. Para él, un «simple botón» puede ocultar un desarrollo enorme.
 
+```test
+¿Existe algún programa complejo 100 % libre de errores?
++ No: todo programa complejo tiene algún error
+- Sí, si se prueba lo suficiente
+- Sí, los de código abierto
+- Solo los sistemas operativos
+
+¿Cuándo es satisfactoria una prueba de software?
++ Cuando encuentra algún error
+- Cuando no encuentra ningún error
+- Cuando el programa no se cuelga
+- Cuando el cliente está contento
+= Si no encuentra ninguno, es que no se ha buscado bien. En un puente es al revés.
+
+¿Por qué se dice que el software es intangible?
++ Porque el cliente no ve el trabajo que hay detrás
+- Porque no ocupa espacio en disco
+- Porque es gratis
+- Porque no tiene errores
+```
+
 ## Licencias de software {alta}
 
 | Licencia | Características |
@@ -24,6 +45,33 @@ El software es **intangible**: el cliente no ve el trabajo que hay detrás. Para
 > [!error] Pensar que **libre** significa **gratuito**. Casi todo el software libre es gratis, pero **no tiene por qué**. La confusión viene del inglés *free software*, donde *free* quiere decir **libre**, no gratis. **Freeware** sí significa gratuito.
 
 > [!nota] La tabla sigue la definición de los apuntes, que es la que debes dar en el examen. Fuera de clase, la definición oficial de software libre (FSF) **incluye** el acceso al código fuente y la libertad de modificarlo, e incluso de venderlo.
+
+```test
+¿Qué es el freeware?
++ Software gratuito sin código fuente
+- Software libre con código fuente
+- Software de pago
+- Software de prueba por tiempo limitado
+
+¿Qué es el shareware?
++ Uso completo durante un tiempo, o ilimitado con funciones limitadas
+- Software gratuito sin código fuente
+- Software que se puede modificar libremente
+- Software solo para empresas
+
+¿El software libre tiene que ser gratis?
++ No: free significa libre, no gratis
+- Sí, siempre
+- Solo si es de código abierto
+- Sí, por ley
+
+¿Qué licencia es típica del software privativo?
++ El copyright
+- El copyleft
+- El shareware
+- El freeware
+= La del software libre es el copyleft.
+```
 
 ## Sistemas operativos {alta}
 
@@ -43,6 +91,26 @@ Debe estar **optimizado**, porque de él depende el rendimiento de todo el siste
 | **Nº de tareas** | **Monotarea**: una tarea a la vez (MS-DOS) · **Multitarea**: varias a la vez (Windows) |
 | **Estructura** | **Cliente**: de propósito general, el de tu ordenador · **Servidor**: por ejemplo Windows Server; centraliza la administración, como crear los usuarios una vez en el servidor y usarlos desde cualquier equipo |
 
+```test
+¿Qué gestiona el sistema operativo?
++ Memoria, CPU, ficheros, red, seguridad y usuarios
+- Solo los ficheros
+- Solo la conexión a internet
+- Solo los periféricos
+
+MS-DOS era un sistema…
++ monousuario y monotarea
+- multiusuario y multitarea
+- monousuario y multitarea
+- servidor
+
+¿Qué ventaja tiene un SO servidor como Windows Server?
++ Centraliza la administración: los usuarios se crean una vez y sirven en cualquier equipo
+- Es más barato que un SO cliente
+- No necesita hardware
+- Funciona sin red
+```
+
 ## Software de programación {alta}
 
 - **IDE** (entorno integrado de desarrollo): reúne en **un solo programa** todo lo necesario para programar: editor, compilador o intérprete, plugins… Por ejemplo, **Eclipse** o **IntelliJ**.
@@ -61,6 +129,38 @@ Debe estar **optimizado**, porque de él depende el rendimiento de todo el siste
   - **Relacionales**: usan el modelo relacional y el lenguaje **SQL**. **MySQL, PostgreSQL, Oracle, SQL Server**.
   - **NoSQL**: **no usan SQL**, sino otros modelos. **MongoDB** (muy usado) y **Cassandra** (la usaba Twitter).
 
+```test
+Un programa tiene un error en la línea 3. ¿Qué hace un intérprete?
++ Ejecuta las líneas 1 y 2 y se para al llegar a la 3
+- No ejecuta nada
+- Corrige el error solo
+- Ejecuta todo menos la línea 3
+
+¿Qué hace un compilador?
++ Comprueba errores léxicos y sintácticos, optimiza y genera un ejecutable
+- Ejecuta el código línea a línea
+- Diseña la interfaz del programa
+- Gestiona la base de datos
+
+Java es un lenguaje… y Python es…
++ compilado; interpretado
+- interpretado; compilado
+- compilado; compilado
+- interpretado; interpretado
+
+¿Qué es un IDE?
++ Un programa que reúne editor, compilador o intérprete y plugins
+- Un tipo de conector de discos
+- Un lenguaje de programación
+- Un sistema operativo
+
+¿Qué gestor de bases de datos es NoSQL?
++ MongoDB
+- MySQL
+- PostgreSQL
+- Oracle
+```
+
 ## Aplicaciones ofimáticas {media}
 
 «Ofimática» viene de **oficina**; con los PC llegó también a casa.
@@ -70,6 +170,20 @@ Debe estar **optimizado**, porque de él depende el rendimiento de todo el siste
 - **Presentaciones**: diapositivas. PowerPoint, Impress, Prezi.
 
 > [!error] Confundir **procesador** de texto con **editor** de texto. El **editor** solo crea **texto plano**, sin formato: Bloc de notas, VS Code, Notepad++, Atom, Brackets.
+
+```test
+¿Qué diferencia hay entre un procesador de texto y un editor de texto?
++ El procesador admite formato, imágenes y tablas; el editor solo texto plano
+- Son lo mismo
+- El editor admite formato y el procesador no
+- El procesador es gratuito y el editor no
+
+¿Cuál de estos es un editor de texto (no un procesador)?
++ VS Code
+- Word
+- Writer
+- Google Docs
+```
 
 ## Malware y antimalware {alta}
 
@@ -87,6 +201,38 @@ Debe estar **optimizado**, porque de él depende el rendimiento de todo el siste
 Protección: **antivirus y antimalware**, como **Malwarebytes**.
 
 > [!truco] **Virus** destruye · **gusano** se copia · **troyano** se esconde y espera · **keylogger** apunta tus teclas · **spyware** espía · **ransomware** secuestra.
+
+```test
+¿Es correcto llamar «virus» a todo el malware?
++ No: el virus es solo un tipo de malware
+- Sí, son sinónimos
+- Solo si ataca archivos
+- Sí, desde el año 2000
+
+¿Qué hace un gusano?
++ Se autorreplica hasta llenar la memoria y bloquear o ralentizar el sistema
+- Destruye los archivos
+- Cifra tus datos y pide un rescate
+- Registra las teclas que pulsas
+
+¿Qué malware cifra tus datos y pide un rescate?
++ Ransomware
+- Troyano
+- Spyware
+- Keylogger
+
+¿Cómo actúa un troyano?
++ Parece que no hace nada hasta que salta un evento, como una fecha
+- Se copia sin parar desde el primer momento
+- Solo espía y envía datos
+- Muestra publicidad
+
+¿Qué diferencia hay entre un keylogger y un spyware?
++ El keylogger registra las teclas; el spyware recopila todo lo que puede y lo envía
+- Son lo mismo
+- El spyware registra las teclas; el keylogger cifra los datos
+- El keylogger destruye archivos
+```
 
 ## Otro software {media}
 
@@ -117,6 +263,39 @@ Protección: **antivirus y antimalware**, como **Malwarebytes**.
 - **E-commerce**: comprar y vender por Internet (Amazon, eBay).
 - **E-business**: todo lo del e-commerce **más el resto de procesos de la empresa**: almacén, producción, finanzas…
 - **Redes sociales**: aplicaciones con componente social (Instagram, TikTok, X…). Su gran problema es el **anonimato** que facilita el mal uso. Bluesky apuesta por la descentralización y la portabilidad de los datos.
+
+```test
+¿En qué se diferencian un foro y un blog?
++ En el blog las entradas van en orden cronológico descendente; en el foro no
+- En el foro hay orden cronológico; en el blog no
+- El blog es privado y el foro público
+- No hay diferencia
+
+¿Qué diferencia hay entre Telnet y SSH?
++ SSH cifra la información; Telnet no
+- Telnet cifra la información; SSH no
+- SSH es para Windows y Telnet para Linux
+- Telnet es más moderno
+
+Con el escritorio remoto de Windows…
++ la sesión del equipo de origen se interrumpe
+- los dos usuarios ven lo mismo a la vez
+- no hace falta IP ni contraseña
+- solo se pueden copiar archivos
+= Con TeamViewer, en cambio, los dos ven lo que ocurre.
+
+¿Qué es el e-business?
++ El comercio electrónico más el resto de procesos de la empresa
+- Comprar y vender por internet, sin más
+- Las redes sociales de empresa
+- Un tipo de malware
+
+¿Qué herramienta permite mensajes multimedia en tiempo real?
++ La mensajería instantánea (WhatsApp, Signal)
+- La teleconferencia
+- El grupo de noticias
+- El blog
+```
 
 ?? ¿Existe algún programa (no trivial) 100 % libre de errores? || No. Todo programa complejo tiene algún error, aunque no sea crítico.
 ?? ¿Cuándo es satisfactoria una prueba de software? || Cuando encuentra algún error; si no encuentra ninguno, es que no se ha buscado bien.
