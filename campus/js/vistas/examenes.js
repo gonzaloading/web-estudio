@@ -60,7 +60,7 @@ export default function examenes(el, r) {
         ${dias.map(f => `<div class="d ${f.slice(0, 7) !== mes ? 'fuera' : ''} ${f === hoy() ? 'hoy' : ''} ${f === diaSel ? 'sel' : ''}" data-dia="${f}" role="button" tabindex="0" aria-label="${fechaCorta(f)}${porDia[f] ? ` · ${porDia[f].length} cosa${porDia[f].length > 1 ? 's' : ''}` : ''}"><span class="num">${+f.slice(8)}</span>
           ${(porDia[f] || []).map(e => {
             const a = cat.porId[e.asig] || {}, tr = e.clase === 'trabajo';
-            return `<span class="ev ${tr ? 'trab' : ''} ${e.entregado ? 'hecho' : ''}" style="--c:${a.color};--t:${a.tint}" title="${tr ? 'Entrega' : 'Examen'} · ${esc(nombreAsig(e.asig))}: ${esc(e.titulo)}${e.hora ? ' · ' + e.hora : ''}">${esc(e.titulo)}</span>`;
+            return `<span class="ev ${tr ? 'trab' : ''} ${e.entregado ? 'hecho' : ''}" style="--c:${a.color};--t:${a.tint}" title="${tr ? 'Entrega' : 'Examen'} · ${esc(nombreAsig(e.asig))}: ${esc(e.titulo)}${e.hora ? ' · ' + e.hora : ''}">${icon(a.icono || 'book')}<span class="ev-t">${esc(e.titulo)}</span></span>`;
           }).join('')}
         </div>`).join('')}
       </div>
