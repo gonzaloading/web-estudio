@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 282" width="620" height="282" role="img" aria-label="Comparación: la biocapacidad es 1 planeta y la huella ecológica de la humanidad es de unos 1,7 planetas, así que gastamos más de lo que la Tierra regenera">
+<style>
+text{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;fill:#13241c}
+.tit{font-size:20px;font-weight:700;fill:#0d3a2b} .sub{font-size:14px;fill:#56645b}
+.lbl{font-size:14px;font-weight:600;text-anchor:middle} .peq{font-size:12px;fill:#56645b;text-anchor:middle}
+.fl{stroke:#56645b;stroke-width:2;fill:none}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<defs><marker id="pf" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#56645b"/></marker>
+<marker id="pr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#cf3e3e"/></marker></defs>
+<rect width="620" height="282" fill="#fff"/>
+<defs><clipPath id="c07"><rect x="470" y="70" width="73" height="120"/></clipPath></defs>
+<text x="20" y="30" style="font-size:18px;font-weight:700;fill:#0d3a2b;text-anchor:start">Lo que TENEMOS frente a lo que USAMOS</text>
+<text x="150" y="68" style="font-size:16px;font-weight:700;fill:#1f7a4c;text-anchor:middle">Biocapacidad</text>
+<text x="150" y="86" style="font-size:12px;font-weight:400;fill:#56645b;text-anchor:middle">lo que la Tierra regenera en un año</text>
+<g><circle cx="150" cy="150" r="52" fill="#7fb6e0"/><path d="M118.8,129.2 q15.6,-18.2 31.2,-5.2 q5.2,20.8 -10.4,28.6 q-18.2,5.2 -20.8,-23.400000000000002z" fill="#2f8f5b"/><path d="M155.2,152.6 q23.400000000000002,-10.4 33.800000000000004,7.8 q-2.6,23.400000000000002 -20.8,28.6 q-15.6,-10.4 -13.0,-36.4z" fill="#2f8f5b"/></g>
+<text x="150" y="230" style="font-size:16px;font-weight:700;fill:#13241c;text-anchor:middle">1 planeta</text>
+<text x="470" y="68" style="font-size:16px;font-weight:700;fill:#cf3e3e;text-anchor:middle">Huella ecológica</text>
+<text x="470" y="86" style="font-size:12px;font-weight:400;fill:#56645b;text-anchor:middle">lo que consume la humanidad</text>
+<g><circle cx="410" cy="150" r="52" fill="#7fb6e0"/><path d="M378.8,129.2 q15.6,-18.2 31.2,-5.2 q5.2,20.8 -10.4,28.6 q-18.2,5.2 -20.8,-23.400000000000002z" fill="#2f8f5b"/><path d="M415.2,152.6 q23.400000000000002,-10.4 33.800000000000004,7.8 q-2.6,23.400000000000002 -20.8,28.6 q-15.6,-10.4 -13.0,-36.4z" fill="#2f8f5b"/></g>
+<g clip-path="url(#c07)"><circle cx="522" cy="150" r="52" fill="#7fb6e0"/><path d="M490.8,129.2 q15.6,-18.2 31.2,-5.2 q5.2,20.8 -10.4,28.6 q-18.2,5.2 -20.8,-23.400000000000002z" fill="#2f8f5b"/><path d="M527.2,152.6 q23.400000000000002,-10.4 33.800000000000004,7.8 q-2.6,23.400000000000002 -20.8,28.6 q-15.6,-10.4 -13.0,-36.4z" fill="#2f8f5b"/></g>
+<rect x="470" y="96" width="73" height="108" fill="#cf3e3e" fill-opacity=".18"/>
+<line x1="543" y1="92" x2="543" y2="208" stroke="#cf3e3e" stroke-width="2" stroke-dasharray="4 3"/>
+<text x="470" y="230" style="font-size:16px;font-weight:700;fill:#cf3e3e;text-anchor:middle">≈ 1,7 planetas</text>
+<text x="310" y="160" style="font-size:34px;font-weight:700;fill:#56645b;text-anchor:middle">&lt;</text>
+<text x="310" y="266" style="font-size:13.5px;font-weight:700;fill:#cf3e3e;text-anchor:middle">Gastamos más de lo que el planeta puede regenerar: déficit ecológico</text>
+</svg>

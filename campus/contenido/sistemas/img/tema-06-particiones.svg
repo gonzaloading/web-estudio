@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 305" width="700" height="305" role="img" aria-label="MBR admite 4 particiones primarias o 3 primarias y una extendida que contiene particiones lógicas; GPT admite hasta 128 particiones">
+<style>
+text{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;fill:#13241c}
+.tit{font-size:20px;font-weight:700;fill:#0d3a2b} .sub{font-size:14px;fill:#56645b}
+.lbl{font-size:14px;font-weight:600;text-anchor:middle} .peq{font-size:12px;fill:#56645b;text-anchor:middle}
+.fl{stroke:#56645b;stroke-width:2;fill:none}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<defs><marker id="pf" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#56645b"/></marker>
+<marker id="pr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#cf3e3e"/></marker></defs>
+<rect width="700" height="305" fill="#fff"/>
+<text x="20" y="30" style="font-size:18px;font-weight:700;fill:#0d3a2b;text-anchor:start">Cómo se puede dividir un disco</text>
+<text x="20" y="56" style="font-size:14px;font-weight:700;fill:#13241c;text-anchor:start">MBR: 4 primarias</text>
+<g><rect x="20" y="66" width="162" height="46" rx="6" fill="#fdf3e1" stroke="#c9861a" stroke-width="1.5"/><text x="101.0" y="93.4" style="font-size:12.5px;font-weight:650;text-anchor:middle;fill:#13241c">Primaria 1</text></g>
+<g><rect x="186" y="66" width="162" height="46" rx="6" fill="#fdf3e1" stroke="#c9861a" stroke-width="1.5"/><text x="267.0" y="93.4" style="font-size:12.5px;font-weight:650;text-anchor:middle;fill:#13241c">Primaria 2</text></g>
+<g><rect x="352" y="66" width="162" height="46" rx="6" fill="#fdf3e1" stroke="#c9861a" stroke-width="1.5"/><text x="433.0" y="93.4" style="font-size:12.5px;font-weight:650;text-anchor:middle;fill:#13241c">Primaria 3</text></g>
+<g><rect x="518" y="66" width="162" height="46" rx="6" fill="#fdf3e1" stroke="#c9861a" stroke-width="1.5"/><text x="599.0" y="93.4" style="font-size:12.5px;font-weight:650;text-anchor:middle;fill:#13241c">Primaria 4</text></g>
+<text x="20" y="146" style="font-size:14px;font-weight:700;fill:#13241c;text-anchor:start">MBR: 3 primarias + 1 extendida</text>
+<g><rect x="20" y="156" width="120" height="46" rx="6" fill="#fdf3e1" stroke="#c9861a" stroke-width="1.5"/><text x="80.0" y="183.4" style="font-size:12.5px;font-weight:650;text-anchor:middle;fill:#13241c">Primaria 1</text></g>
+<g><rect x="144" y="156" width="120" height="46" rx="6" fill="#fdf3e1" stroke="#c9861a" stroke-width="1.5"/><text x="204.0" y="183.4" style="font-size:12.5px;font-weight:650;text-anchor:middle;fill:#13241c">Primaria 2</text></g>
+<g><rect x="268" y="156" width="120" height="46" rx="6" fill="#fdf3e1" stroke="#c9861a" stroke-width="1.5"/><text x="328.0" y="183.4" style="font-size:12.5px;font-weight:650;text-anchor:middle;fill:#13241c">Primaria 3</text></g>
+<rect x="392" y="150" width="288" height="58" rx="8" fill="#e9f6f5" stroke="#0f8b8d" stroke-width="2"/>
+<text x="536" y="144" style="font-size:12.5px;font-weight:700;fill:#0f8b8d;text-anchor:middle">Extendida (solo una)</text>
+<g><rect x="400" y="158" width="64" height="42" rx="5" fill="#fff" stroke="#0f8b8d" stroke-width="1.5"/><text x="432.0" y="183.0" style="font-size:11.5px;font-weight:650;text-anchor:middle;fill:#13241c">Lógica 1</text></g>
+<g><rect x="470" y="158" width="64" height="42" rx="5" fill="#fff" stroke="#0f8b8d" stroke-width="1.5"/><text x="502.0" y="183.0" style="font-size:11.5px;font-weight:650;text-anchor:middle;fill:#13241c">Lógica 2</text></g>
+<g><rect x="540" y="158" width="64" height="42" rx="5" fill="#fff" stroke="#0f8b8d" stroke-width="1.5"/><text x="572.0" y="183.0" style="font-size:11.5px;font-weight:650;text-anchor:middle;fill:#13241c">Lógica 3</text></g>
+<g><rect x="610" y="158" width="74" height="42" rx="5" fill="#fff" stroke="#0f8b8d" stroke-width="1.5"/><text x="647.0" y="183.0" style="font-size:11.5px;font-weight:650;text-anchor:middle;fill:#13241c">… hasta 23</text></g>
+<text x="20" y="236" style="font-size:14px;font-weight:700;fill:#13241c;text-anchor:start">GPT (con UEFI): hasta 128 particiones, sin límite de 2 TB</text>
+<rect x="20.0" y="246" width="18" height="46" rx="3" fill="#eef5d6" stroke="#b3cf4c"/>
+<rect x="41.5" y="246" width="18" height="46" rx="3" fill="#eef5d6" stroke="#b3cf4c"/>
+<rect x="63.0" y="246" width="18" height="46" rx="3" fill="#eef5d6" stroke="#b3cf4c"/>
+<rect x="84.5" y="246" width="18" height="46" rx="3" fill="#eef5d6" stroke="#b3cf4c"/>
+<rect x="106.0" y="246" width="18" height="46" rx="3" fill="#eef5d6" stroke="#b3cf4c"/>
+<rect x="127.5" y="246" width="18" height="46" rx="3" fill="#eef5d6" stroke="#b3cf4c"/>
+<rect x="149.0" y="246" width="18" height="46" rx="3" fill="#eef5d6" stroke="#b3cf4c"/>
+<rect x="170.5" y="246" width="18" height="46" rx="3" fill="#eef5d6" stroke="#b3cf4c"/>
+<rect x="192.0" y="246" width="18" height="46" rx="3" fill="#eef5d6" stroke="#b3cf4c"/>
+<rect x="213.5" y="246" width="18" height="46" rx="3" fill="#eef5d6" stroke="#b3cf4c"/>
+<rect x="235.0" y="246" width="18" height="46" rx="3" fill="#eef5d6" stroke="#b3cf4c"/>
+<rect x="256.5" y="246" width="18" height="46" rx="3" fill="#eef5d6" stroke="#b3cf4c"/>
+<rect x="278.0" y="246" width="18" height="46" rx="3" fill="#eef5d6" stroke="#b3cf4c"/>
+<rect x="299.5" y="246" width="18" height="46" rx="3" fill="#eef5d6" stroke="#b3cf4c"/>
+<rect x="321.0" y="246" width="18" height="46" rx="3" fill="#eef5d6" stroke="#b3cf4c"/>
+<rect x="342.5" y="246" width="18" height="46" rx="3" fill="#eef5d6" stroke="#b3cf4c"/>
+<rect x="364.0" y="246" width="18" height="46" rx="3" fill="#eef5d6" stroke="#b3cf4c"/>
+<rect x="385.5" y="246" width="18" height="46" rx="3" fill="#eef5d6" stroke="#b3cf4c"/>
+<rect x="407.0" y="246" width="18" height="46" rx="3" fill="#eef5d6" stroke="#b3cf4c"/>
+<rect x="428.5" y="246" width="18" height="46" rx="3" fill="#eef5d6" stroke="#b3cf4c"/>
+<rect x="450.0" y="246" width="18" height="46" rx="3" fill="#eef5d6" stroke="#b3cf4c"/>
+<rect x="471.5" y="246" width="18" height="46" rx="3" fill="#eef5d6" stroke="#b3cf4c"/>
+<rect x="493.0" y="246" width="18" height="46" rx="3" fill="#eef5d6" stroke="#b3cf4c"/>
+<rect x="514.5" y="246" width="18" height="46" rx="3" fill="#eef5d6" stroke="#b3cf4c"/>
+<rect x="536.0" y="246" width="18" height="46" rx="3" fill="#eef5d6" stroke="#b3cf4c"/>
+<rect x="557.5" y="246" width="18" height="46" rx="3" fill="#eef5d6" stroke="#b3cf4c"/>
+<rect x="579.0" y="246" width="18" height="46" rx="3" fill="#eef5d6" stroke="#b3cf4c"/>
+<rect x="600.5" y="246" width="18" height="46" rx="3" fill="#eef5d6" stroke="#b3cf4c"/>
+<rect x="622.0" y="246" width="18" height="46" rx="3" fill="#eef5d6" stroke="#b3cf4c"/>
+<rect x="643.5" y="246" width="18" height="46" rx="3" fill="#eef5d6" stroke="#b3cf4c"/>
+<rect x="665.0" y="246" width="18" height="46" rx="3" fill="#eef5d6" stroke="#b3cf4c"/>
+<text x="351.5" y="274" style="font-size:16px;font-weight:700;fill:#56645b;text-anchor:middle">…</text>
+</svg>

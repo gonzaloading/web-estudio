@@ -1,0 +1,5 @@
+# Apuntes originales del profesor: no se suben (copyright y privacidad)
+recursos/
+# Configuración local
+.claude/
+.DS_Store

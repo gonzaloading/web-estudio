@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 345" width="700" height="345" role="img" aria-label="Circuito de refrigeración líquida: el bloque sobre el procesador calienta el líquido, que va al radiador con ventilador, se enfría y la bomba lo devuelve al bloque">
+<style>
+text{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;fill:#13241c}
+.tit{font-size:20px;font-weight:700;fill:#0d3a2b} .sub{font-size:14px;fill:#56645b}
+.lbl{font-size:14px;font-weight:600;text-anchor:middle} .peq{font-size:12px;fill:#56645b;text-anchor:middle}
+.fl{stroke:#56645b;stroke-width:2;fill:none}
+.tubo{fill:none;stroke-width:14;stroke-linecap:round;stroke-linejoin:round;opacity:.22}
+.flujo{fill:none;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:10 12;animation:flu 1.2s linear infinite}
+@keyframes flu{to{stroke-dashoffset:-44}}
+.aspas{transform-box:fill-box;transform-origin:center;animation:gira 1s linear infinite}
+@keyframes gira{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<defs><marker id="pf" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#56645b"/></marker>
+<marker id="pr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#cf3e3e"/></marker></defs>
+<rect width="700" height="345" fill="#fff"/>
+<text x="20" y="30" style="font-size:18px;font-weight:700;fill:#0d3a2b;text-anchor:start">El bucle de la refrigeración líquida</text>
+<path d="M130,196 L130,92 L414,92" class="tubo" stroke="#cf3e3e"/><path d="M130,196 L130,92 L414,92" class="flujo" stroke="#cf3e3e"/>
+<path d="M520,150 L520,214 M470,236 L208,236" class="tubo" stroke="#2563eb"/><path d="M520,150 L520,214 M470,236 L208,236" class="flujo" stroke="#2563eb"/>
+<rect x="60" y="246" width="150" height="34" rx="4" fill="#56645b"/>
+<text x="135" y="268" style="font-size:13px;font-weight:650;fill:#fff;text-anchor:middle">Procesador</text>
+<g><rect x="78" y="196" width="114" height="44" rx="10" fill="#e8effc" stroke="#2563eb" stroke-width="1.5"/><text x="135.0" y="222.9" style="font-size:14px;font-weight:650;text-anchor:middle;fill:#13241c">Bloque</text></g>
+<rect x="414" y="60" width="200" height="90" rx="8" fill="#f3f5ef" stroke="#56645b" stroke-width="1.5"/>
+<line x1="424" y1="66" x2="424" y2="144" stroke="#b9c2bb" stroke-width="2"/>
+<line x1="432" y1="66" x2="432" y2="144" stroke="#b9c2bb" stroke-width="2"/>
+<line x1="440" y1="66" x2="440" y2="144" stroke="#b9c2bb" stroke-width="2"/>
+<line x1="448" y1="66" x2="448" y2="144" stroke="#b9c2bb" stroke-width="2"/>
+<line x1="456" y1="66" x2="456" y2="144" stroke="#b9c2bb" stroke-width="2"/>
+<line x1="464" y1="66" x2="464" y2="144" stroke="#b9c2bb" stroke-width="2"/>
+<line x1="472" y1="66" x2="472" y2="144" stroke="#b9c2bb" stroke-width="2"/>
+<line x1="480" y1="66" x2="480" y2="144" stroke="#b9c2bb" stroke-width="2"/>
+<line x1="488" y1="66" x2="488" y2="144" stroke="#b9c2bb" stroke-width="2"/>
+<line x1="496" y1="66" x2="496" y2="144" stroke="#b9c2bb" stroke-width="2"/>
+<line x1="504" y1="66" x2="504" y2="144" stroke="#b9c2bb" stroke-width="2"/>
+<line x1="512" y1="66" x2="512" y2="144" stroke="#b9c2bb" stroke-width="2"/>
+<line x1="520" y1="66" x2="520" y2="144" stroke="#b9c2bb" stroke-width="2"/>
+<line x1="528" y1="66" x2="528" y2="144" stroke="#b9c2bb" stroke-width="2"/>
+<line x1="536" y1="66" x2="536" y2="144" stroke="#b9c2bb" stroke-width="2"/>
+<line x1="544" y1="66" x2="544" y2="144" stroke="#b9c2bb" stroke-width="2"/>
+<line x1="552" y1="66" x2="552" y2="144" stroke="#b9c2bb" stroke-width="2"/>
+<line x1="560" y1="66" x2="560" y2="144" stroke="#b9c2bb" stroke-width="2"/>
+<line x1="568" y1="66" x2="568" y2="144" stroke="#b9c2bb" stroke-width="2"/>
+<line x1="576" y1="66" x2="576" y2="144" stroke="#b9c2bb" stroke-width="2"/>
+<line x1="584" y1="66" x2="584" y2="144" stroke="#b9c2bb" stroke-width="2"/>
+<line x1="592" y1="66" x2="592" y2="144" stroke="#b9c2bb" stroke-width="2"/>
+<line x1="600" y1="66" x2="600" y2="144" stroke="#b9c2bb" stroke-width="2"/>
+<line x1="608" y1="66" x2="608" y2="144" stroke="#b9c2bb" stroke-width="2"/>
+<circle cx="514" cy="105" r="34" fill="#fff" stroke="#56645b" stroke-width="1.5"/>
+<g class="aspas"><ellipse cx="514" cy="88" rx="7" ry="15" fill="#8a948d" transform="rotate(0 514 105)"/><ellipse cx="514" cy="88" rx="7" ry="15" fill="#8a948d" transform="rotate(90 514 105)"/><ellipse cx="514" cy="88" rx="7" ry="15" fill="#8a948d" transform="rotate(180 514 105)"/><ellipse cx="514" cy="88" rx="7" ry="15" fill="#8a948d" transform="rotate(270 514 105)"/></g>
+<circle cx="514" cy="105" r="6" fill="#56645b"/>
+<text x="514" y="52" style="font-size:13px;font-weight:650;fill:#13241c;text-anchor:middle">Radiador + ventilador</text>
+<g><rect x="470" y="214" width="100" height="44" rx="10" fill="#fdf3e1" stroke="#c9861a" stroke-width="1.5"/><text x="520.0" y="240.9" style="font-size:14px;font-weight:650;text-anchor:middle;fill:#13241c">Bomba</text></g>
+<path d="M622,78 q8,-6 16,0 q8,6 16,0" fill="none" stroke="#cf3e3e" stroke-width="2" marker-end="url(#pr)"/>
+<path d="M622,105 q8,-6 16,0 q8,6 16,0" fill="none" stroke="#cf3e3e" stroke-width="2" marker-end="url(#pr)"/>
+<path d="M622,132 q8,-6 16,0 q8,6 16,0" fill="none" stroke="#cf3e3e" stroke-width="2" marker-end="url(#pr)"/>
+<text x="660" y="108" style="font-size:12px;font-weight:650;fill:#cf3e3e;text-anchor:start">calor</text>
+<text x="150" y="84" style="font-size:13px;font-weight:650;fill:#cf3e3e;text-anchor:start">líquido caliente</text>
+<text x="250" y="228" style="font-size:13px;font-weight:650;fill:#2563eb;text-anchor:start">líquido frío</text>
+<text x="20" y="312" style="font-size:12px;font-weight:400;fill:#56645b;text-anchor:start">① El bloque absorbe el calor del procesador (conducción)  ② el líquido caliente va al radiador</text>
+<text x="20" y="330" style="font-size:12px;font-weight:400;fill:#56645b;text-anchor:start">③ el ventilador lo enfría y expulsa el calor  ④ la bomba devuelve el líquido frío al bloque. Y vuelta a empezar.</text>
+</svg>

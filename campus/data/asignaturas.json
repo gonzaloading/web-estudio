@@ -1,0 +1,9 @@
+[
+  { "id": "bd",             "nombre": "Base de datos",          "icono": "database", "color": "#1f7a4c", "tint": "#e4f1e6", "plantilla": "codigo" },
+  { "id": "programacion",   "nombre": "Programación",           "icono": "code",     "color": "#2b7a3d", "tint": "#e8f2e3", "plantilla": "codigo" },
+  { "id": "marcas",         "nombre": "Lenguaje de marcas",     "icono": "brackets", "color": "#6d3fc0", "tint": "#efe8fa", "plantilla": "codigo" },
+  { "id": "sistemas",       "nombre": "Sistemas informáticos",  "icono": "monitor",  "color": "#1f5fbf", "tint": "#e5eefb", "plantilla": "teoria" },
+  { "id": "entornos",       "nombre": "Entornos de desarrollo", "icono": "gear",     "color": "#b5701a", "tint": "#fbf0de", "plantilla": "codigo" },
+  { "id": "ingles",         "nombre": "Inglés",                 "icono": "en",       "color": "#1f5fbf", "tint": "#e5eefb", "plantilla": "idiomas" },
+  { "id": "sostenibilidad", "nombre": "Sostenibilidad",         "icono": "leaf",     "color": "#2b7a3d", "tint": "#e8f2e3", "plantilla": "teoria" }
+]

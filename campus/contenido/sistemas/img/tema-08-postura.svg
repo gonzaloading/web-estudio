@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="640" height="360" role="img" aria-label="Persona sentada de perfil ante el ordenador con 90 grados en codos y rodillas, pies apoyados, espalda apoyada y los ojos a la altura de la parte de arriba de la pantalla">
+<style>
+text{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;fill:#13241c}
+.tit{font-size:20px;font-weight:700;fill:#0d3a2b} .sub{font-size:14px;fill:#56645b}
+.lbl{font-size:14px;font-weight:600;text-anchor:middle} .peq{font-size:12px;fill:#56645b;text-anchor:middle}
+.fl{stroke:#56645b;stroke-width:2;fill:none}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<defs><marker id="pf" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#56645b"/></marker>
+<marker id="pr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#cf3e3e"/></marker></defs>
+<rect width="640" height="360" fill="#fff"/>
+<text x="20" y="30" style="font-size:18px;font-weight:700;fill:#0d3a2b;text-anchor:start">Postura correcta ante el ordenador</text>
+<line x1="20" y1="342" x2="620" y2="342" stroke="#cfd6d1" stroke-width="3"/>
+<rect x="112" y="118" width="12" height="124" rx="4" fill="#8a948d"/>
+<rect x="112" y="232" width="118" height="12" rx="4" fill="#8a948d"/>
+<line x1="170" y1="244" x2="170" y2="330" stroke="#8a948d" stroke-width="8"/>
+<line x1="128" y1="334" x2="212" y2="334" stroke="#8a948d" stroke-width="6" stroke-linecap="round"/>
+<rect x="226" y="200" width="250" height="10" rx="3" fill="#c9861a"/>
+<line x1="462" y1="210" x2="462" y2="342" stroke="#c9861a" stroke-width="8"/>
+<rect x="234" y="192" width="54" height="8" rx="2" fill="#56645b"/>
+<rect x="420" y="84" width="14" height="90" rx="3" fill="#13241c"/>
+<line x1="427" y1="174" x2="427" y2="200" stroke="#13241c" stroke-width="6"/>
+<line x1="408" y1="198" x2="446" y2="198" stroke="#13241c" stroke-width="5"/>
+<polyline points="150,128 150,222 262,222 262,330 292,330" stroke="#0d3a2b" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<polyline points="152,134 156,194 252,194" stroke="#0d3a2b" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<circle cx="158" cy="98" r="19" fill="#0d3a2b"/>
+<line x1="172" y1="94" x2="418" y2="94" stroke="#2563eb" stroke-width="1.6" stroke-dasharray="6 5"/>
+<path d="M170,194 L170,180 L156,180" fill="none" stroke="#cf3e3e" stroke-width="2"/>
+<path d="M248,222 L248,236 L262,236" fill="none" stroke="#cf3e3e" stroke-width="2"/>
+<text x="196" y="74" style="font-size:12.5px;font-weight:650;fill:#2563eb;text-anchor:start">ojos a la altura de la parte de arriba de la pantalla</text>
+<text x="174" y="183" style="font-size:13px;font-weight:700;fill:#cf3e3e;text-anchor:start">90° en codos</text>
+<text x="276" y="252" style="font-size:13px;font-weight:700;fill:#cf3e3e;text-anchor:start">90° en rodillas</text>
+<text x="300" y="334" style="font-size:12.5px;font-weight:600;fill:#56645b;text-anchor:start">pies apoyados</text>
+<text x="20" y="160" style="font-size:12.5px;font-weight:600;fill:#56645b;text-anchor:start">espalda</text>
+<text x="20" y="176" style="font-size:12.5px;font-weight:600;fill:#56645b;text-anchor:start">apoyada</text>
+</svg>

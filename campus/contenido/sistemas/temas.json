@@ -1,0 +1,11 @@
+[
+  { "id": "tema-01", "titulo": "Introducción a los sistemas informáticos", "prioridad": "media", "tipo": "teoria", "fuente": "PDF 1. Introducción a los sistemas informáticos", "actualizado": "2026-11-04" },
+  { "id": "tema-02", "titulo": "Representación de la información: sistemas de numeración y unidades", "prioridad": "alta", "tipo": "teoria", "fuente": "PDF 2. Representación de la información", "actualizado": "2026-11-04" },
+  { "id": "tema-03", "titulo": "Componentes de un sistema informático", "prioridad": "media", "tipo": "teoria", "fuente": "PDF 3. Componentes de un sistema informático", "actualizado": "2026-11-04" },
+  { "id": "tema-04", "titulo": "Hardware: caja, refrigeración y fuente de alimentación", "prioridad": "media", "tipo": "teoria", "fuente": "PDF 4. Hardware - Primeros componentes", "actualizado": "2026-11-04" },
+  { "id": "tema-05", "titulo": "Hardware: placa base y procesador", "prioridad": "alta", "tipo": "teoria", "fuente": "PDF 5. Hardware - Placa base y procesador", "actualizado": "2026-11-04" },
+  { "id": "tema-06", "titulo": "Hardware: jerarquía de memoria y almacenamiento", "prioridad": "alta", "tipo": "teoria", "fuente": "PDF 6. Hardware - Jerarquía de memoria", "actualizado": "2026-11-04" },
+  { "id": "tema-07", "titulo": "Hardware: periféricos", "prioridad": "media", "tipo": "teoria", "fuente": "PDF 7. Componentes externos - Periféricos", "actualizado": "2026-11-04" },
+  { "id": "tema-08", "titulo": "Seguridad y prevención de riesgos", "prioridad": "media", "tipo": "teoria", "fuente": "PDF 8. Seguridad y prevención de riesgos", "actualizado": "2026-11-04" },
+  { "id": "tema-09", "titulo": "Software", "prioridad": "alta", "tipo": "teoria", "fuente": "PDF 9. Software", "actualizado": "2026-11-04" }
+]

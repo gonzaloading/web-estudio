@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 250" width="800" height="250" role="img" aria-label="La fuente de alimentación convierte la corriente alterna del enchufe, una onda que sube y baja, en corriente continua de valor constante">
+<style>
+text{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;fill:#13241c}
+.tit{font-size:20px;font-weight:700;fill:#0d3a2b} .sub{font-size:14px;fill:#56645b}
+.lbl{font-size:14px;font-weight:600;text-anchor:middle} .peq{font-size:12px;fill:#56645b;text-anchor:middle}
+.fl{stroke:#56645b;stroke-width:2;fill:none}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<defs><marker id="pf" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#56645b"/></marker>
+<marker id="pr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#cf3e3e"/></marker></defs>
+<rect width="800" height="250" fill="#fff"/>
+<text x="20" y="30" style="font-size:18px;font-weight:700;fill:#0d3a2b;text-anchor:start">Corriente alterna</text>
+<text x="20" y="50" style="font-size:13px;font-weight:400;fill:#56645b;text-anchor:start">la del enchufe: sube, baja y cambia de sentido</text>
+<text x="520" y="30" style="font-size:18px;font-weight:700;fill:#0d3a2b;text-anchor:start">Corriente continua</text>
+<text x="520" y="50" style="font-size:13px;font-weight:400;fill:#56645b;text-anchor:start">la que usan los componentes: valor fijo</text>
+<line x1="30" y1="150" x2="290" y2="150" class="fl" marker-end="url(#pf)"/><line x1="30" y1="230" x2="30" y2="70" class="fl" marker-end="url(#pf)"/><text x="24" y="74" style="font-size:13px;font-weight:600;fill:#56645b;text-anchor:end">V</text><text x="290" y="170" style="font-size:13px;font-weight:600;fill:#56645b;text-anchor:end">t</text>
+<polyline points="30.0,150.0 32.5,143.1 35.0,136.3 37.5,129.8 40.0,123.5 42.5,117.7 45.0,112.3 47.5,107.6 50.0,103.6 52.5,100.2 55.0,97.7 57.5,96.0 60.0,95.1 62.5,95.1 65.0,96.0 67.5,97.7 70.0,100.2 72.5,103.6 75.0,107.6 77.5,112.3 80.0,117.7 82.5,123.5 85.0,129.8 87.5,136.3 90.0,143.1 92.5,150.0 95.0,156.9 97.5,163.7 100.0,170.2 102.5,176.5 105.0,182.3 107.5,187.7 110.0,192.4 112.5,196.4 115.0,199.8 117.5,202.3 120.0,204.0 122.5,204.9 125.0,204.9 127.5,204.0 130.0,202.3 132.5,199.8 135.0,196.4 137.5,192.4 140.0,187.7 142.5,182.3 145.0,176.5 147.5,170.2 150.0,163.7 152.5,156.9 155.0,150.0 157.5,143.1 160.0,136.3 162.5,129.8 165.0,123.5 167.5,117.7 170.0,112.3 172.5,107.6 175.0,103.6 177.5,100.2 180.0,97.7 182.5,96.0 185.0,95.1 187.5,95.1 190.0,96.0 192.5,97.7 195.0,100.2 197.5,103.6 200.0,107.6 202.5,112.3 205.0,117.7 207.5,123.5 210.0,129.8 212.5,136.3 215.0,143.1 217.5,150.0 220.0,156.9 222.5,163.7 225.0,170.2 227.5,176.5 230.0,182.3 232.5,187.7 235.0,192.4 237.5,196.4 240.0,199.8 242.5,202.3 245.0,204.0 247.5,204.9 250.0,204.9 252.5,204.0 255.0,202.3 257.5,199.8 260.0,196.4 262.5,192.4 265.0,187.7 267.5,182.3 270.0,176.5 272.5,170.2 275.0,163.7 277.5,156.9 280.0,150.0" fill="none" stroke="#cf3e3e" stroke-width="3"/>
+<g><rect x="316" y="118" width="168" height="64" rx="10" fill="#0d3a2b" stroke="#0d3a2b" stroke-width="1.5"/><text x="400.0" y="146.2" style="font-size:15px;font-weight:650;text-anchor:middle;fill:#fff">Fuente de</text><text x="400.0" y="164.2" style="font-size:15px;font-weight:650;text-anchor:middle;fill:#fff">alimentación</text></g>
+<line x1="292" y1="150" x2="312" y2="150" class="fl" marker-end="url(#pf)"/>
+<line x1="488" y1="150" x2="512" y2="150" class="fl" marker-end="url(#pf)"/>
+<line x1="530" y1="150" x2="780" y2="150" class="fl" marker-end="url(#pf)"/><line x1="530" y1="230" x2="530" y2="70" class="fl" marker-end="url(#pf)"/><text x="524" y="74" style="font-size:13px;font-weight:600;fill:#56645b;text-anchor:end">V</text><text x="780" y="170" style="font-size:13px;font-weight:600;fill:#56645b;text-anchor:end">t</text>
+<line x1="530" y1="105" x2="770" y2="105" stroke="#1f7a4c" stroke-width="3"/>
+<text x="650" y="96" style="font-size:12px;font-weight:600;fill:#1f7a4c;text-anchor:middle">tensión constante (12 V, 5 V, 3,3 V…)</text>
+</svg>

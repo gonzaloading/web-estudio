@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 380" width="800" height="380" role="img" aria-label="Comparación: Harvard tiene memoria de instrucciones y memoria de datos separadas alrededor de la unidad de control; Von Neumann tiene un procesador con unidad de control y UAL, una única memoria principal y almacenamiento secundario">
+<style>
+text{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;fill:#13241c}
+.tit{font-size:20px;font-weight:700;fill:#0d3a2b} .sub{font-size:14px;fill:#56645b}
+.lbl{font-size:14px;font-weight:600;text-anchor:middle} .peq{font-size:12px;fill:#56645b;text-anchor:middle}
+.fl{stroke:#56645b;stroke-width:2;fill:none}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<defs><marker id="pf" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#56645b"/></marker>
+<marker id="pr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#cf3e3e"/></marker></defs>
+<rect width="800" height="380" fill="#fff"/>
+<text x="20" y="34" class="tit">Harvard</text><text x="20" y="54" class="sub">2 memorias separadas</text>
+<text x="420" y="34" class="tit">Von Neumann</text><text x="420" y="54" class="sub">la de los ordenadores actuales</text>
+<line x1="400" y1="20" x2="400" y2="370" stroke="#e7e3d6" stroke-width="2"/>
+<g><rect x="150" y="72" width="100" height="40" rx="10" fill="#eef5d6" stroke="#b3cf4c" stroke-width="1.5"/><text x="200.0" y="96.9" style="font-size:14px;font-weight:650;text-anchor:middle;fill:#13241c">UAL</text></g>
+<g><rect x="150" y="160" width="100" height="50" rx="10" fill="#0d3a2b" stroke="#0d3a2b" stroke-width="1.5"/><text x="200.0" y="181.8" style="font-size:13px;font-weight:650;text-anchor:middle;fill:#fff">Unidad de</text><text x="200.0" y="197.3" style="font-size:13px;font-weight:650;text-anchor:middle;fill:#fff">control</text></g>
+<g><rect x="6" y="152" width="92" height="66" rx="10" fill="#fdf3e1" stroke="#c9861a" stroke-width="1.5"/><text x="52.0" y="174.0" style="font-size:13px;font-weight:650;text-anchor:middle;fill:#13241c">Memoria de</text><text x="52.0" y="189.6" style="font-size:13px;font-weight:650;text-anchor:middle;fill:#13241c">instruc-</text><text x="52.0" y="205.2" style="font-size:13px;font-weight:650;text-anchor:middle;fill:#13241c">ciones</text></g>
+<g><rect x="302" y="152" width="92" height="66" rx="10" fill="#fdf3e1" stroke="#c9861a" stroke-width="1.5"/><text x="348.0" y="181.8" style="font-size:13px;font-weight:650;text-anchor:middle;fill:#13241c">Memoria</text><text x="348.0" y="197.3" style="font-size:13px;font-weight:650;text-anchor:middle;fill:#13241c">de datos</text></g>
+<g><rect x="150" y="270" width="100" height="40" rx="10" fill="#fde2e2" stroke="#cf3e3e" stroke-width="1.5"/><text x="200.0" y="294.9" style="font-size:14px;font-weight:650;text-anchor:middle;fill:#13241c">E/S</text></g>
+<line x1="200" y1="116" x2="200" y2="156" class="fl" marker-start="url(#pf)" marker-end="url(#pf)"/>
+<line x1="103" y1="185" x2="145" y2="185" class="fl" marker-start="url(#pf)" marker-end="url(#pf)"/>
+<line x1="255" y1="185" x2="297" y2="185" class="fl" marker-start="url(#pf)" marker-end="url(#pf)"/>
+<line x1="200" y1="214" x2="200" y2="266" class="fl" marker-start="url(#pf)" marker-end="url(#pf)"/>
+<rect x="500" y="70" width="200" height="104" rx="12" fill="#f7f5ee" stroke="#0d3a2b" stroke-width="1.5"/>
+<text x="600" y="90" class="peq" style="font-weight:700;fill:#0d3a2b">PROCESADOR</text>
+<g><rect x="508" y="100" width="88" height="62" rx="10" fill="#0d3a2b" stroke="#0d3a2b" stroke-width="1.5"/><text x="552.0" y="127.8" style="font-size:13px;font-weight:650;text-anchor:middle;fill:#fff">Unidad de</text><text x="552.0" y="143.3" style="font-size:13px;font-weight:650;text-anchor:middle;fill:#fff">control</text></g>
+<g><rect x="604" y="100" width="88" height="62" rx="10" fill="#eef5d6" stroke="#b3cf4c" stroke-width="1.5"/><text x="648.0" y="135.6" style="font-size:13px;font-weight:650;text-anchor:middle;fill:#13241c">UAL</text></g>
+<g><rect x="410" y="104" width="60" height="36" rx="10" fill="#fde2e2" stroke="#cf3e3e" stroke-width="1.5"/><text x="440.0" y="126.2" style="font-size:12px;font-weight:650;text-anchor:middle;fill:#13241c">Entrada</text></g>
+<g><rect x="732" y="104" width="62" height="36" rx="10" fill="#fde2e2" stroke="#cf3e3e" stroke-width="1.5"/><text x="763.0" y="126.2" style="font-size:12px;font-weight:650;text-anchor:middle;fill:#13241c">Salida</text></g>
+<g><rect x="490" y="216" width="220" height="46" rx="10" fill="#fdf3e1" stroke="#c9861a" stroke-width="1.5"/><text x="600.0" y="235.8" style="font-size:13px;font-weight:650;text-anchor:middle;fill:#13241c">Memoria principal</text><text x="600.0" y="251.3" style="font-size:13px;font-weight:650;text-anchor:middle;fill:#13241c">(datos + instrucciones juntos)</text></g>
+<g><rect x="490" y="304" width="220" height="40" rx="10" fill="#e9f6f5" stroke="#0f8b8d" stroke-width="1.5"/><text x="600.0" y="328.6" style="font-size:13px;font-weight:650;text-anchor:middle;fill:#13241c">Almacenamiento secundario</text></g>
+<line x1="473" y1="122" x2="496" y2="122" class="fl" marker-end="url(#pf)"/>
+<line x1="704" y1="122" x2="728" y2="122" class="fl" marker-end="url(#pf)"/>
+<line x1="600" y1="178" x2="600" y2="212" class="fl" marker-start="url(#pf)" marker-end="url(#pf)"/>
+<line x1="600" y1="266" x2="600" y2="300" class="fl" marker-start="url(#pf)" marker-end="url(#pf)"/>
+<text x="200" y="362" class="peq">Sin almacenamiento permanente</text>
+<text x="600" y="368" class="peq">Aparece el almacenamiento permanente</text>
+</svg>

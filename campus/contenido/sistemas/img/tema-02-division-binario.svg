@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400" role="img" aria-label="Conversión de 45 a binario por divisiones sucesivas entre 2: los restos leídos de abajo arriba dan 101101">
+<style>
+text{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;fill:#13241c}
+.tit{font-size:22px;font-weight:700;fill:#0d3a2b} .sub{font-size:15px;fill:#56645b}
+.cab{font-size:12px;font-weight:700;letter-spacing:.08em;fill:#8a948d}
+.op{font-size:19px} .resto{font-size:19px;font-weight:700;text-anchor:middle;fill:#0d3a2b}
+.caja{fill:#eef5d6;stroke:#b3cf4c} .brillo{fill:#cbe56b}
+.flecha{stroke:#cf3e3e;stroke-width:3;stroke-linecap:round} .punta-f{fill:#cf3e3e}
+.aviso{font-size:15px;font-weight:650;fill:#cf3e3e}
+.res{font-size:26px;font-weight:700;fill:#0d3a2b} .dig{fill:#1f7a4c} .subi{font-size:14px}
+@keyframes f0{0%,3.33%{opacity:0}6.25%,93.0%{opacity:1}97.0%,100%{opacity:0}}.f0{animation:f0 12.0s infinite}@keyframes f1{0%,9.58%{opacity:0}12.5%,93.0%{opacity:1}97.0%,100%{opacity:0}}.f1{animation:f1 12.0s infinite}@keyframes f2{0%,15.83%{opacity:0}18.75%,93.0%{opacity:1}97.0%,100%{opacity:0}}.f2{animation:f2 12.0s infinite}@keyframes f3{0%,22.08%{opacity:0}25.0%,93.0%{opacity:1}97.0%,100%{opacity:0}}.f3{animation:f3 12.0s infinite}@keyframes f4{0%,28.33%{opacity:0}31.25%,93.0%{opacity:1}97.0%,100%{opacity:0}}.f4{animation:f4 12.0s infinite}@keyframes f5{0%,34.58%{opacity:0}37.5%,93.0%{opacity:1}97.0%,100%{opacity:0}}.f5{animation:f5 12.0s infinite}@keyframes fl{0%,43.33%{stroke-dashoffset:206}50.83%,93.0%{stroke-dashoffset:0;opacity:1}97.0%,100%{stroke-dashoffset:0;opacity:0}}.fl{stroke-dasharray:206;animation:fl 12.0s infinite}@keyframes punta{0%,50.0%{opacity:0}51.67%,93.0%{opacity:1}97.0%,100%{opacity:0}}.punta{animation:punta 12.0s infinite}@keyframes lbl{0%,45.83%{opacity:0}48.75%,93.0%{opacity:1}97.0%,100%{opacity:0}}.lbl{animation:lbl 12.0s infinite}@keyframes h0{0%,55.0%{opacity:0}57.08%,93.0%{opacity:1}97.0%,100%{opacity:0}}.h0{animation:h0 12.0s infinite}@keyframes d0{0%,55.0%{opacity:0}57.08%,93.0%{opacity:1}97.0%,100%{opacity:0}}.d0{animation:d0 12.0s infinite}@keyframes h1{0%,60.0%{opacity:0}62.08%,93.0%{opacity:1}97.0%,100%{opacity:0}}.h1{animation:h1 12.0s infinite}@keyframes d1{0%,60.0%{opacity:0}62.08%,93.0%{opacity:1}97.0%,100%{opacity:0}}.d1{animation:d1 12.0s infinite}@keyframes h2{0%,65.0%{opacity:0}67.08%,93.0%{opacity:1}97.0%,100%{opacity:0}}.h2{animation:h2 12.0s infinite}@keyframes d2{0%,65.0%{opacity:0}67.08%,93.0%{opacity:1}97.0%,100%{opacity:0}}.d2{animation:d2 12.0s infinite}@keyframes h3{0%,70.0%{opacity:0}72.08%,93.0%{opacity:1}97.0%,100%{opacity:0}}.h3{animation:h3 12.0s infinite}@keyframes d3{0%,70.0%{opacity:0}72.08%,93.0%{opacity:1}97.0%,100%{opacity:0}}.d3{animation:d3 12.0s infinite}@keyframes h4{0%,75.0%{opacity:0}77.08%,93.0%{opacity:1}97.0%,100%{opacity:0}}.h4{animation:h4 12.0s infinite}@keyframes d4{0%,75.0%{opacity:0}77.08%,93.0%{opacity:1}97.0%,100%{opacity:0}}.d4{animation:d4 12.0s infinite}@keyframes h5{0%,80.0%{opacity:0}82.08%,93.0%{opacity:1}97.0%,100%{opacity:0}}.h5{animation:h5 12.0s infinite}@keyframes d5{0%,80.0%{opacity:0}82.08%,93.0%{opacity:1}97.0%,100%{opacity:0}}.d5{animation:d5 12.0s infinite}@keyframes fin{0%,85.0%{opacity:0}87.92%,93.0%{opacity:1}97.0%,100%{opacity:0}}.fin{animation:fin 12.0s infinite}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<rect width="600" height="400" fill="#fff"/>
+<text x="40" y="38" class="tit">Pasar 45 a binario</text>
+<text x="40" y="62" class="sub">Divide entre 2 hasta que el cociente sea 0</text>
+<text x="40" y="88" class="cab">DIVISIÓN</text><text x="200" y="88" class="cab">COCIENTE</text><text x="318" y="88" class="cab">RESTO</text>
+<rect x="316" y="92" width="46" height="38" rx="9" class="brillo h5"/>
+<rect x="316" y="130" width="46" height="38" rx="9" class="brillo h4"/>
+<rect x="316" y="168" width="46" height="38" rx="9" class="brillo h3"/>
+<rect x="316" y="206" width="46" height="38" rx="9" class="brillo h2"/>
+<rect x="316" y="244" width="46" height="38" rx="9" class="brillo h1"/>
+<rect x="316" y="282" width="46" height="38" rx="9" class="brillo h0"/>
+<g class="f0"><text x="40" y="118" class="op">45 ÷ 2</text><text x="226" y="118" class="op">22</text><rect x="322" y="96" width="34" height="30" rx="7" class="caja"/><text x="339" y="118" class="resto">1</text></g>
+<g class="f1"><text x="40" y="156" class="op">22 ÷ 2</text><text x="226" y="156" class="op">11</text><rect x="322" y="134" width="34" height="30" rx="7" class="caja"/><text x="339" y="156" class="resto">0</text></g>
+<g class="f2"><text x="40" y="194" class="op">11 ÷ 2</text><text x="226" y="194" class="op">5</text><rect x="322" y="172" width="34" height="30" rx="7" class="caja"/><text x="339" y="194" class="resto">1</text></g>
+<g class="f3"><text x="40" y="232" class="op">5 ÷ 2</text><text x="226" y="232" class="op">2</text><rect x="322" y="210" width="34" height="30" rx="7" class="caja"/><text x="339" y="232" class="resto">1</text></g>
+<g class="f4"><text x="40" y="270" class="op">2 ÷ 2</text><text x="226" y="270" class="op">1</text><rect x="322" y="248" width="34" height="30" rx="7" class="caja"/><text x="339" y="270" class="resto">0</text></g>
+<g class="f5"><text x="40" y="308" class="op">1 ÷ 2</text><text x="226" y="308" class="op">0</text><rect x="322" y="286" width="34" height="30" rx="7" class="caja"/><text x="339" y="308" class="resto">1</text></g>
+<line x1="392" y1="302" x2="392" y2="104" class="flecha fl"/>
+<polygon points="384,106 392,92 400,106" class="punta-f punta"/>
+<text x="412" y="200" class="aviso lbl">Lee los restos</text><text x="412" y="222" class="aviso lbl">de abajo arriba ↑</text>
+<text x="40" y="368" class="res">(45)<tspan class="subi" dy="6">10</tspan><tspan dy="-6"> =</tspan></text>
+<text x="164" y="368" class="res dig d0">1</text>
+<text x="190" y="368" class="res dig d1">0</text>
+<text x="216" y="368" class="res dig d2">1</text>
+<text x="242" y="368" class="res dig d3">1</text>
+<text x="268" y="368" class="res dig d4">0</text>
+<text x="294" y="368" class="res dig d5">1</text>
+<text x="318" y="368" class="res fin">)<tspan class="subi" dy="6">2</tspan></text>
+<text x="148" y="368" class="res fin">(</text>
+</svg>

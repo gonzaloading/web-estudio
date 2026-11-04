@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 340" width="780" height="340" role="img" aria-label="Dos dibujos: con el efecto invernadero natural parte del calor de la Tierra escapa al espacio y la temperatura es idónea; con más gases de efecto invernadero se atrapa más calor y sube la temperatura">
+<style>
+text{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;fill:#13241c}
+.tit{font-size:20px;font-weight:700;fill:#0d3a2b} .sub{font-size:14px;fill:#56645b}
+.lbl{font-size:14px;font-weight:600;text-anchor:middle} .peq{font-size:12px;fill:#56645b;text-anchor:middle}
+.fl{stroke:#56645b;stroke-width:2;fill:none}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<defs><marker id="pf" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#56645b"/></marker>
+<marker id="pr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#cf3e3e"/></marker></defs>
+<rect width="780" height="340" fill="#fff"/>
+<defs><marker id="pa" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e0a100"/></marker>
+<marker id="pq" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#cf3e3e"/></marker></defs>
+<text x="20" y="30" style="font-size:17px;font-weight:700;fill:#0d3a2b;text-anchor:start">Efecto invernadero natural</text>
+<text x="20" y="49" style="font-size:12.5px;font-weight:400;fill:#56645b;text-anchor:start">el calor justo para que haya vida</text>
+<rect x="20" y="139.0" width="350" height="22" rx="6" fill="#7fa7c9" fill-opacity="0.35"/>
+<text x="364" y="133.0" style="font-size:11.5px;font-weight:650;fill:#2563eb;text-anchor:end">gases (CO₂…)</text>
+<path d="M20,282 Q195,258 370,282 L370,300 L20,300 Z" fill="#8bbf6a"/>
+<text x="195" y="294" style="font-size:12.5px;font-weight:700;fill:#0d3a2b;text-anchor:middle">Tierra</text>
+<circle cx="46" cy="86" r="17" fill="#f6c933"/>
+<line x1="62" y1="98" x2="140" y2="262" stroke="#e0a100" stroke-width="3" marker-end="url(#pa)"/>
+<line x1="68" y1="92" x2="170" y2="262" stroke="#e0a100" stroke-width="3" marker-end="url(#pa)"/>
+<path d="M210,262 C202,210 224,170 214,72" fill="none" stroke="#cf3e3e" stroke-width="2.5" stroke-dasharray="1 0" marker-end="url(#pq)"/>
+<path d="M238,262 C230,210 252,170 242,72" fill="none" stroke="#cf3e3e" stroke-width="2.5" stroke-dasharray="1 0" marker-end="url(#pq)"/>
+<path d="M266,262 C258,210 280,170 270,72" fill="none" stroke="#cf3e3e" stroke-width="2.5" stroke-dasharray="1 0" marker-end="url(#pq)"/>
+<path d="M294,262 L300,156 L308,258" fill="none" stroke="#cf3e3e" stroke-width="2.5" marker-end="url(#pq)"/>
+<text x="370" y="62" style="font-size:11.5px;font-weight:600;fill:#cf3e3e;text-anchor:end">calor que escapa</text>
+<text x="195" y="324" style="font-size:13px;font-weight:700;fill:#1f7a4c;text-anchor:middle">Equilibrio: temperatura idónea</text>
+<line x1="390" y1="20" x2="390" y2="330" stroke="#e7e3d6" stroke-width="2"/>
+<text x="410" y="30" style="font-size:17px;font-weight:700;fill:#0d3a2b;text-anchor:start">Efecto invernadero aumentado</text>
+<text x="410" y="49" style="font-size:12.5px;font-weight:400;fill:#56645b;text-anchor:start">por las emisiones humanas de CO₂</text>
+<rect x="410" y="130.0" width="350" height="40" rx="6" fill="#7fa7c9" fill-opacity="0.75"/>
+<text x="754" y="124.0" style="font-size:11.5px;font-weight:650;fill:#2563eb;text-anchor:end">gases (CO₂…)</text>
+<path d="M410,282 Q585,258 760,282 L760,300 L410,300 Z" fill="#8bbf6a"/>
+<text x="585" y="294" style="font-size:12.5px;font-weight:700;fill:#0d3a2b;text-anchor:middle">Tierra</text>
+<circle cx="436" cy="86" r="17" fill="#f6c933"/>
+<line x1="452" y1="98" x2="530" y2="262" stroke="#e0a100" stroke-width="3" marker-end="url(#pa)"/>
+<line x1="458" y1="92" x2="560" y2="262" stroke="#e0a100" stroke-width="3" marker-end="url(#pa)"/>
+<path d="M600,262 C592,210 614,170 604,72" fill="none" stroke="#cf3e3e" stroke-width="2.5" stroke-dasharray="1 0" marker-end="url(#pq)"/>
+<path d="M628,262 L634,156 L642,258" fill="none" stroke="#cf3e3e" stroke-width="2.5" marker-end="url(#pq)"/>
+<path d="M656,262 L662,156 L670,258" fill="none" stroke="#cf3e3e" stroke-width="2.5" marker-end="url(#pq)"/>
+<path d="M684,262 L690,156 L698,258" fill="none" stroke="#cf3e3e" stroke-width="2.5" marker-end="url(#pq)"/>
+<text x="760" y="62" style="font-size:11.5px;font-weight:600;fill:#cf3e3e;text-anchor:end">calor que escapa</text>
+<text x="585" y="324" style="font-size:13px;font-weight:700;fill:#cf3e3e;text-anchor:middle">Más gases → más calor atrapado → sube la temperatura</text>
+</svg>

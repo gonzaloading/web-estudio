@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Bocetos – Web de estudio Gonzaloading</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#d9dce1;padding:30px}
+  .label{max-width:1200px;margin:0 auto 12px;font-size:22px;font-weight:700;color:#222}
+  .label small{display:block;font-size:14px;font-weight:400;color:#555;margin-top:4px}
+  .frame{max-width:1200px;margin:0 auto 60px;border-radius:12px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.25)}
+  .bar{height:30px;background:#e8e8e8;display:flex;align-items:center;gap:6px;padding:0 12px}
+  .bar i{width:11px;height:11px;border-radius:50%;background:#ff5f57}.bar i:nth-child(2){background:#febc2e}.bar i:nth-child(3){background:#28c840}
+  .bar span{margin-left:14px;background:#fff;border-radius:5px;font-size:11px;color:#777;padding:2px 12px}
+
+  /* ============ A: DARK DEV ============ */
+  .A{background:#0d1117;color:#c9d1d9;display:grid;grid-template-columns:220px 1fr;min-height:760px;font-size:13px}
+  .A aside{background:#010409;border-right:1px solid #21262d;padding:20px 14px}
+  .A .logo{font-family:ui-monospace,Menlo,monospace;color:#58a6ff;font-weight:700;margin-bottom:22px}
+  .A aside h6{font-size:10px;color:#6e7681;text-transform:uppercase;letter-spacing:1px;margin:16px 6px 6px}
+  .A aside a{display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:6px;color:#c9d1d9;text-decoration:none}
+  .A aside a.on{background:#1f6feb33;color:#58a6ff}
+  .A .dot{width:8px;height:8px;border-radius:50%}
+  .A main{padding:26px 30px}
+  .A h1{font-size:24px;color:#f0f6fc}.A h1 b{color:#58a6ff;font-family:ui-monospace,Menlo,monospace}
+  .A .sub{color:#8b949e;margin:4px 0 20px}
+  .A .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+  .A .card{background:#161b22;border:1px solid #30363d;border-radius:8px;padding:14px}
+  .A .kpi .v{font-size:26px;font-weight:700;color:#f0f6fc}.A .kpi .t{color:#8b949e;font-size:11px}
+  .A .green{color:#3fb950!important}
+  .A .heat{display:grid;grid-template-columns:repeat(30,1fr);gap:3px;margin-top:10px}
+  .A .heat i{aspect-ratio:1;border-radius:2px;background:#161b22;border:1px solid #21262d}
+  .A .h1c{background:#0e4429!important}.A .h2c{background:#006d32!important}.A .h3c{background:#26a641!important}.A .h4c{background:#39d353!important}
+  .A .row{display:grid;grid-template-columns:1.5fr 1fr;gap:12px;margin-top:12px}
+  .A h3{font-size:13px;color:#f0f6fc;margin-bottom:10px;display:flex;justify-content:space-between}
+  .A h3 span{color:#8b949e;font-weight:400}
+  .A .subj{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  .A .s{background:#0d1117;border:1px solid #30363d;border-radius:6px;padding:10px}
+  .A .s b{display:block;color:#f0f6fc;margin-bottom:6px}
+  .A .pb{height:6px;background:#21262d;border-radius:3px;overflow:hidden;margin:6px 0 4px}.A .pb i{display:block;height:100%}
+  .A .s small{color:#8b949e}
+  .A li{list-style:none;padding:7px 0;border-bottom:1px solid #21262d;display:flex;gap:8px;align-items:center}
+  .A .tag{font-size:10px;padding:1px 6px;border-radius:10px;border:1px solid}
+  .A code{font-family:ui-monospace,Menlo,monospace;color:#ff7b72;font-size:12px}
+
+  /* ============ B: MINIMAL LIGHT ============ */
+  .B{background:#fbfaf7;color:#2b2b2b;min-height:760px;font-family:Georgia,"Times New Roman",serif}
+  .B nav{display:flex;justify-content:space-between;align-items:center;padding:18px 48px;border-bottom:1px solid #ece8df;font-family:-apple-system,sans-serif;font-size:13px}
+  .B nav .links a{margin-left:22px;color:#777;text-decoration:none}.B nav .links a.on{color:#2b2b2b;border-bottom:2px solid #c96f4a;padding-bottom:4px}
+  .B .hero{padding:40px 48px 24px;display:flex;justify-content:space-between;align-items:flex-end}
+  .B .hero h1{font-size:44px;font-weight:400}.B .hero h1 em{color:#c96f4a}
+  .B .hero p{color:#888;font-family:-apple-system,sans-serif;font-size:14px;margin-top:6px}
+  .B .streak{text-align:right;font-family:-apple-system,sans-serif}
+  .B .streak .n{font-size:48px;font-weight:300;color:#c96f4a;line-height:1}.B .streak small{color:#999;font-size:12px}
+  .B .wrap{display:grid;grid-template-columns:2fr 1fr;gap:40px;padding:10px 48px 40px;font-family:-apple-system,sans-serif}
+  .B h2{font-family:Georgia,serif;font-weight:400;font-size:20px;margin:18px 0 12px;border-bottom:1px solid #ece8df;padding-bottom:8px}
+  .B .subj{display:grid;grid-template-columns:1fr 1fr;gap:0}
+  .B .s{padding:16px 0;border-bottom:1px solid #f0ece4;display:flex;align-items:center;gap:14px;padding-right:20px}
+  .B .ring{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;flex:none}
+  .B .ring span{width:36px;height:36px;border-radius:50%;background:#fbfaf7;display:grid;place-items:center;font-size:11px;font-weight:600}
+  .B .s b{font-size:15px;font-weight:500;display:block}.B .s small{color:#999;font-size:12px}
+  .B .today li{list-style:none;display:flex;gap:10px;padding:10px 0;border-bottom:1px dashed #e5e0d5;font-size:14px}
+  .B .chk{width:16px;height:16px;border:1.5px solid #bbb;border-radius:4px;flex:none;margin-top:2px}
+  .B .chk.ok{background:#c96f4a;border-color:#c96f4a}
+  .B .mini{font-size:13px;color:#666;line-height:1.9}
+  .B .mini b{color:#2b2b2b}
+  .B .err{background:#fff;border-left:3px solid #c96f4a;padding:10px 12px;margin-bottom:8px;font-size:13px;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+  .B .err small{color:#999;display:block;margin-top:3px}
+
+  /* ============ C: GAMIFIED ============ */
+  .C{background:linear-gradient(135deg,#1e1b4b,#312e81 60%,#4c1d95);color:#fff;min-height:760px;padding:26px 32px;font-size:13px}
+  .C .top{display:flex;align-items:center;gap:16px;margin-bottom:22px}
+  .C .av{width:58px;height:58px;border-radius:16px;background:linear-gradient(135deg,#f472b6,#facc15);display:grid;place-items:center;font-size:26px;font-weight:800;color:#1e1b4b}
+  .C .top h1{font-size:24px}.C .top p{opacity:.7}
+  .C .xp{margin-left:auto;width:320px}.C .xp .lv{display:flex;justify-content:space-between;font-weight:700;margin-bottom:6px}
+  .C .xpb{height:12px;background:#ffffff22;border-radius:8px;overflow:hidden}.C .xpb i{display:block;height:100%;width:64%;background:linear-gradient(90deg,#22d3ee,#a78bfa,#f472b6)}
+  .C .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:18px}
+  .C .k{background:#ffffff14;backdrop-filter:blur(8px);border:1px solid #ffffff22;border-radius:16px;padding:16px;display:flex;gap:12px;align-items:center}
+  .C .k .ic{font-size:28px}.C .k .v{font-size:24px;font-weight:800}.C .k small{opacity:.7}
+  .C .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .C .s{border-radius:18px;padding:16px;position:relative;overflow:hidden;min-height:128px}
+  .C .s .e{font-size:30px}.C .s b{display:block;font-size:16px;margin:6px 0 2px}.C .s small{opacity:.85}
+  .C .s .pct{position:absolute;right:14px;top:14px;font-size:22px;font-weight:800;opacity:.9}
+  .C .s .pb{height:8px;background:#00000033;border-radius:6px;margin-top:10px;overflow:hidden}.C .s .pb i{display:block;height:100%;background:#fff}
+  .C .bottom{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:16px}
+  .C .panel{background:#ffffff14;border:1px solid #ffffff22;border-radius:16px;padding:14px}
+  .C .panel h3{font-size:14px;margin-bottom:8px}
+  .C .panel li{list-style:none;padding:6px 0;border-bottom:1px solid #ffffff15;display:flex;justify-content:space-between}
+  .C .badge{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:12px;background:#ffffff22;margin:4px;font-size:20px}
+  .C .badge.off{opacity:.3}
+
+  /* ============ D: Subject page ============ */
+  .D{background:#0d1117;color:#c9d1d9;display:grid;grid-template-columns:240px 1fr 260px;min-height:700px;font-size:13px}
+  .D aside{border-right:1px solid #21262d;padding:20px 14px;background:#010409}
+  .D aside h4{color:#f0f6fc;margin-bottom:14px}
+  .D .t{padding:7px 8px;border-radius:6px;display:flex;justify-content:space-between;margin-bottom:2px}
+  .D .t.on{background:#1f6feb33;color:#58a6ff}
+  .D .prio{font-size:10px;font-weight:700;padding:0 6px;border-radius:8px}
+  .D main{padding:26px 34px}
+  .D .crumb{color:#8b949e;font-size:12px;margin-bottom:8px}
+  .D h1{color:#f0f6fc;font-size:26px;margin-bottom:6px}
+  .D .meta{display:flex;gap:8px;margin-bottom:20px}
+  .D .chip{font-size:11px;border:1px solid #30363d;border-radius:12px;padding:2px 10px;color:#8b949e}
+  .D h2{color:#f0f6fc;font-size:17px;margin:20px 0 8px;padding-bottom:6px;border-bottom:1px solid #21262d}
+  .D p{line-height:1.7;margin-bottom:10px}
+  .D .key{background:#3fb95015;border-left:3px solid #3fb950;padding:10px 14px;border-radius:0 6px 6px 0;margin:12px 0}
+  .D .warn{background:#f8514915;border-left:3px solid #f85149;padding:10px 14px;border-radius:0 6px 6px 0;margin:12px 0}
+  .D pre{background:#161b22;border:1px solid #30363d;border-radius:6px;padding:12px;font-family:ui-monospace,Menlo,monospace;font-size:12px;color:#79c0ff;line-height:1.6}
+  .D pre .k{color:#ff7b72}
+  .D .right{border-left:1px solid #21262d;padding:20px 16px}
+  .D .fc{background:#161b22;border:1px solid #30363d;border-radius:8px;padding:14px;margin-bottom:10px}
+  .D .fc .q{color:#f0f6fc;font-weight:600;margin-bottom:10px}
+  .D .btns{display:flex;gap:6px}.D .btns span{flex:1;text-align:center;padding:5px;border-radius:5px;font-size:11px}
+</style>
+</head>
+<body>
+
+<!-- ================================================== A -->
+<div class="label">Opción A · “Dev Dashboard” (oscuro, estilo GitHub)
+<small>Barra lateral fija con asignaturas · mapa de racha tipo contribuciones de GitHub · sobrio y técnico, encaja con DAW/DAM.</small></div>
+<div class="frame"><div class="bar"><i></i><i></i><i></i><span>gonzaloading.github.io/estudio</span></div>
+<div class="A">
+  <aside>
+    <div class="logo">&gt; gonzaloading_</div>
+    <a class="on">🏠 Inicio</a><a>🧠 Repaso de hoy</a><a>❌ Mis fallos</a><a>📜 Historial</a>
+    <h6>Asignaturas</h6>
+    <a><span class="dot" style="background:#f78166"></span>Bases de Datos</a>
+    <a><span class="dot" style="background:#58a6ff"></span>Programación</a>
+    <a><span class="dot" style="background:#d2a8ff"></span>Lenguaje de Marcas</a>
+    <a><span class="dot" style="background:#3fb950"></span>Sistemas Informáticos</a>
+    <a><span class="dot" style="background:#e3b341"></span>Entornos de Desarrollo</a>
+    <a><span class="dot" style="background:#79c0ff"></span>Inglés</a>
+  </aside>
+  <main>
+    <h1>Bienvenido de nuevo, <b>Gonzaloading</b> 👋</h1>
+    <div class="sub">Miércoles 4 nov · tienes 12 tarjetas para repasar hoy</div>
+    <div class="kpis">
+      <div class="card kpi"><div class="t">PROGRESO GLOBAL</div><div class="v">47%</div><div class="t green">+3% esta semana</div></div>
+      <div class="card kpi"><div class="t">RACHA</div><div class="v">🔥 9 días</div><div class="t">récord: 14</div></div>
+      <div class="card kpi"><div class="t">HORAS ESTE MES</div><div class="v">21,5 h</div><div class="t">18 sesiones</div></div>
+      <div class="card kpi"><div class="t">ACIERTO EN REPASOS</div><div class="v">78%</div><div class="t">23 fallos pendientes</div></div>
+    </div>
+    <div class="card"><h3>Actividad · últimos 90 días <span>menos ▢▢▢▢ más</span></h3>
+      <div class="heat" id="heatA"></div></div>
+    <div class="row">
+      <div class="card"><h3>Asignaturas <span>% temario dominado</span></h3>
+        <div class="subj">
+          <div class="s"><b>Bases de Datos</b><div class="pb"><i style="width:62%;background:#f78166"></i></div><small>62% · T4 SQL joins</small></div>
+          <div class="s"><b>Programación</b><div class="pb"><i style="width:55%;background:#58a6ff"></i></div><small>55% · T5 POO</small></div>
+          <div class="s"><b>Leng. de Marcas</b><div class="pb"><i style="width:70%;background:#d2a8ff"></i></div><small>70% · T3 XML Schema</small></div>
+          <div class="s"><b>Sist. Informáticos</b><div class="pb"><i style="width:38%;background:#3fb950"></i></div><small>38% · T4 Redes</small></div>
+          <div class="s"><b>Entornos Desarrollo</b><div class="pb"><i style="width:30%;background:#e3b341"></i></div><small>30% · T3 Git</small></div>
+          <div class="s"><b>Inglés</b><div class="pb"><i style="width:44%;background:#79c0ff"></i></div><small>44% · Unit 4</small></div>
+        </div></div>
+      <div class="card"><h3>Repaso de hoy (active recall) <span>12</span></h3>
+        <ul>
+          <li><span class="tag" style="color:#f78166">BD</span>Diferencia INNER vs LEFT JOIN</li>
+          <li><span class="tag" style="color:#58a6ff">PROG</span>¿Qué es el polimorfismo?</li>
+          <li><span class="tag" style="color:#3fb950">SI</span>Clases de direcciones IPv4</li>
+          <li><span class="tag" style="color:#d2a8ff">LM</span>DTD vs XSD</li>
+          <li style="border:0;color:#58a6ff">Empezar sesión →</li>
+        </ul></div>
+    </div>
+    <div class="row">
+      <div class="card"><h3>Últimos fallos</h3>
+        <ul>
+          <li><code>✗</code> BD · Confundí <code>HAVING</code> con <code>WHERE</code> <small style="margin-left:auto;color:#6e7681">ayer</small></li>
+          <li><code>✗</code> PROG · <code>static</code> en métodos de instancia <small style="margin-left:auto;color:#6e7681">2 nov</small></li>
+        </ul></div>
+      <div class="card"><h3>Historial</h3>
+        <ul>
+          <li>✅ 03/11 · BD T4 · 45 min · 8/10</li>
+          <li>📥 02/11 · Nuevo tema: SI T4 Redes</li>
+        </ul></div>
+    </div>
+  </main>
+</div></div>
+
+<!-- ================================================== B -->
+<div class="label">Opción B · “Cuaderno” (claro, minimalista, tipo Notion)
+<small>Mucho aire, tipografía de libro, cómodo para leer teoría larga sin cansar la vista. Menos “dashboard”, más “apuntes bonitos”.</small></div>
+<div class="frame"><div class="bar"><i></i><i></i><i></i><span>gonzaloading.github.io/estudio</span></div>
+<div class="B">
+  <nav><b style="font-family:Georgia,serif;font-size:17px">📓 Cuaderno de Gonzaloading</b>
+    <div class="links"><a class="on">Inicio</a><a>Asignaturas</a><a>Repaso</a><a>Fallos</a><a>Historial</a></div></nav>
+  <div class="hero">
+    <div><h1>Hola de nuevo, <em>Gonzaloading</em>.</h1><p>Llevas el 47% del curso. Hoy toca repasar 12 conceptos (≈ 20 min).</p></div>
+    <div class="streak"><div class="n">9</div><small>días seguidos estudiando</small></div>
+  </div>
+  <div class="wrap">
+    <div>
+      <h2>Asignaturas</h2>
+      <div class="subj">
+        <div class="s"><div class="ring" style="background:conic-gradient(#c96f4a 62%,#eee 0)"><span>62%</span></div><div><b>Bases de Datos</b><small>Tema 4 · SQL avanzado</small></div></div>
+        <div class="s"><div class="ring" style="background:conic-gradient(#4a7fc9 55%,#eee 0)"><span>55%</span></div><div><b>Programación</b><small>Tema 5 · POO</small></div></div>
+        <div class="s"><div class="ring" style="background:conic-gradient(#8a5cc9 70%,#eee 0)"><span>70%</span></div><div><b>Lenguaje de Marcas</b><small>Tema 3 · XML Schema</small></div></div>
+        <div class="s"><div class="ring" style="background:conic-gradient(#4a9c6d 38%,#eee 0)"><span>38%</span></div><div><b>Sistemas Informáticos</b><small>Tema 4 · Redes</small></div></div>
+        <div class="s"><div class="ring" style="background:conic-gradient(#c9a24a 30%,#eee 0)"><span>30%</span></div><div><b>Entornos de Desarrollo</b><small>Tema 3 · Git</small></div></div>
+        <div class="s"><div class="ring" style="background:conic-gradient(#4ab0c9 44%,#eee 0)"><span>44%</span></div><div><b>Inglés</b><small>Unit 4 · Past perfect</small></div></div>
+      </div>
+      <h2>Plan de hoy</h2>
+      <ul class="today">
+        <li><span class="chk ok"></span><s style="color:#aaa">Repasar fallos de ayer (BD)</s></li>
+        <li><span class="chk"></span>Active recall: 8 tarjetas de Programación T5</li>
+        <li><span class="chk"></span>Leer Sistemas T4 · apartado “Máscaras de red” <small style="color:#c96f4a">★ prioridad alta</small></li>
+        <li><span class="chk"></span>Inglés: 10 min de vocabulario</li>
+      </ul>
+    </div>
+    <div>
+      <h2>En cifras</h2>
+      <div class="mini">
+        <b>21,5 h</b> estudiadas este mes<br><b>18</b> sesiones · media 72 min<br><b>78%</b> de acierto en repasos<br><b>14</b> días · mejor racha
+      </div>
+      <h2>Fallos recientes</h2>
+      <div class="err">HAVING ≠ WHERE: HAVING filtra grupos<small>Bases de Datos · ayer · fallado 2 veces</small></div>
+      <div class="err">Un método static no accede a <i>this</i><small>Programación · 2 nov</small></div>
+      <h2>Historial</h2>
+      <div class="mini">03/11 — BD T4, 45 min<br>02/11 — Añadido tema SI T4<br>01/11 — Inglés Unit 4, 30 min</div>
+    </div>
+  </div>
+</div></div>
+
+<!-- ================================================== C -->
+<div class="label">Opción C · “Modo juego” (gamificado, colorido)
+<small>Niveles y XP por estudiar, logros, tarjetas de colores por asignatura. Motiva más a mantener la racha.</small></div>
+<div class="frame"><div class="bar"><i></i><i></i><i></i><span>gonzaloading.github.io/estudio</span></div>
+<div class="C">
+  <div class="top">
+    <div class="av">G</div>
+    <div><h1>¡Bienvenido, Gonzaloading!</h1><p>Nivel 7 · “Aprendiz de Full-Stack”</p></div>
+    <div class="xp"><div class="lv"><span>Nv. 7</span><span>640 / 1000 XP</span></div><div class="xpb"><i></i></div></div>
+  </div>
+  <div class="kpis">
+    <div class="k"><span class="ic">🔥</span><div><div class="v">9 días</div><small>racha actual</small></div></div>
+    <div class="k"><span class="ic">📈</span><div><div class="v">47%</div><small>curso completado</small></div></div>
+    <div class="k"><span class="ic">🎯</span><div><div class="v">78%</div><small>precisión repasos</small></div></div>
+    <div class="k"><span class="ic">🧠</span><div><div class="v">12</div><small>tarjetas para hoy</small></div></div>
+  </div>
+  <div class="grid">
+    <div class="s" style="background:linear-gradient(135deg,#f97316,#ef4444)"><span class="pct">62%</span><div class="e">🗄️</div><b>Bases de Datos</b><small>Tema 4 · SQL</small><div class="pb"><i style="width:62%"></i></div></div>
+    <div class="s" style="background:linear-gradient(135deg,#3b82f6,#6366f1)"><span class="pct">55%</span><div class="e">☕</div><b>Programación</b><small>Tema 5 · POO</small><div class="pb"><i style="width:55%"></i></div></div>
+    <div class="s" style="background:linear-gradient(135deg,#a855f7,#ec4899)"><span class="pct">70%</span><div class="e">🏷️</div><b>Lenguaje de Marcas</b><small>Tema 3 · XSD</small><div class="pb"><i style="width:70%"></i></div></div>
+    <div class="s" style="background:linear-gradient(135deg,#10b981,#059669)"><span class="pct">38%</span><div class="e">🖥️</div><b>Sistemas Informáticos</b><small>Tema 4 · Redes</small><div class="pb"><i style="width:38%"></i></div></div>
+    <div class="s" style="background:linear-gradient(135deg,#eab308,#f59e0b)"><span class="pct">30%</span><div class="e">🛠️</div><b>Entornos de Desarrollo</b><small>Tema 3 · Git</small><div class="pb"><i style="width:30%"></i></div></div>
+    <div class="s" style="background:linear-gradient(135deg,#06b6d4,#0ea5e9)"><span class="pct">44%</span><div class="e">🇬🇧</div><b>Inglés</b><small>Unit 4</small><div class="pb"><i style="width:44%"></i></div></div>
+  </div>
+  <div class="bottom">
+    <div class="panel"><h3>⚔️ Misiones de hoy</h3><ul><li>Repasar 12 tarjetas<span>+50 XP</span></li><li>Corregir 3 fallos<span>+30 XP</span></li><li>Leer SI T4<span>+40 XP</span></li></ul></div>
+    <div class="panel"><h3>💀 Jefes pendientes (fallos)</h3><ul><li>HAVING vs WHERE<span>BD ×2</span></li><li>static vs instancia<span>PROG</span></li><li>Máscara /26<span>SI</span></li></ul></div>
+    <div class="panel"><h3>🏆 Logros</h3><span class="badge">🔥</span><span class="badge">📚</span><span class="badge">🎯</span><span class="badge off">💯</span><span class="badge off">🧙</span><span class="badge off">👑</span></div>
+  </div>
+</div></div>
+
+<!-- ================================================== D -->
+<div class="label">Página de asignatura (ejemplo con estilo A)
+<small>Índice de temas con prioridad · teoría con cajas “clave” y “error típico” · tarjetas de active recall al lado. El mismo esquema sirve para B o C.</small></div>
+<div class="frame"><div class="bar"><i></i><i></i><i></i><span>gonzaloading.github.io/estudio/bases-de-datos</span></div>
+<div class="D">
+  <aside><h4>🗄️ Bases de Datos</h4>
+    <div class="t">T1 · Intro SGBD <span class="prio" style="background:#6e768133;color:#8b949e">baja</span></div>
+    <div class="t">T2 · Modelo E/R <span class="prio" style="background:#f8514933;color:#f85149">alta</span></div>
+    <div class="t">T3 · Modelo relacional <span class="prio" style="background:#e3b34133;color:#e3b341">media</span></div>
+    <div class="t on">T4 · SQL consultas <span class="prio" style="background:#f8514933;color:#f85149">alta</span></div>
+    <div class="t">T5 · Normalización <span class="prio" style="background:#f8514933;color:#f85149">alta</span></div>
+    <div class="t" style="color:#6e7681">+ Añadir tema…</div>
+  </aside>
+  <main>
+    <div class="crumb">Inicio / Bases de Datos / Tema 4</div>
+    <h1>Tema 4 · Consultas SQL</h1>
+    <div class="meta"><span class="chip">★ Prioridad alta</span><span class="chip">Fuente: PDF profe T4</span><span class="chip">Actualizado 03/11</span><span class="chip">62% dominado</span></div>
+    <h2>4.1 GROUP BY y HAVING</h2>
+    <p>GROUP BY agrupa filas con el mismo valor para poder aplicar funciones de agregado (COUNT, SUM, AVG…). HAVING filtra esos grupos una vez formados.</p>
+    <div class="key"><b>🔑 Clave de examen:</b> WHERE filtra filas <u>antes</u> de agrupar; HAVING filtra grupos <u>después</u>.</div>
+    <pre><span class="k">SELECT</span> depto, <span class="k">COUNT</span>(*) <span class="k">FROM</span> empleados
+<span class="k">WHERE</span> salario &gt; 1500
+<span class="k">GROUP BY</span> depto
+<span class="k">HAVING</span> <span class="k">COUNT</span>(*) &gt; 3;</pre>
+    <div class="warn"><b>⚠️ Tu fallo (2 veces):</b> usar HAVING para condiciones de fila sin agregado.</div>
+    <h2>4.2 JOINs</h2>
+    <p>INNER JOIN devuelve sólo las filas con coincidencia en ambas tablas; LEFT JOIN conserva todas las de la izquierda…</p>
+  </main>
+  <div class="right"><h4 style="color:#f0f6fc;margin-bottom:12px">🧠 Active recall</h4>
+    <div class="fc"><div class="q">¿Cuándo se usa HAVING en vez de WHERE?</div><div style="color:#6e7681;font-size:12px;margin-bottom:10px">[ pulsa para ver respuesta ]</div>
+      <div class="btns"><span style="background:#f8514933;color:#f85149">Fallé</span><span style="background:#e3b34133;color:#e3b341">Dudé</span><span style="background:#3fb95033;color:#3fb950">Bien</span></div></div>
+    <div class="fc"><div class="q">¿Qué devuelve un LEFT JOIN si no hay coincidencia?</div></div>
+    <div style="color:#8b949e;font-size:12px;margin-top:10px">Próximo repaso de este tema: <b style="color:#f0f6fc">en 3 días</b></div>
+  </div>
+</div></div>
+
+<script>
+  const h=document.getElementById('heatA');
+  for(let i=0;i<90;i++){const e=document.createElement('i');const r=Math.random();if(i>80||r>.35)e.className=['h1c','h2c','h3c','h4c'][Math.floor(Math.random()*4)];h.appendChild(e)}
+</script>
+</body>
+</html>

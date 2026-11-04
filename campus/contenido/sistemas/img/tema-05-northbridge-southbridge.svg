@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 360" width="800" height="360" role="img" aria-label="Antes: procesador conectado al Northbridge, que controla RAM y gráfica, y este al Southbridge, que controla periféricos. Ahora: el Northbridge está dentro del procesador, que se comunica con el chipset por DMI">
+<style>
+text{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;fill:#13241c}
+.tit{font-size:20px;font-weight:700;fill:#0d3a2b} .sub{font-size:14px;fill:#56645b}
+.lbl{font-size:14px;font-weight:600;text-anchor:middle} .peq{font-size:12px;fill:#56645b;text-anchor:middle}
+.fl{stroke:#56645b;stroke-width:2;fill:none}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<defs><marker id="pf" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#56645b"/></marker>
+<marker id="pr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#cf3e3e"/></marker></defs>
+<rect width="800" height="360" fill="#fff"/>
+<text x="20" y="30" style="font-size:18px;font-weight:700;fill:#0d3a2b;text-anchor:start">Antes</text>
+<text x="20" y="50" style="font-size:13px;font-weight:400;fill:#56645b;text-anchor:start">chipset dividido en dos puentes</text>
+<text x="420" y="30" style="font-size:18px;font-weight:700;fill:#0d3a2b;text-anchor:start">Ahora</text>
+<text x="420" y="50" style="font-size:13px;font-weight:400;fill:#56645b;text-anchor:start">el Northbridge está dentro del procesador</text>
+<line x1="400" y1="20" x2="400" y2="350" stroke="#e7e3d6" stroke-width="2"/>
+<g><rect x="140" y="66" width="120" height="40" rx="10" fill="#0d3a2b" stroke="#0d3a2b" stroke-width="1.5"/><text x="200.0" y="90.9" style="font-size:14px;font-weight:650;text-anchor:middle;fill:#fff">Procesador</text></g>
+<g><rect x="130" y="146" width="140" height="44" rx="10" fill="#cbe56b" stroke="#b3cf4c" stroke-width="1.5"/><text x="200.0" y="172.9" style="font-size:14px;font-weight:650;text-anchor:middle;fill:#13241c">Northbridge</text></g>
+<g><rect x="10" y="150" width="90" height="36" rx="10" fill="#fdf3e1" stroke="#c9861a" stroke-width="1.5"/><text x="55.0" y="172.6" style="font-size:13px;font-weight:650;text-anchor:middle;fill:#13241c">RAM</text></g>
+<g><rect x="300" y="150" width="90" height="36" rx="10" fill="#fdf3e1" stroke="#c9861a" stroke-width="1.5"/><text x="345.0" y="172.6" style="font-size:13px;font-weight:650;text-anchor:middle;fill:#13241c">Gráfica</text></g>
+<g><rect x="130" y="230" width="140" height="44" rx="10" fill="#eef5d6" stroke="#b3cf4c" stroke-width="1.5"/><text x="200.0" y="256.9" style="font-size:14px;font-weight:650;text-anchor:middle;fill:#13241c">Southbridge</text></g>
+<g><rect x="70" y="300" width="260" height="40" rx="10" fill="#f3f5ef" stroke="#cfd6d1" stroke-width="1.5"/><text x="200.0" y="324.4" style="font-size:12.5px;font-weight:400;text-anchor:middle;fill:#13241c">USB, discos, sonido, red… (lo lento)</text></g>
+<line x1="200" y1="110" x2="200" y2="142" class="fl" marker-start="url(#pf)" marker-end="url(#pf)"/>
+<line x1="104" y1="168" x2="126" y2="168" class="fl" marker-start="url(#pf)" marker-end="url(#pf)"/>
+<line x1="274" y1="168" x2="296" y2="168" class="fl" marker-start="url(#pf)" marker-end="url(#pf)"/>
+<line x1="200" y1="194" x2="200" y2="226" class="fl" marker-start="url(#pf)" marker-end="url(#pf)"/>
+<line x1="200" y1="278" x2="200" y2="296" class="fl" marker-start="url(#pf)" marker-end="url(#pf)"/>
+<rect x="520" y="62" width="160" height="96" rx="12" fill="#0d3a2b"/>
+<text x="600" y="86" style="font-size:14px;font-weight:700;fill:#fff;text-anchor:middle">Procesador</text>
+<g><rect x="532" y="98" width="136" height="48" rx="10" fill="#cbe56b" stroke="#cbe56b" stroke-width="1.5"/><text x="600.0" y="118.9" style="font-size:12.5px;font-weight:650;text-anchor:middle;fill:#13241c">antiguo</text><text x="600.0" y="133.9" style="font-size:12.5px;font-weight:650;text-anchor:middle;fill:#13241c">Northbridge</text></g>
+<g><rect x="410" y="92" width="84" height="36" rx="10" fill="#fdf3e1" stroke="#c9861a" stroke-width="1.5"/><text x="452.0" y="114.5" style="font-size:13px;font-weight:650;text-anchor:middle;fill:#13241c">RAM</text></g>
+<g><rect x="706" y="92" width="84" height="36" rx="10" fill="#fdf3e1" stroke="#c9861a" stroke-width="1.5"/><text x="748.0" y="114.5" style="font-size:13px;font-weight:650;text-anchor:middle;fill:#13241c">Gráfica</text></g>
+<line x1="498" y1="110" x2="516" y2="110" class="fl" marker-start="url(#pf)" marker-end="url(#pf)"/>
+<line x1="684" y1="110" x2="702" y2="110" class="fl" marker-start="url(#pf)" marker-end="url(#pf)"/>
+<line x1="600" y1="162" x2="600" y2="222" class="fl" marker-start="url(#pf)" marker-end="url(#pf)"/>
+<text x="612" y="197" style="font-size:13px;font-weight:700;fill:#cf3e3e;text-anchor:start">DMI</text>
+<g><rect x="530" y="226" width="140" height="44" rx="10" fill="#eef5d6" stroke="#b3cf4c" stroke-width="1.5"/><text x="600.0" y="252.9" style="font-size:14px;font-weight:650;text-anchor:middle;fill:#13241c">Chipset</text></g>
+<g><rect x="470" y="300" width="260" height="40" rx="10" fill="#f3f5ef" stroke="#cfd6d1" stroke-width="1.5"/><text x="600.0" y="324.4" style="font-size:12.5px;font-weight:400;text-anchor:middle;fill:#13241c">USB, discos, sonido, red…</text></g>
+<line x1="600" y1="274" x2="600" y2="296" class="fl" marker-start="url(#pf)" marker-end="url(#pf)"/>
+</svg>

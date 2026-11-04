@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 334" width="760" height="334" role="img" aria-label="Animación: con un error en la línea 3, el compilador revisa todo el programa, detecta el error y no ejecuta nada; el intérprete ejecuta la línea 1 y la 2 y se para al llegar a la 3">
+<style>
+text{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;fill:#13241c}
+.tit{font-size:20px;font-weight:700;fill:#0d3a2b} .sub{font-size:14px;fill:#56645b}
+.lbl{font-size:14px;font-weight:600;text-anchor:middle} .peq{font-size:12px;fill:#56645b;text-anchor:middle}
+.fl{stroke:#56645b;stroke-width:2;fill:none}
+@keyframes a1{0%,5.45%{opacity:0}8.64%,93.0%{opacity:1}97.0%,100%{opacity:0}}.a1{animation:a1 11.0s infinite}
+@keyframes a2{0%,10.91%{opacity:0}14.09%,93.0%{opacity:1}97.0%,100%{opacity:0}}.a2{animation:a2 11.0s infinite}
+@keyframes a3{0%,20.0%{opacity:0}23.18%,93.0%{opacity:1}97.0%,100%{opacity:0}}.a3{animation:a3 11.0s infinite}
+@keyframes a4{0%,27.27%{opacity:0}30.45%,93.0%{opacity:1}97.0%,100%{opacity:0}}.a4{animation:a4 11.0s infinite}
+@keyframes a5{0.0%{transform:translate(0px,0px)}5.45%{transform:translate(0px,0px)}18.18%{transform:translate(0px,0px)}20.91%{transform:translate(0px,26px)}32.73%{transform:translate(0px,26px)}35.45%{transform:translate(0px,52px)}100%{transform:translate(0px,52px)}}.a5{transform:translate(0px,52px);animation:a5 11.0s infinite}
+@keyframes a6{0%,9.09%{opacity:0}12.27%,93.0%{opacity:1}97.0%,100%{opacity:0}}.a6{animation:a6 11.0s infinite}
+@keyframes a7{0%,22.73%{opacity:0}25.91%,93.0%{opacity:1}97.0%,100%{opacity:0}}.a7{animation:a7 11.0s infinite}
+@keyframes a8{0%,38.18%{opacity:0}41.36%,93.0%{opacity:1}97.0%,100%{opacity:0}}.a8{animation:a8 11.0s infinite}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<defs><marker id="pf" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#56645b"/></marker>
+<marker id="pr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#cf3e3e"/></marker></defs>
+<rect width="760" height="334" fill="#fff"/>
+<text x="20" y="30" style="font-size:18px;font-weight:700;fill:#0d3a2b;text-anchor:start">Compilador frente a intérprete</text>
+<text x="20" y="50" style="font-size:13px;font-weight:400;fill:#56645b;text-anchor:start">El mismo programa, con un error en la línea 3</text>
+<text x="20" y="78" style="font-size:11.5px;font-weight:700;fill:#56645b;text-anchor:start">COMPILADOR (por ejemplo, Java)</text>
+<rect x="20" y="84" width="210" height="96" rx="8" fill="#13241c"/>
+<text x="34" y="114" style="font-size:13.5px;font-weight:500;fill:#d5efc0;text-anchor:start;font-family:ui-monospace,Menlo,Consolas,monospace">1  mostrar "Hola"</text>
+<text x="34" y="140" style="font-size:13.5px;font-weight:500;fill:#d5efc0;text-anchor:start;font-family:ui-monospace,Menlo,Consolas,monospace">2  mostrar 2 + 2</text>
+<text x="34" y="166" style="font-size:13.5px;font-weight:500;fill:#d5efc0;text-anchor:start;font-family:ui-monospace,Menlo,Consolas,monospace">3  mostrar x</text>
+<text x="150" y="166" style="font-size:11.5px;font-weight:600;fill:#ff9a9a;text-anchor:start">← x no existe</text>
+<g><rect x="262" y="108" width="116" height="48" rx="10" fill="#0d3a2b" stroke="#0d3a2b" stroke-width="1.5"/><text x="320.0" y="136.9" style="font-size:14px;font-weight:650;text-anchor:middle;fill:#fff">Compilador</text></g>
+<line x1="234" y1="132" x2="258" y2="132" class="fl" marker-end="url(#pf)"/>
+<line x1="382" y1="132" x2="406" y2="132" class="fl" marker-end="url(#pf)"/>
+<rect x="410" y="84" width="330" height="96" rx="8" fill="#f7f5ee" stroke="#e7e3d6"/>
+<text x="422" y="102" style="font-size:10.5px;font-weight:700;fill:#8a948d;text-anchor:start">RESULTADO</text>
+<text x="20" y="218" style="font-size:11.5px;font-weight:700;fill:#56645b;text-anchor:start">INTÉRPRETE (por ejemplo, Python)</text>
+<rect x="20" y="224" width="210" height="96" rx="8" fill="#13241c"/>
+<text x="34" y="254" style="font-size:13.5px;font-weight:500;fill:#d5efc0;text-anchor:start;font-family:ui-monospace,Menlo,Consolas,monospace">1  mostrar "Hola"</text>
+<text x="34" y="280" style="font-size:13.5px;font-weight:500;fill:#d5efc0;text-anchor:start;font-family:ui-monospace,Menlo,Consolas,monospace">2  mostrar 2 + 2</text>
+<text x="34" y="306" style="font-size:13.5px;font-weight:500;fill:#d5efc0;text-anchor:start;font-family:ui-monospace,Menlo,Consolas,monospace">3  mostrar x</text>
+<text x="150" y="306" style="font-size:11.5px;font-weight:600;fill:#ff9a9a;text-anchor:start">← x no existe</text>
+<g><rect x="262" y="248" width="116" height="48" rx="10" fill="#cbe56b" stroke="#b3cf4c" stroke-width="1.5"/><text x="320.0" y="276.9" style="font-size:14px;font-weight:650;text-anchor:middle;fill:#13241c">Intérprete</text></g>
+<line x1="234" y1="272" x2="258" y2="272" class="fl" marker-end="url(#pf)"/>
+<line x1="382" y1="272" x2="406" y2="272" class="fl" marker-end="url(#pf)"/>
+<rect x="410" y="224" width="330" height="96" rx="8" fill="#f7f5ee" stroke="#e7e3d6"/>
+<text x="422" y="242" style="font-size:10.5px;font-weight:700;fill:#8a948d;text-anchor:start">RESULTADO</text>
+<rect x="22" y="96" width="206" height="78" rx="6" fill="none" stroke="#cbe56b" stroke-width="2.5" class="a1"/>
+<text class="a2" x="422" y="124" style="font-size:13px;font-weight:500;fill:#13241c;text-anchor:start">Revisa el programa entero antes…</text>
+<text class="a3" x="422" y="146" style="font-size:13.5px;font-weight:700;fill:#cf3e3e;text-anchor:start">✗ Error en la línea 3</text>
+<text class="a4" x="422" y="168" style="font-size:12.5px;font-weight:600;fill:#56645b;text-anchor:start">No se crea el ejecutable: no se ejecuta nada</text>
+<rect x="24" y="238" width="202" height="23" rx="4" fill="#cbe56b" fill-opacity=".28" stroke="#cbe56b" class="a5"/>
+<text class="a6" x="422" y="264" style="font-size:13px;font-weight:600;fill:#13241c;text-anchor:start;font-family:ui-monospace,Menlo,Consolas,monospace">Hola</text>
+<text class="a7" x="422" y="284" style="font-size:13px;font-weight:600;fill:#13241c;text-anchor:start;font-family:ui-monospace,Menlo,Consolas,monospace">4</text>
+<text class="a8" x="422" y="304" style="font-size:12.5px;font-weight:700;fill:#cf3e3e;text-anchor:start">✗ Error en la línea 3 (las líneas 1 y 2 ya se ejecutaron)</text>
+</svg>
