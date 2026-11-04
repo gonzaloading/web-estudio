@@ -5,10 +5,12 @@ import * as P from '../progreso.js';
 import { icon, esc, asigIcon, nombreAsig, fechaCorta, diasTxt, opcionesAsig, fmtNota, notaCls, datosForm, toast, refrescar } from '../ui.js';
 
 const orden = (a, b) => (a.fecha + (a.hora || '')).localeCompare(b.fecha + (b.hora || ''));
+let diaSel = null; // día elegido en el calendario (se conserva al volver a pintar la vista)
 
 export default function examenes(el, r) {
   const mes = /^\d{4}-\d{2}$/.test(r.q.get('mes') || '') ? r.q.get('mes') : hoy().slice(0, 7);
   const tipo = r.q.get('tipo') === 'trabajo' ? 'trabajo' : 'examen';
+  if (!diaSel || diaSel.slice(0, 7) !== mes) diaSel = mes === hoy().slice(0, 7) ? hoy() : null;
   const [y, m] = mes.split('-').map(Number);
   const primero = new Date(y, m - 1, 1);
   const ini = sumarDias(iso(primero), -((primero.getDay() + 6) % 7));
@@ -55,16 +57,17 @@ export default function examenes(el, r) {
       <div class="cal-h"><a class="icon-btn" href="#/examenes?mes=${prevM}" title="Mes anterior">${icon('chevl')}</a>
         <h3>${titulo}</h3><a class="icon-btn" href="#/examenes?mes=${nextM}" title="Mes siguiente">${icon('chev')}</a></div>
       <div class="cal">${['L', 'M', 'X', 'J', 'V', 'S', 'D'].map(d => `<div class="dn">${d}</div>`).join('')}
-        ${dias.map(f => `<div class="d ${f.slice(0, 7) !== mes ? 'fuera' : ''} ${f === hoy() ? 'hoy' : ''}"><span class="num">${+f.slice(8)}</span>
+        ${dias.map(f => `<div class="d ${f.slice(0, 7) !== mes ? 'fuera' : ''} ${f === hoy() ? 'hoy' : ''} ${f === diaSel ? 'sel' : ''}" data-dia="${f}" role="button" tabindex="0" aria-label="${fechaCorta(f)}${porDia[f] ? ` · ${porDia[f].length} cosa${porDia[f].length > 1 ? 's' : ''}` : ''}"><span class="num">${+f.slice(8)}</span>
           ${(porDia[f] || []).map(e => {
             const a = cat.porId[e.asig] || {}, tr = e.clase === 'trabajo';
-            return `<span class="ev ${tr ? 'trab' : ''} ${e.entregado ? 'hecho' : ''}" style="--c:${a.color};--t:${a.tint}" title="${tr ? 'Entrega' : 'Examen'} · ${esc(nombreAsig(e.asig))}: ${esc(e.titulo)}">${e.hora ? e.hora + ' ' : ''}${esc(e.titulo)}</span>`;
+            return `<span class="ev ${tr ? 'trab' : ''} ${e.entregado ? 'hecho' : ''}" style="--c:${a.color};--t:${a.tint}" title="${tr ? 'Entrega' : 'Examen'} · ${esc(nombreAsig(e.asig))}: ${esc(e.titulo)}${e.hora ? ' · ' + e.hora : ''}">${esc(e.titulo)}</span>`;
           }).join('')}
         </div>`).join('')}
       </div>
       <div class="cal-ley"><span><i class="sw ex"></i>Examen</span><span><i class="sw tr"></i>Entrega de trabajo</span><span><i class="sw tr hecho"></i>Entregado</span></div>
     </section>
     <div class="col">
+      <section class="card pad" id="dia-panel"></section>
       <section class="card pad"><h3 class="titulo-sec">Añadir</h3>
         <form class="form" id="f-ag" data-tipo="${tipo}">
           <div class="seg ancho">
@@ -74,7 +77,7 @@ export default function examenes(el, r) {
           <label>Asignatura<select name="asig" required>${opcionesAsig()}</select></label>
           <label>Título<input name="titulo" required placeholder="${tipo === 'trabajo' ? 'Ej.: Práctica 2' : 'Ej.: Examen T1–T3'}"></label>
           <label class="ancho solo-tr">Descripción<textarea name="desc" rows="3" placeholder="Qué hay que entregar, formato, dónde se sube…"></textarea></label>
-          <label><span class="solo-ex">Fecha</span><span class="solo-tr">Fecha de entrega</span><input type="date" name="fecha" required value="${hoy()}"></label>
+          <label><span class="solo-ex">Fecha</span><span class="solo-tr">Fecha de entrega</span><input type="date" name="fecha" required value="${diaSel || hoy()}"></label>
           <label><span class="solo-ex">Hora</span><span class="solo-tr">Hora límite</span><input type="time" name="hora"></label>
           <label class="ancho solo-ex">Temas que entran<input name="temas" placeholder="Ej.: Temas 1, 2 y 3"></label>
           <div><button class="btn osc">${icon('plus')} <span class="solo-ex">Guardar examen</span><span class="solo-tr">Guardar trabajo</span></button></div>
@@ -84,6 +87,25 @@ export default function examenes(el, r) {
   </div>
   ${hechos.length ? `<section class="card pad mt mini-lista"><h3 class="titulo-sec">Realizados y entregados</h3>${hechos.map(e => item(e, true)).join('')}</section>` : ''}`;
 
+  // Panel con lo que hay el día elegido; se repinta sin recargar la vista.
+  const pintarDia = () => {
+    el.querySelectorAll('.cal .d.sel').forEach(d => d.classList.remove('sel'));
+    const panel = el.querySelector('#dia-panel');
+    if (!diaSel) { panel.innerHTML = '<h3 class="titulo-sec">Elige un día</h3><p class="vacio">Pulsa un día del calendario para ver lo que tienes ese día.</p>'; return; }
+    el.querySelector(`.cal .d[data-dia="${diaSel}"]`)?.classList.add('sel');
+    const lista = porDia[diaSel] || [];
+    const f0 = new Date(diaSel + 'T12:00').toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' });
+    panel.innerHTML = `<div class="dia-h"><h3 class="titulo-sec">${f0[0].toUpperCase() + f0.slice(1)}</h3><span class="tenue">${diasTxt(diaSel)}</span></div>
+      <div class="mini-lista">${lista.length ? lista.map(e => item(e, e.clase === 'trabajo' ? !!e.entregado : e.fecha < hoy())).join('') : '<p class="vacio">Nada programado este día.</p>'}</div>
+      <button class="btn peq borde" type="button" data-anadir>${icon('plus')} Añadir en este día</button>`;
+    const form = el.querySelector('#f-ag');
+    if (form) form.fecha.value = diaSel;
+  };
+  pintarDia();
+
+  el.onkeydown = e => {
+    if ((e.key === 'Enter' || e.key === ' ') && e.target.matches?.('.cal .d[data-dia]')) { e.preventDefault(); e.target.click(); }
+  };
   el.onchange = e => {
     if (e.target.name !== 'tipo') return;
     const f = e.target.form;
@@ -91,6 +113,21 @@ export default function examenes(el, r) {
     f.titulo.placeholder = e.target.value === 'trabajo' ? 'Ej.: Práctica 2' : 'Ej.: Examen T1–T3';
   };
   el.onclick = e => {
+    const dd = e.target.closest('.cal .d[data-dia]');
+    if (dd) {
+      diaSel = dd.dataset.dia;
+      if (diaSel.slice(0, 7) !== mes) { location.hash = `#/examenes?mes=${diaSel.slice(0, 7)}`; return; }
+      pintarDia();
+      if (matchMedia('(max-width: 1100px)').matches) el.querySelector('#dia-panel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      return;
+    }
+    if (e.target.closest('[data-anadir]')) {
+      const form = el.querySelector('#f-ag');
+      form.fecha.value = diaSel;
+      form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      form.titulo.focus({ preventScroll: true });
+      return;
+    }
     const b = e.target.closest('[data-del]');
     if (b) {
       const tr = b.dataset.clase === 'trabajo', k = tr ? 'trabajos' : 'examenes';
@@ -121,6 +158,7 @@ export default function examenes(el, r) {
       toast('Examen guardado');
     }
     guardar();
+    diaSel = d.fecha;
     const destino = `#/examenes?mes=${d.fecha.slice(0, 7)}&tipo=${d.tipo}`;
     if (location.hash !== destino) location.hash = destino; else refrescar();
   };

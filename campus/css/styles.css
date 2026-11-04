@@ -330,7 +330,15 @@ details summary b { display: inline-flex; align-items: center; gap: 6px }
 .form .seg label:has(input:checked) { background: #fff; color: var(--osc); box-shadow: 0 1px 3px rgba(0, 0, 0, .08) }
 .seg input { position: absolute; opacity: 0; pointer-events: none }
 .form[data-tipo="examen"] .solo-tr, .form[data-tipo="trabajo"] .solo-ex { display: none }
-.ev { display: block; margin-top: 4px; font-size: 11.5px; font-weight: 650; padding: 2px 6px; border-radius: 6px; background: var(--t, #eee); color: var(--c, #333); white-space: nowrap; overflow: hidden; text-overflow: ellipsis }
+.ev { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; margin-top: 4px; font-size: 11.5px; font-weight: 650; line-height: 1.3; padding: 2px 6px; border-radius: 6px; background: var(--t, #eee); color: var(--c, #333); word-break: break-word }
+.cal .d[data-dia] { cursor: pointer; transition: border-color .15s, background .15s }
+.cal .d[data-dia]:hover { border-color: var(--lima2) }
+.cal .d.sel { border: 2px solid var(--osc); background: #f3f8e4 }
+.cal .d:focus-visible { outline: 2px solid var(--verde); outline-offset: 1px }
+.dia-h { display: flex; align-items: baseline; justify-content: space-between; gap: 10px }
+.dia-h .tenue { font-size: 13px; white-space: nowrap }
+#dia-panel { scroll-margin-top: 76px }
+#dia-panel [data-anadir] { margin-top: 10px }
 .form { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; align-items: end }
 .form label { display: flex; flex-direction: column; gap: 5px; font-size: 13px; color: var(--suave); font-weight: 650 }
 .form input, .form select, .form textarea { border: 1px solid var(--borde); border-radius: 9px; padding: 9px 11px; background: #fff; font-size: 15px; color: var(--txt); font-weight: 400; min-width: 0 }
