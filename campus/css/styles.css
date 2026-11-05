@@ -492,3 +492,33 @@ label.btn input { display: none }
 .graf-tabla summary { cursor: pointer; color: var(--suave) }
 .graf-tabla table { margin-top: 8px }
 .sec-h .acc { display: flex; gap: 10px; flex-wrap: wrap }
+
+/* ---------- Paneles que se pueden ocultar ---------- */
+.plegar { display: flex; align-items: center; gap: 14px; width: 100%; padding: 10px 14px; margin-bottom: 4px; border: 0; border-radius: 10px; background: none; color: inherit; font-size: 14px; cursor: pointer; text-align: left }
+.plegar:hover { background: #ffffff12 }
+.panel-x { margin-left: auto; padding: 4px }
+.panel-x .ic { width: 16px; height: 16px }
+.crumb-fila { display: flex; align-items: center; justify-content: space-between; gap: 8px 12px; flex-wrap: wrap; margin-bottom: 6px }
+.crumb-fila .crumb { margin: 0 }
+.vista-bar { display: flex; gap: 6px; flex-wrap: wrap }
+.vb { display: inline-flex; align-items: center; gap: 6px; padding: 6px 10px; border-radius: 9px; border: 1px solid #d6e6a6; background: var(--lima-t); font-size: 13px; font-weight: 650; color: var(--osc); cursor: pointer; transition: background .15s, border-color .15s }
+.vb .ic { width: 15px; height: 15px }
+.vb:hover { border-color: var(--lima2) }
+.vb-enfoque, body.sin-indice .vb-indice, body.sin-recall .vb-recall { background: #fff; border-color: var(--borde); color: var(--suave) }
+body.nav-mini.sin-indice.sin-recall .vb-enfoque { background: var(--osc); border-color: var(--osc); color: #fff }
+body.sin-indice .tema-nav, body.sin-recall .recall-col { display: none }
+
+@media (min-width: 901px) {
+  body.nav-mini .sidebar { width: 76px; padding: 22px 10px 16px }
+  body.nav-mini .marca { padding: 0 0 26px; justify-content: center }
+  body.nav-mini .marca .ic { width: 38px; height: 38px }
+  body.nav-mini .marca div, body.nav-mini .nav a span, body.nav-mini .pie span, body.nav-mini .pie small { display: none }
+  body.nav-mini .nav a, body.nav-mini .pie a, body.nav-mini .plegar { justify-content: center; padding: 12px 0 }
+  body.nav-mini .plegar .ic { transform: scaleX(-1) }
+  body.sin-indice .tema-layout { grid-template-columns: minmax(0, 1fr) 300px }
+  body.sin-recall .tema-layout { grid-template-columns: 240px minmax(0, 1fr) }
+  body.sin-indice.sin-recall .tema-layout { grid-template-columns: minmax(0, 1fr) }
+  body.sin-indice.sin-recall .tema-layout > article { width: 100%; max-width: 940px; margin: 0 auto }
+}
+@media (max-width: 900px) { .plegar { display: none } }
+@media (max-width: 640px) { .vb span { display: none } .vb { padding: 7px 9px } }

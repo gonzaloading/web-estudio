@@ -20,6 +20,8 @@ const PATHS = {
   chevl: '<path d="m15 18-6-6 6-6"/>',
   check: '<path d="M20 6 9 17l-5-5"/>',
   x: '<path d="M18 6 6 18M6 6l12 12"/>',
+  expand: '<path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>',
+  sidebar: '<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18"/><path d="m16 15-3-3 3-3"/>',
   database: '<ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/>',
   code: '<path d="m18 16 4-4-4-4M6 8l-4 4 4 4M14.5 4l-5 16"/>',
   brackets: '<path d="m8 6-6 6 6 6M16 6l6 6-6 6"/>',
@@ -99,6 +101,24 @@ export function filaTema(t, conAsig = false) {
     <span class="num ${leido ? 'ok' : ''}">${leido ? icon('check') : t.n}</span>
     <div class="tt"><b>${esc(t.titulo)}</b><small>${conAsig ? esc(a.nombre) + ' · ' : ''}<strong class="visto">${pct}% visto</strong> · ${t.preguntas.length} preguntas de test${ac !== null ? ` · ${ac}% aciertos` : ''}${t.actualizado ? ` · act. ${fechaCorta(t.actualizado)}` : ''}</small></div>
     ${prio(t.prioridad)}${icon('chev')}</a>`;
+}
+
+// ---------- Vista: paneles que se pueden ocultar (se recuerda en cada dispositivo, no va en la copia) ----------
+const VISTA_KEY = 'gonzaloading-vista';
+export const vista = { menu: true, indice: true, recall: true };
+try { Object.assign(vista, JSON.parse(localStorage.getItem(VISTA_KEY) || '{}')); } catch { /* sin preferencias */ }
+export function aplicarVista() {
+  const b = document.body.classList;
+  b.toggle('nav-mini', !vista.menu); b.toggle('sin-indice', !vista.indice); b.toggle('sin-recall', !vista.recall);
+  const p = document.querySelector('[data-vista="menu"]');
+  if (p) { p.title = vista.menu ? 'Ocultar menú' : 'Mostrar menú'; p.querySelector('span').textContent = vista.menu ? 'Ocultar menú' : 'Mostrar menú'; }
+}
+/** k = 'menu' | 'indice' | 'recall' | 'enfoque' (oculta todo, o lo vuelve a mostrar) */
+export function alternarVista(k) {
+  if (k === 'enfoque') { const todo = vista.menu || vista.indice || vista.recall; vista.menu = vista.indice = vista.recall = !todo; }
+  else vista[k] = !vista[k];
+  localStorage.setItem(VISTA_KEY, JSON.stringify(vista));
+  aplicarVista();
 }
 
 export function toast(msg) {

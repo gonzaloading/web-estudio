@@ -1,6 +1,6 @@
 // Arranque y navegación (#/ruta/arg?param=valor)
 import { cargarCatalogo } from './data.js';
-import { icon } from './ui.js';
+import { icon, aplicarVista, alternarVista } from './ui.js';
 import inicio from './vistas/inicio.js';
 import asignaturas from './vistas/asignaturas.js';
 import asignatura from './vistas/asignatura.js';
@@ -24,12 +24,16 @@ const app = document.getElementById('app');
 
 document.getElementById('sidebar').innerHTML = `
   <a class="marca" href="#/">${icon('book')}<div><b>Gonzaloading</b><small>MI CAMPUS · DAM</small></div></a>
-  <nav class="nav">${NAV.map(n => (n ? `<a href="#/${n[0]}" data-r="${n[0]}">${icon(n[1])}<span>${n[2]}</span></a>` : '<div class="sep"></div>')).join('')}</nav>
-  <div class="pie"><a href="#/ajustes" data-r="ajustes">${icon('download')}<span>Copia de seguridad</span></a>
+  <nav class="nav">${NAV.map(n => (n ? `<a href="#/${n[0]}" data-r="${n[0]}" title="${n[2]}">${icon(n[1])}<span>${n[2]}</span></a>` : '<div class="sep"></div>')).join('')}</nav>
+  <div class="pie"><button type="button" class="plegar" data-vista="menu" title="Ocultar menú">${icon('sidebar')}<span>Ocultar menú</span></button>
+    <a href="#/ajustes" data-r="ajustes" title="Copia de seguridad">${icon('download')}<span>Copia de seguridad</span></a>
     <small>Tu progreso se guarda en este dispositivo.</small></div>`;
 document.getElementById('abrir').innerHTML = icon('menu');
 document.getElementById('abrir').onclick = () => document.body.classList.add('menu');
 document.getElementById('velo').onclick = () => document.body.classList.remove('menu');
+// Botones para ocultar/mostrar paneles (menú, índice del tema, active recall, modo concentración)
+addEventListener('click', e => { const b = e.target.closest('[data-vista]'); if (b) alternarVista(b.dataset.vista); });
+aplicarVista();
 
 function leerRuta() {
   const [path, qs = ''] = location.hash.replace(/^#\/?/, '').split('?');

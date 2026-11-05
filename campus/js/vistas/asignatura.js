@@ -81,13 +81,18 @@ function vistaTema(el, a, temaId) {
   el.innerHTML = `
   <div class="tema-layout">
     <aside class="card tema-nav">
-      <h4>${asigIcon(a, 'peq')} <a href="#/asignatura/${a.id}">${esc(a.nombre)}</a></h4>
+      <h4>${asigIcon(a, 'peq')} <a href="#/asignatura/${a.id}">${esc(a.nombre)}</a><button type="button" class="icon-btn panel-x" data-vista="indice" title="Ocultar índice">${icon('x')}</button></h4>
       <div id="tema-navl">${navHtml()}</div>
       <div class="toc" id="tema-toc">${tocHtml()}</div>
     </aside>
 
     <article>
-      <div class="crumb"><a href="#/">Inicio</a> / <a href="#/asignatura/${a.id}">${esc(a.nombre)}</a> / Tema ${t.n}</div>
+      <div class="crumb-fila"><div class="crumb"><a href="#/">Inicio</a> / <a href="#/asignatura/${a.id}">${esc(a.nombre)}</a> / Tema ${t.n}</div>
+        <div class="vista-bar" aria-label="Paneles">
+          <button type="button" class="vb vb-indice" data-vista="indice" title="Mostrar u ocultar el índice">${icon('list')}<span>Índice</span></button>
+          <button type="button" class="vb vb-recall" data-vista="recall" title="Mostrar u ocultar el active recall">${icon('refresh')}<span>Repaso</span></button>
+          <button type="button" class="vb vb-enfoque" data-vista="enfoque" title="Ocultar todo para leer con más espacio">${icon('expand')}<span>Concentración</span></button>
+        </div></div>
       <h1 class="tema-tit">Tema ${t.n} · ${esc(t.titulo)}</h1>
       <div class="chips">
         ${t.prioridad ? `<span class="prio ${t.prioridad}">Prioridad ${t.prioridad}</span>` : ''}
@@ -113,7 +118,7 @@ function vistaTema(el, a, temaId) {
   pintarEjercicios(el);
 
   montarRecall(el.querySelector('#recall'), ordenRepaso(t.cards), {
-    cab: `<h4>${icon('refresh')} Active recall</h4><p class="tenue peq">Intenta responder antes de mirar.</p>`,
+    cab: `<h4>${icon('refresh')} Active recall<button type="button" class="icon-btn panel-x" data-vista="recall" title="Ocultar active recall">${icon('x')}</button></h4><p class="tenue peq">Intenta responder antes de mirar.</p>`,
     vacio: 'Este tema aún no tiene tarjetas de repaso.',
   });
 
