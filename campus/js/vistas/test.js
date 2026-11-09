@@ -113,7 +113,7 @@ function grafica() {
   const W = 600, H = 200, pl = 38, pr = 10, pt = 18, pb = 26, cw = (W - pl - pr) / dias.length, bw = Math.min(24, cw * 0.62);
   const y = v => pt + (H - pt - pb) * (1 - v / 100), y0 = y(0);
   const corto = f => new Date(f + 'T12:00').toLocaleDateString('es-ES', { day: 'numeric', month: 'short' }).replace('.', '');
-  let svg = [50, 100, 0].map(v => `<line x1="${pl}" x2="${W - pr}" y1="${y(v)}" y2="${y(v)}" stroke="${v ? '#ebe8de' : '#cfcabb'}" stroke-width="1"/>
+  let svg = [50, 100, 0].map(v => `<line x1="${pl}" x2="${W - pr}" y1="${y(v)}" y2="${y(v)}" class="${v ? 'g-rej' : 'g-base'}" stroke-width="1"/>
     <text x="${pl - 8}" y="${y(v) + 4}" class="g-eje" text-anchor="end">${v}%</text>`).join('');
   dias.forEach(([f, d], i) => {
     const pct = Math.round(d.ok / d.n * 100), x = pl + cw * i + (cw - bw) / 2, yt = y(pct), rr = Math.min(4, y0 - yt);

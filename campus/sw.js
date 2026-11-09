@@ -1,7 +1,7 @@
 // Service worker: permite instalar la web como app y usarla sin conexión.
 // Estrategia "red primero": si hay internet siempre se ve la teoría más nueva;
 // si no la hay, se usa la última copia guardada. No hace falta tocar este archivo al añadir temas.
-const CACHE = 'campus-v3';
+const CACHE = 'campus-v4';
 const BASE = [
   './', 'index.html', 'css/styles.css', 'manifest.webmanifest', 'icons/icon.svg', 'icons/icon-192.png', 'icons/icon-512.png',
   'js/app.js', 'js/data.js', 'js/md.js', 'js/progreso.js', 'js/recall.js', 'js/store.js', 'js/ui.js', 'js/quiz.js', 'js/vistas/test.js',

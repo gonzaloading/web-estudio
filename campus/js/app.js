@@ -1,6 +1,6 @@
 // Arranque y navegación (#/ruta/arg?param=valor)
 import { cargarCatalogo } from './data.js';
-import { icon, aplicarVista, alternarVista } from './ui.js';
+import { icon, aplicarVista, alternarVista, aplicarTema, ponerTema } from './ui.js';
 import inicio from './vistas/inicio.js';
 import asignaturas from './vistas/asignaturas.js';
 import asignatura from './vistas/asignatura.js';
@@ -25,15 +25,38 @@ const app = document.getElementById('app');
 document.getElementById('sidebar').innerHTML = `
   <a class="marca" href="#/">${icon('book')}<div><b>Gonzaloading</b><small>MI CAMPUS · DAM</small></div></a>
   <nav class="nav">${NAV.map(n => (n ? `<a href="#/${n[0]}" data-r="${n[0]}" title="${n[2]}">${icon(n[1])}<span>${n[2]}</span></a>` : '<div class="sep"></div>')).join('')}</nav>
-  <div class="pie"><button type="button" class="plegar" data-vista="menu" title="Ocultar menú">${icon('sidebar')}<span>Ocultar menú</span></button>
-    <a href="#/ajustes" data-r="ajustes" title="Copia de seguridad">${icon('download')}<span>Copia de seguridad</span></a>
+  <div class="pie"><button type="button" class="pie-btn" data-vista="menu"></button>
+    <button type="button" class="pie-btn" data-tema-btn></button>
+    <a href="#/ajustes" data-r="ajustes" title="Apariencia y copia de seguridad">${icon('download')}<span>Ajustes y copia</span></a>
     <small>Tu progreso se guarda en este dispositivo.</small></div>`;
 document.getElementById('abrir').innerHTML = icon('menu');
 document.getElementById('abrir').onclick = () => document.body.classList.add('menu');
 document.getElementById('velo').onclick = () => document.body.classList.remove('menu');
-// Botones para ocultar/mostrar paneles (menú, índice del tema, active recall, modo concentración)
-addEventListener('click', e => { const b = e.target.closest('[data-vista]'); if (b) alternarVista(b.dataset.vista); });
-aplicarVista();
+// Botones para ocultar/mostrar paneles (menú, índice del tema, active recall, modo concentración) y tema
+addEventListener('click', e => {
+  const b = e.target.closest('[data-vista]'); if (b) alternarVista(b.dataset.vista);
+  if (e.target.closest('[data-tema-btn]')) ponerTema();
+});
+aplicarVista(); aplicarTema();
+
+// Menú que se oculta solo (pantallas anchas): se abre al acercar el ratón al borde izquierdo o al pulsar la pestaña
+const html = document.documentElement, sidebar = document.getElementById('sidebar');
+const asa = document.createElement('div');
+asa.className = 'asa';
+asa.innerHTML = `<button type="button" class="asa-tab" aria-label="Abrir menú" title="Menú">${icon('menu')}</button>`;
+sidebar.after(asa);
+let tMenu;
+const verMenu = (ms = 0) => { clearTimeout(tMenu); tMenu = setTimeout(() => html.classList.add('nav-ver'), ms); };
+const esconderMenu = (ms = 300) => { clearTimeout(tMenu); tMenu = setTimeout(() => html.classList.remove('nav-ver'), ms); };
+sidebar.addEventListener('mouseenter', () => verMenu());
+sidebar.addEventListener('mouseleave', () => esconderMenu());
+asa.addEventListener('mouseenter', () => verMenu(120)); // pequeña espera: que no se abra al pasar de largo
+asa.querySelector('.asa-tab').addEventListener('mouseenter', () => verMenu());
+asa.addEventListener('mouseleave', () => esconderMenu());
+asa.querySelector('.asa-tab').addEventListener('click', () => verMenu());
+// En pantallas táctiles no hay "quitar el ratón": se cierra al tocar fuera
+addEventListener('pointerdown', e => { if (e.pointerType !== 'mouse' && !e.target.closest('#sidebar, .asa')) esconderMenu(0); });
+const conRaton = matchMedia('(hover: hover)');
 
 function leerRuta() {
   const [path, qs = ''] = location.hash.replace(/^#\/?/, '').split('?');
@@ -49,6 +72,7 @@ function render(arriba = true) {
   const activa = r.ruta === 'asignatura' ? 'asignaturas' : r.ruta;
   document.querySelectorAll('#sidebar [data-r]').forEach(a => a.classList.toggle('on', a.dataset.r === activa));
   document.body.classList.remove('menu');
+  if (!conRaton.matches) html.classList.remove('nav-ver');
   if (arriba) scrollTo(0, 0);
 }
 

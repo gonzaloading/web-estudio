@@ -37,6 +37,9 @@ const PATHS = {
   menu: '<path d="M4 6h16M4 12h16M4 18h16"/>',
   plus: '<path d="M12 5v14M5 12h14"/>',
   trash: '<path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"/>',
+  pin: '<path d="M12 17v5"/><path d="M9 10.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V7a1 1 0 0 1 1-1 2 2 0 0 0 0-4H8a2 2 0 0 0 0 4 1 1 0 0 1 1 1z"/>',
+  moon: '<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9z"/>',
+  sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>',
   award: '<circle cx="12" cy="8" r="6"/><path d="M15.5 13 17 22l-5-3-5 3 1.5-9"/>',
 };
 
@@ -103,23 +106,51 @@ export function filaTema(t, conAsig = false) {
     ${prio(t.prioridad)}${icon('chev')}</a>`;
 }
 
-// ---------- Vista: paneles que se pueden ocultar (se recuerda en cada dispositivo, no va en la copia) ----------
+// ---------- Vista: menú, paneles y tema (se recuerda en cada dispositivo, no va en la copia) ----------
 const VISTA_KEY = 'gonzaloading-vista';
-export const vista = { menu: true, indice: true, recall: true };
-try { Object.assign(vista, JSON.parse(localStorage.getItem(VISTA_KEY) || '{}')); } catch { /* sin preferencias */ }
+// fijo: menú siempre visible (si no, se oculta solo) · tema: 'auto' (como el sistema) | 'claro' | 'oscuro'
+export const vista = { fijo: false, indice: true, recall: true, tema: 'auto' };
+try { const v = JSON.parse(localStorage.getItem(VISTA_KEY) || '{}'); delete v.menu; Object.assign(vista, v); } catch { /* sin preferencias */ }
+const guardarVista = () => localStorage.setItem(VISTA_KEY, JSON.stringify(vista));
+
 export function aplicarVista() {
+  document.documentElement.classList.toggle('nav-auto', !vista.fijo);
   const b = document.body.classList;
-  b.toggle('nav-mini', !vista.menu); b.toggle('sin-indice', !vista.indice); b.toggle('sin-recall', !vista.recall);
+  b.toggle('sin-indice', !vista.indice); b.toggle('sin-recall', !vista.recall);
   const p = document.querySelector('[data-vista="menu"]');
-  if (p) { p.title = vista.menu ? 'Ocultar menú' : 'Mostrar menú'; p.querySelector('span').textContent = vista.menu ? 'Ocultar menú' : 'Mostrar menú'; }
+  if (p) {
+    p.title = vista.fijo ? 'El menú se esconde cuando apartas el ratón' : 'Dejar el menú siempre visible';
+    p.innerHTML = `${icon(vista.fijo ? 'sidebar' : 'pin')}<span>${vista.fijo ? 'Ocultar automáticamente' : 'Fijar menú'}</span>`;
+  }
 }
-/** k = 'menu' | 'indice' | 'recall' | 'enfoque' (oculta todo, o lo vuelve a mostrar) */
+/** k = 'menu' (fijar / ocultar solo) | 'indice' | 'recall' | 'enfoque' (oculta todo, o vuelve a mostrar los paneles) */
 export function alternarVista(k) {
-  if (k === 'enfoque') { const todo = vista.menu || vista.indice || vista.recall; vista.menu = vista.indice = vista.recall = !todo; }
-  else vista[k] = !vista[k];
-  localStorage.setItem(VISTA_KEY, JSON.stringify(vista));
+  if (k === 'menu') vista.fijo = !vista.fijo;
+  else if (k === 'enfoque') {
+    if (vista.fijo || vista.indice || vista.recall) { vista.fijo = false; vista.indice = vista.recall = false; }
+    else vista.indice = vista.recall = true;
+  } else vista[k] = !vista[k];
+  guardarVista();
   aplicarVista();
 }
+
+// ---- Modo claro / oscuro ----
+const sistemaOscuro = matchMedia('(prefers-color-scheme: dark)');
+export const temaActual = () => (vista.tema === 'auto' ? (sistemaOscuro.matches ? 'oscuro' : 'claro') : vista.tema);
+export function aplicarTema() {
+  const t = temaActual();
+  document.documentElement.dataset.tema = t;
+  document.querySelector('meta[name="theme-color"]')?.setAttribute('content', t === 'oscuro' ? '#0b241b' : '#0d3a2b');
+  document.querySelectorAll('[data-tema-btn]').forEach(b => {
+    b.title = t === 'oscuro' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro';
+    b.innerHTML = `${icon(t === 'oscuro' ? 'sun' : 'moon')}<span>${t === 'oscuro' ? 'Modo claro' : 'Modo oscuro'}</span>`;
+  });
+}
+/** t = 'auto' | 'claro' | 'oscuro'; sin argumento cambia al contrario del que se ve ahora */
+export function ponerTema(t = temaActual() === 'oscuro' ? 'claro' : 'oscuro') {
+  vista.tema = t; guardarVista(); aplicarTema();
+}
+sistemaOscuro.addEventListener?.('change', () => { if (vista.tema === 'auto') aplicarTema(); });
 
 export function toast(msg) {
   const t = document.createElement('div');

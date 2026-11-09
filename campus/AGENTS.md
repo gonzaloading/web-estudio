@@ -65,6 +65,7 @@ Límites:
   - Sin JavaScript ni archivos externos, porque dentro de `<img>` no funcionan.
   - Fuente `system-ui, sans-serif`.
   - Fondo blanco y colores de la web: verde oscuro `#0d3a2b`, verde `#1f7a4c`, lima `#cbe56b`, rojo `#cf3e3e`, gris `#56645b`.
+  - Ponle siempre fondo blanco propio: en modo oscuro la web enseña los diagramas sobre una tarjeta blanca, así que no hagas versión oscura.
   - `viewBox` de unos 600–800 px de ancho, texto de **12 px como mínimo** y menos de 20 KB.
 - **Insértalo en una línea aparte**; el texto entre comillas es el pie de foto, que admite **negrita**:
   `![Descripción de la imagen](img/tema-02-division-binario.svg "Qué tiene que mirar el alumno")`
@@ -179,6 +180,13 @@ Hacer test es el **método principal de estudio** del usuario. Todo tema nuevo l
 - Una por cada idea importante: normalmente entre 8 y 20 por tema, empezando por los apartados `alta`. Una idea por tarjeta.
 - Preguntas concretas que obliguen a recordar ("¿Qué diferencia hay entre…?", "¿Qué devuelve…?").
 - **No cambies el texto de una pregunta existente** salvo que tenga un error: el progreso de la tarjeta está ligado a ese texto.
+
+## Diseño: modo oscuro y colores
+
+- La web tiene **modo claro y oscuro** (botón en el menú y en *Ajustes y copia*). Los colores están en variables al principio de `css/styles.css`, y el bloque `:root[data-tema="oscuro"]` del final les da los valores oscuros.
+- **Si añades o cambias estilos, no pongas colores fijos** (`#fff`, `#eef1ea`…): usa las variables. Las principales son `--card`, `--sub`, `--hover`, `--campo`, `--borde`, `--txt`, `--suave`, `--tit` y `--osc`. Si hace falta un color nuevo, créalo como variable en los dos bloques.
+- Comprueba cada cambio en los dos modos.
+- El menú lateral se oculta solo en pantallas anchas (clase `nav-auto` en `<html>`) y en el móvil es el menú de siempre. Las preferencias de vista y tema se guardan en `gonzaloading-vista`, aparte del progreso.
 
 ## Comprobar
 
