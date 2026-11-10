@@ -53,6 +53,7 @@ export default function examenes(el, r) {
   el.innerHTML = `
   <header class="cab"><h1>Exámenes y trabajos</h1><p>${resumen}</p></header>
   <div class="dos-col">
+    <div class="col">
     <section class="card pad">
       <div class="cal-h"><a class="icon-btn" href="#/examenes?mes=${prevM}" title="Mes anterior">${icon('chevl')}</a>
         <h3>${titulo}</h3><a class="icon-btn" href="#/examenes?mes=${nextM}" title="Mes siguiente">${icon('chev')}</a></div>
@@ -66,6 +67,8 @@ export default function examenes(el, r) {
       </div>
       <div class="cal-ley"><span><i class="sw ex"></i>Examen</span><span><i class="sw tr"></i>Entrega de trabajo</span><span><i class="sw tr hecho"></i>Entregado</span></div>
     </section>
+    ${hechos.length ? `<section class="card pad mini-lista"><h3 class="titulo-sec">Realizados y entregados</h3>${hechos.map(e => item(e, true)).join('')}</section>` : ''}
+    </div>
     <div class="col">
       <section class="card pad" id="dia-panel"></section>
       <section class="card pad"><h3 class="titulo-sec">Añadir</h3>
@@ -84,8 +87,7 @@ export default function examenes(el, r) {
         </form></section>
       <section class="card pad mini-lista"><h3 class="titulo-sec">Próximos</h3>${prox.length ? prox.map(e => item(e)).join('') : '<p class="vacio">Nada pendiente.</p>'}</section>
     </div>
-  </div>
-  ${hechos.length ? `<section class="card pad mt mini-lista"><h3 class="titulo-sec">Realizados y entregados</h3>${hechos.map(e => item(e, true)).join('')}</section>` : ''}`;
+  </div>`;
 
   // Panel con lo que hay el día elegido; se repinta sin recargar la vista.
   const pintarDia = () => {
