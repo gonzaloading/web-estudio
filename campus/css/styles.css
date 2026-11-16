@@ -331,6 +331,14 @@ details summary b { display: inline-flex; align-items: center; gap: 6px }
 .chip-tipo.trabajo { background: var(--morado-t); color: var(--morado) }
 .tt .desc { margin: 5px 0 0; font-size: 13.5px; line-height: 1.45; color: var(--txt); white-space: pre-line }
 .icon-btn.entregar { color: var(--verde) }
+.card.editando { box-shadow: 0 0 0 2px var(--lima2) }
+.form-acc { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 8px }
+/* En el móvil, los botones de cada examen o trabajo bajan a su propia fila para que el texto no se estreche */
+@media (max-width: 600px) {
+  .it.ag { flex-wrap: wrap; row-gap: 2px }
+  .it.ag .tt { flex: 1 1 calc(100% - 50px) }
+  .it.ag .tt + * { margin-left: auto }
+}
 .ev.trab { background: var(--card); border: 1.5px dashed var(--c, #333) }
 .ev.hecho { opacity: .5; text-decoration: line-through }
 .cal-ley { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 14px; font-size: 12.5px; color: var(--suave) }

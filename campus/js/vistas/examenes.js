@@ -6,10 +6,14 @@ import { icon, esc, asigIcon, nombreAsig, fechaCorta, diasTxt, opcionesAsig, fmt
 
 const orden = (a, b) => (a.fecha + (a.hora || '')).localeCompare(b.fecha + (b.hora || ''));
 let diaSel = null; // día elegido en el calendario (se conserva al volver a pintar la vista)
+let editando = null; // { id, clase } del examen o trabajo que se está editando en el formulario
 
 export default function examenes(el, r) {
+  if (!el.querySelector('#f-ag')) editando = null; // al llegar desde otra página se empieza sin editar nada
+  const ed = editando && state[editando.clase === 'trabajo' ? 'trabajos' : 'examenes'].find(x => x.id === editando.id);
+  if (!ed) editando = null;
   const mes = /^\d{4}-\d{2}$/.test(r.q.get('mes') || '') ? r.q.get('mes') : hoy().slice(0, 7);
-  const tipo = r.q.get('tipo') === 'trabajo' ? 'trabajo' : 'examen';
+  const tipo = ed ? editando.clase : r.q.get('tipo') === 'trabajo' ? 'trabajo' : 'examen';
   if (!diaSel || diaSel.slice(0, 7) !== mes) diaSel = mes === hoy().slice(0, 7) ? hoy() : null;
   const [y, m] = mes.split('-').map(Number);
   const primero = new Date(y, m - 1, 1);
@@ -36,12 +40,13 @@ export default function examenes(el, r) {
     const der = hecho
       ? (nota ? `<span class="nota-v ${notaCls(nota.nota)}">${fmtNota(nota.nota)}</span>` : `<a class="btn peq lima" href="#/notas?examen=${e.id}">Poner nota</a>`)
       : `<span class="cuenta ${vencido || diasEntre(hoy(), e.fecha) <= 7 ? 'urg' : ''}">${vencido ? 'Venció ' + diasTxt(e.fecha) : diasTxt(e.fecha)}</span>`;
-    return `<div class="it">${asigIcon(cat.porId[e.asig], 'peq')}
+    return `<div class="it ag">${asigIcon(cat.porId[e.asig], 'peq')}
       <div class="tt"><span class="chip-tipo ${e.clase}">${tr ? 'Trabajo' : 'Examen'}</span><b>${esc(e.titulo)}</b>
         <small>${esc(nombreAsig(e.asig))} · ${tr ? 'entrega ' : ''}${fechaCorta(e.fecha)}${e.hora ? ' · ' + e.hora : ''}${!tr && e.temas ? ' · ' + esc(e.temas) : ''}${tr && e.entregado ? ' · entregado el ' + fechaCorta(e.entregado) : ''}</small>
         ${tr && e.desc ? `<p class="desc">${esc(e.desc)}</p>` : ''}</div>
       ${der}
       ${tr ? `<button class="icon-btn ${e.entregado ? '' : 'entregar'}" data-entregar="${e.id}" title="${e.entregado ? 'Volver a pendiente' : 'Marcar como entregado'}">${icon(e.entregado ? 'refresh' : 'check')}</button>` : ''}
+      <button class="icon-btn" data-editar="${e.id}" data-clase="${e.clase}" title="Editar">${icon('edit')}</button>
       <button class="icon-btn" data-del="${e.id}" data-clase="${e.clase}" title="Borrar">${icon('trash')}</button></div>`;
   };
 
@@ -71,19 +76,21 @@ export default function examenes(el, r) {
     </div>
     <div class="col">
       <section class="card pad" id="dia-panel"></section>
-      <section class="card pad"><h3 class="titulo-sec">Añadir</h3>
+      <section class="card pad ${ed ? 'editando' : ''}"><h3 class="titulo-sec">${ed ? `Editar ${tipo === 'trabajo' ? 'trabajo' : 'examen'}` : 'Añadir'}</h3>
         <form class="form" id="f-ag" data-tipo="${tipo}">
-          <div class="seg ancho">
+          ${ed ? '' : `<div class="seg ancho">
             <label><input type="radio" name="tipo" value="examen" ${tipo === 'examen' ? 'checked' : ''}>Examen</label>
             <label><input type="radio" name="tipo" value="trabajo" ${tipo === 'trabajo' ? 'checked' : ''}>Trabajo</label>
-          </div>
-          <label>Asignatura<select name="asig" required>${opcionesAsig()}</select></label>
-          <label>Título<input name="titulo" required placeholder="${tipo === 'trabajo' ? 'Ej.: Práctica 2' : 'Ej.: Examen T1–T3'}"></label>
-          <label class="ancho solo-tr">Descripción<textarea name="desc" rows="3" placeholder="Qué hay que entregar, formato, dónde se sube…"></textarea></label>
-          <label><span class="solo-ex">Fecha</span><span class="solo-tr">Fecha de entrega</span><input type="date" name="fecha" required value="${diaSel || hoy()}"></label>
-          <label><span class="solo-ex">Hora</span><span class="solo-tr">Hora límite</span><input type="time" name="hora"></label>
-          <label class="ancho solo-ex">Temas que entran<input name="temas" placeholder="Ej.: Temas 1, 2 y 3"></label>
-          <div><button class="btn osc">${icon('plus')} <span class="solo-ex">Guardar examen</span><span class="solo-tr">Guardar trabajo</span></button></div>
+          </div>`}
+          <label>Asignatura<select name="asig" required>${opcionesAsig(ed?.asig)}</select></label>
+          <label>Título<input name="titulo" required value="${esc(ed?.titulo || '')}" placeholder="${tipo === 'trabajo' ? 'Ej.: Práctica 2' : 'Ej.: Examen T1–T3'}"></label>
+          <label class="ancho solo-tr">Descripción<textarea name="desc" rows="3" placeholder="Qué hay que entregar, formato, dónde se sube…">${esc(ed?.desc || '')}</textarea></label>
+          <label><span class="solo-ex">Fecha</span><span class="solo-tr">Fecha de entrega</span><input type="date" name="fecha" required value="${ed?.fecha || diaSel || hoy()}"></label>
+          <label><span class="solo-ex">Hora</span><span class="solo-tr">Hora límite</span><input type="time" name="hora" value="${ed?.hora || ''}"></label>
+          <label class="ancho solo-ex">Temas que entran<input name="temas" value="${esc(ed?.temas || '')}" placeholder="Ej.: Temas 1, 2 y 3"></label>
+          <div class="form-acc">${ed
+            ? `<button class="btn osc">${icon('check')} Guardar cambios</button><button type="button" class="btn borde" data-cancelar>Cancelar</button>`
+            : `<button class="btn osc">${icon('plus')} <span class="solo-ex">Guardar examen</span><span class="solo-tr">Guardar trabajo</span></button>`}</div>
         </form></section>
       <section class="card pad mini-lista"><h3 class="titulo-sec">Próximos</h3>${prox.length ? prox.map(e => item(e)).join('') : '<p class="vacio">Nada pendiente.</p>'}</section>
     </div>
@@ -101,7 +108,7 @@ export default function examenes(el, r) {
       <div class="mini-lista">${lista.length ? lista.map(e => item(e, e.clase === 'trabajo' ? !!e.entregado : e.fecha < hoy())).join('') : '<p class="vacio">Nada programado este día.</p>'}</div>
       <button class="btn peq borde" type="button" data-anadir>${icon('plus')} Añadir en este día</button>`;
     const form = el.querySelector('#f-ag');
-    if (form) form.fecha.value = diaSel;
+    if (form && !editando) form.fecha.value = diaSel;
   };
   pintarDia();
 
@@ -123,7 +130,18 @@ export default function examenes(el, r) {
       if (matchMedia('(max-width: 1100px)').matches) el.querySelector('#dia-panel').scrollIntoView({ behavior: 'smooth', block: 'start' });
       return;
     }
+    const edb = e.target.closest('[data-editar]');
+    if (edb) {
+      editando = { id: edb.dataset.editar, clase: edb.dataset.clase };
+      refrescar();
+      const form = el.querySelector('#f-ag');
+      form.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      form.titulo.focus({ preventScroll: true });
+      return;
+    }
+    if (e.target.closest('[data-cancelar]')) { editando = null; refrescar(); return; }
     if (e.target.closest('[data-anadir]')) {
+      if (editando) { editando = null; refrescar(); }
       const form = el.querySelector('#f-ag');
       form.fecha.value = diaSel;
       form.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -133,7 +151,11 @@ export default function examenes(el, r) {
     const b = e.target.closest('[data-del]');
     if (b) {
       const tr = b.dataset.clase === 'trabajo', k = tr ? 'trabajos' : 'examenes';
-      if (confirm(`¿Borrar este ${tr ? 'trabajo' : 'examen'}?`)) { state[k] = state[k].filter(x => x.id !== b.dataset.del); guardar(); refrescar(); }
+      if (confirm(`¿Borrar este ${tr ? 'trabajo' : 'examen'}?`)) {
+        state[k] = state[k].filter(x => x.id !== b.dataset.del);
+        if (editando?.id === b.dataset.del) editando = null;
+        guardar(); refrescar();
+      }
       return;
     }
     const en = e.target.closest('[data-entregar]');
@@ -148,7 +170,15 @@ export default function examenes(el, r) {
   el.onsubmit = e => {
     e.preventDefault();
     const d = datosForm(e.target);
-    if (d.tipo === 'trabajo') {
+    if (ed) {
+      // Editar: se cambian los datos y se conservan el id, la entrega y las notas ya puestas
+      Object.assign(ed, { asig: d.asig, titulo: d.titulo.trim(), fecha: d.fecha, hora: d.hora });
+      if (editando.clase === 'trabajo') ed.desc = (d.desc || '').trim(); else ed.temas = (d.temas || '').trim();
+      state.notas.filter(n => n.examen === ed.id).forEach(n => (n.asig = ed.asig));
+      toast(editando.clase === 'trabajo' ? 'Trabajo actualizado' : 'Examen actualizado');
+      d.tipo = editando.clase;
+      editando = null;
+    } else if (d.tipo === 'trabajo') {
       const t = { id: uid(), asig: d.asig, titulo: d.titulo.trim(), desc: (d.desc || '').trim(), fecha: d.fecha, hora: d.hora, entregado: null };
       state.trabajos.push(t);
       P.anotar({ tipo: 'trabajo', asig: t.asig, texto: `${t.titulo} (entrega ${fechaCorta(t.fecha)})` });
