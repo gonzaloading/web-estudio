@@ -3,6 +3,7 @@ import { cat } from '../data.js';
 import { state, guardar, hoy, iso, sumarDias, diasEntre, uid } from '../store.js';
 import * as P from '../progreso.js';
 import { icon, esc, asigIcon, nombreAsig, fechaCorta, diasTxt, opcionesAsig, fmtNota, notaCls, datosForm, toast, refrescar } from '../ui.js';
+import { anadirApple, urlGoogle } from '../calendario.js';
 
 const orden = (a, b) => (a.fecha + (a.hora || '')).localeCompare(b.fecha + (b.hora || ''));
 let diaSel = null; // día elegido en el calendario (se conserva al volver a pintar la vista)
@@ -46,6 +47,10 @@ export default function examenes(el, r) {
         ${tr && e.desc ? `<p class="desc">${esc(e.desc)}</p>` : ''}</div>
       ${der}
       ${tr ? `<button class="icon-btn ${e.entregado ? '' : 'entregar'}" data-entregar="${e.id}" title="${e.entregado ? 'Volver a pendiente' : 'Marcar como entregado'}">${icon(e.entregado ? 'refresh' : 'check')}</button>` : ''}
+      ${hecho ? '' : `<details class="cal-menu"><summary class="icon-btn" title="Añadir al calendario" aria-label="Añadir al calendario">${icon('calplus')}</summary>
+        <div class="cal-pop"><small>Añadir al calendario</small>
+          <button type="button" data-cal-apple="${e.id}" data-clase="${e.clase}">${icon('calendar')} Calendario de Apple</button>
+          <a href="${esc(urlGoogle(e))}" target="_blank" rel="noopener" data-cal-google>${icon('calendar')} Google Calendar</a></div></details>`}
       <button class="icon-btn" data-editar="${e.id}" data-clase="${e.clase}" title="Editar">${icon('edit')}</button>
       <button class="icon-btn" data-del="${e.id}" data-clase="${e.clase}" title="Borrar">${icon('trash')}</button></div>`;
   };
@@ -72,7 +77,7 @@ export default function examenes(el, r) {
       </div>
       <div class="cal-ley"><span><i class="sw ex"></i>Examen</span><span><i class="sw tr"></i>Entrega de trabajo</span><span><i class="sw tr hecho"></i>Entregado</span></div>
     </section>
-    ${hechos.length ? `<section class="card pad mini-lista"><h3 class="titulo-sec">Realizados y entregados</h3>${hechos.map(e => item(e, true)).join('')}</section>` : ''}
+    ${hechos.length ? `<section class="card pad mini-lista lista-ag"><h3 class="titulo-sec">Realizados y entregados</h3>${hechos.map(e => item(e, true)).join('')}</section>` : ''}
     </div>
     <div class="col">
       <section class="card pad" id="dia-panel"></section>
@@ -92,7 +97,8 @@ export default function examenes(el, r) {
             ? `<button class="btn osc">${icon('check')} Guardar cambios</button><button type="button" class="btn borde" data-cancelar>Cancelar</button>`
             : `<button class="btn osc">${icon('plus')} <span class="solo-ex">Guardar examen</span><span class="solo-tr">Guardar trabajo</span></button>`}</div>
         </form></section>
-      <section class="card pad mini-lista"><h3 class="titulo-sec">Próximos</h3>${prox.length ? prox.map(e => item(e)).join('') : '<p class="vacio">Nada pendiente.</p>'}</section>
+      <section class="card pad mini-lista lista-ag"><h3 class="titulo-sec">Próximos</h3>${prox.length ? prox.map(e => item(e)).join('') : '<p class="vacio">Nada pendiente.</p>'}
+        ${prox.length > 1 ? `<button class="btn peq borde mt-s" type="button" data-cal-todos>${icon('calplus')} Añadir todos al calendario de Apple</button>` : ''}</section>
     </div>
   </div>`;
 
@@ -105,7 +111,7 @@ export default function examenes(el, r) {
     const lista = porDia[diaSel] || [];
     const f0 = new Date(diaSel + 'T12:00').toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' });
     panel.innerHTML = `<div class="dia-h"><h3 class="titulo-sec">${f0[0].toUpperCase() + f0.slice(1)}</h3><span class="tenue">${diasTxt(diaSel)}</span></div>
-      <div class="mini-lista">${lista.length ? lista.map(e => item(e, e.clase === 'trabajo' ? !!e.entregado : e.fecha < hoy())).join('') : '<p class="vacio">Nada programado este día.</p>'}</div>
+      <div class="mini-lista lista-ag">${lista.length ? lista.map(e => item(e, e.clase === 'trabajo' ? !!e.entregado : e.fecha < hoy())).join('') : '<p class="vacio">Nada programado este día.</p>'}</div>
       <button class="btn peq borde" type="button" data-anadir>${icon('plus')} Añadir en este día</button>`;
     const form = el.querySelector('#f-ag');
     if (form && !editando) form.fecha.value = diaSel;
@@ -114,6 +120,14 @@ export default function examenes(el, r) {
 
   el.onkeydown = e => {
     if ((e.key === 'Enter' || e.key === ' ') && e.target.matches?.('.cal .d[data-dia]')) { e.preventDefault(); e.target.click(); }
+    if (e.key === 'Escape') el.querySelectorAll('details.cal-menu[open]').forEach(d => (d.open = false));
+  };
+  // Añadir al calendario de Apple (.ics); avisa de qué hacer según el dispositivo
+  const alCalendario = (items, nombre) => {
+    const r = anadirApple(items, nombre);
+    const ios = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    if (r === 'safari') toast('Se abre Safari: pulsa «Añadir a Calendario»');
+    else if (!ios) toast(items.length > 1 ? 'Descargado: abre el archivo .ics para añadirlos a tu calendario' : 'Descargado: abre el archivo .ics para añadirlo a tu calendario');
   };
   el.onchange = e => {
     if (e.target.name !== 'tipo') return;
@@ -122,6 +136,16 @@ export default function examenes(el, r) {
     f.titulo.placeholder = e.target.value === 'trabajo' ? 'Ej.: Práctica 2' : 'Ej.: Examen T1–T3';
   };
   el.onclick = e => {
+    // Menú «Añadir al calendario»: se cierra al pulsar fuera o al elegir una opción
+    el.querySelectorAll('details.cal-menu[open]').forEach(d => { if (!d.contains(e.target) || e.target.closest('.cal-pop a, .cal-pop button')) d.open = false; });
+    const ap = e.target.closest('[data-cal-apple]');
+    if (ap) {
+      const x = state[ap.dataset.clase === 'trabajo' ? 'trabajos' : 'examenes'].find(z => z.id === ap.dataset.calApple);
+      if (x) alCalendario([{ ...x, clase: ap.dataset.clase }], x.titulo);
+      return;
+    }
+    if (e.target.closest('[data-cal-todos]')) { alCalendario(prox, 'examenes-y-trabajos'); return; }
+    if (e.target.closest('[data-cal-google]')) return;
     const dd = e.target.closest('.cal .d[data-dia]');
     if (dd) {
       diaSel = dd.dataset.dia;

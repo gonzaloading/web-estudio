@@ -332,6 +332,17 @@ details summary b { display: inline-flex; align-items: center; gap: 6px }
 .tt .desc { margin: 5px 0 0; font-size: 13.5px; line-height: 1.45; color: var(--txt); white-space: pre-line }
 .icon-btn.entregar { color: var(--verde) }
 .card.editando { box-shadow: 0 0 0 2px var(--lima2) }
+/* Menú «Añadir al calendario» de cada examen o trabajo */
+.cal-menu { position: relative }
+.cal-menu > summary { list-style: none }
+.cal-menu > summary::-webkit-details-marker { display: none }
+.cal-menu[open] > summary { background: var(--sub); color: var(--txt) }
+.cal-pop { position: absolute; right: 0; top: calc(100% + 6px); z-index: 25; min-width: 220px; display: flex; flex-direction: column; padding: 6px; background: var(--card); border: 1px solid var(--borde); border-radius: 12px; box-shadow: 0 12px 32px rgba(0, 0, 0, .18) }
+.cal-pop small { padding: 6px 10px 4px; color: var(--suave); font-size: 12px; font-weight: 650 }
+.cal-pop button, .cal-pop a { display: flex; align-items: center; gap: 10px; padding: 9px 10px; border: 0; border-radius: 8px; background: none; color: var(--txt); font: inherit; font-size: 14px; text-align: left; text-decoration: none; cursor: pointer }
+.cal-pop button:hover, .cal-pop a:hover { background: var(--hover) }
+.cal-pop .ic { width: 18px; height: 18px; color: var(--suave) }
+.mt-s { margin-top: 12px }
 .form-acc { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 8px }
 /* Sincronizar dispositivos (Ajustes y pie del menú) */
 .pasos { margin: 0 0 14px; padding-left: 20px; line-height: 1.55 }
@@ -341,8 +352,10 @@ details summary b { display: inline-flex; align-items: center; gap: 6px }
 .error-txt { margin: 6px 0 0; color: var(--rojo); font-size: 13.5px }
 .error-txt:empty { display: none }
 .pie small.sync-mal { color: #ffb4a8 }
-/* En el móvil, los botones de cada examen o trabajo bajan a su propia fila para que el texto no se estreche */
-@media (max-width: 600px) {
+/* Si la lista es estrecha (columna derecha o móvil), los botones de cada examen o trabajo bajan a su propia fila
+   para que el texto no se estreche */
+.lista-ag { container-type: inline-size }
+@container (max-width: 520px) {
   .it.ag { flex-wrap: wrap; row-gap: 2px }
   .it.ag .tt { flex: 1 1 calc(100% - 50px) }
   .it.ag .tt + * { margin-left: auto }
