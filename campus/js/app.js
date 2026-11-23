@@ -31,6 +31,8 @@ document.getElementById('sidebar').innerHTML = `
     <a href="#/ajustes" data-r="ajustes" title="Apariencia, sincronización y copia de seguridad">${icon('download')}<span>Ajustes y copia</span></a>
     <small data-sync-estado>Tu progreso se guarda en este dispositivo.</small></div>`;
 document.getElementById('abrir').innerHTML = icon('menu');
+// En el móvil, acceso directo a Ajustes (sincronizar, copia, tema) en la barra de arriba
+document.querySelector('.topbar').insertAdjacentHTML('beforeend', `<a class="top-aj" href="#/ajustes" aria-label="Ajustes y copia" title="Ajustes y copia">${icon('gear')}</a>`);
 document.getElementById('abrir').onclick = () => document.body.classList.add('menu');
 document.getElementById('velo').onclick = () => document.body.classList.remove('menu');
 // Botones para ocultar/mostrar paneles (menú, índice del tema, active recall, modo concentración) y tema
