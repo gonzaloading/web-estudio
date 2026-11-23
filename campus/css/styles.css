@@ -333,6 +333,14 @@ details summary b { display: inline-flex; align-items: center; gap: 6px }
 .icon-btn.entregar { color: var(--verde) }
 .card.editando { box-shadow: 0 0 0 2px var(--lima2) }
 .form-acc { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 8px }
+/* Sincronizar dispositivos (Ajustes y pie del menú) */
+.pasos { margin: 0 0 14px; padding-left: 20px; line-height: 1.55 }
+.pasos li { margin: 4px 0 }
+.sync-linea { margin: 0 0 4px; color: var(--verde) }
+.sync-linea .sync-mal { color: var(--rojo) }
+.error-txt { margin: 6px 0 0; color: var(--rojo); font-size: 13.5px }
+.error-txt:empty { display: none }
+.pie small.sync-mal { color: #ffb4a8 }
 /* En el móvil, los botones de cada examen o trabajo bajan a su propia fila para que el texto no se estreche */
 @media (max-width: 600px) {
   .it.ag { flex-wrap: wrap; row-gap: 2px }

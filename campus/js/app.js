@@ -12,6 +12,7 @@ import examenes from './vistas/examenes.js';
 import notas from './vistas/notas.js';
 import ajustes from './vistas/ajustes.js';
 import test from './vistas/test.js';
+import { iniciarSync } from './sync.js';
 
 const RUTAS = { '': inicio, asignaturas, asignatura, test, repaso, temas, fallos, historial, examenes, notas, ajustes };
 const NAV = [
@@ -27,8 +28,8 @@ document.getElementById('sidebar').innerHTML = `
   <nav class="nav">${NAV.map(n => (n ? `<a href="#/${n[0]}" data-r="${n[0]}" title="${n[2]}">${icon(n[1])}<span>${n[2]}</span></a>` : '<div class="sep"></div>')).join('')}</nav>
   <div class="pie"><button type="button" class="pie-btn" data-vista="menu"></button>
     <button type="button" class="pie-btn" data-tema-btn></button>
-    <a href="#/ajustes" data-r="ajustes" title="Apariencia y copia de seguridad">${icon('download')}<span>Ajustes y copia</span></a>
-    <small>Tu progreso se guarda en este dispositivo.</small></div>`;
+    <a href="#/ajustes" data-r="ajustes" title="Apariencia, sincronización y copia de seguridad">${icon('download')}<span>Ajustes y copia</span></a>
+    <small data-sync-estado>Tu progreso se guarda en este dispositivo.</small></div>`;
 document.getElementById('abrir').innerHTML = icon('menu');
 document.getElementById('abrir').onclick = () => document.body.classList.add('menu');
 document.getElementById('velo').onclick = () => document.body.classList.remove('menu');
@@ -38,6 +39,7 @@ addEventListener('click', e => {
   if (e.target.closest('[data-tema-btn]')) ponerTema();
 });
 aplicarVista(); aplicarTema();
+iniciarSync(); // progreso compartido entre dispositivos (si está activado en Ajustes)
 
 // Menú que se oculta solo (pantallas anchas): se abre al acercar el ratón al borde izquierdo o al pulsar la pestaña
 const html = document.documentElement, sidebar = document.getElementById('sidebar');

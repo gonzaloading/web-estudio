@@ -22,7 +22,11 @@ const base = () => ({
 export const state = base();
 try { Object.assign(state, JSON.parse(localStorage.getItem(CLAVE) || '{}')); } catch { /* datos corruptos: se empieza de cero */ }
 
-export const guardar = () => localStorage.setItem(CLAVE, JSON.stringify(state));
+// guardar() avisa con el evento 'progreso-guardado' para que sync.js lo suba a los demás dispositivos
+export const guardarLocal = () => localStorage.setItem(CLAVE, JSON.stringify(state));
+export const guardar = () => { guardarLocal(); dispatchEvent(new Event('progreso-guardado')); };
+// Rellena lo que falte (p. ej. si llega progreso de una versión anterior de la web)
+export function completarEstado() { for (const [k, v] of Object.entries(base())) if (!(k in state)) state[k] = v; }
 export const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
 
 // ---- fechas (siempre "AAAA-MM-DD" en hora local) ----

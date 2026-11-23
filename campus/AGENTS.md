@@ -188,6 +188,13 @@ Hacer test es el **método principal de estudio** del usuario. Todo tema nuevo l
 - Comprueba cada cambio en los dos modos.
 - El menú lateral se oculta solo en pantallas anchas (clase `nav-auto` en `<html>`) y en el móvil es el menú de siempre. Las preferencias de vista y tema se guardan en `gonzaloading-vista`, aparte del progreso.
 
+## Progreso y sincronización entre dispositivos
+
+- El progreso está en `state` (`js/store.js`) y se guarda en `localStorage` con `guardar()`. **Llama siempre a `guardar()` tras cambiarlo**: además de guardarlo, avisa a `js/sync.js` para que lo suba.
+- `js/sync.js` lo sincroniza (si se activa en *Ajustes*) con un gist secreto de GitHub (`mi-campus-progreso.json`), usando una clave con solo el permiso `gist` que el usuario pega en cada dispositivo. Une los datos "a tres bandas" con la última versión sincronizada, así que los cambios de dos dispositivos no se pisan.
+- Para que la unión funcione, **si añades datos nuevos al progreso**: usa mapas (`{ clave: valor }`) o listas cuyos elementos tengan siempre `id` (`uid()`), y añádelos a `base()` en `store.js`. No metas listas sin `id`.
+- Para probarla en local sin tocar GitHub: un servidor falso que imite la API de gists y `localStorage['gonzaloading-sync-api'] = 'http://127.0.0.1:PUERTO'` (solo funciona en 127.0.0.1 / localhost).
+
 ## Comprobar
 
 `python3 -m http.server 8000` en esta carpeta y abrir http://localhost:8000. No hace falta cambiar `sw.js` al añadir temas.
